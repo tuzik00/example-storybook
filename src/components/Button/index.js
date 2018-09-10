@@ -10,17 +10,20 @@ import style from './Button.styl';
 type PropsType = {
     children: string,
     onClick?: func,
-    disabled?: boolean
+    disabled?: boolean,
+    ref?: func
 };
 
 
 const Button = (props: PropsType & ColorsType & SizesType): React.Element<'button'> => {
     const buttonClasses = cn(style.button,
         (props.disabled && style.disabled),
+
         //sizes
         (props.small && style.small),
         (props.large && style.large),
         (props.big && style.big),
+
         //colors
         (props.primary && style.primary),
         (props.success && style.success),
@@ -30,10 +33,18 @@ const Button = (props: PropsType & ColorsType & SizesType): React.Element<'butto
     );
 
     return (
-        <button className={buttonClasses}>
+        <button
+            {...props}
+            ref={(ref: {}): React.Ref<'button'> => props.ref(ref)}
+            className={buttonClasses}
+        >
             {props.children}
         </button>
     );
+};
+
+Button.defaultProps = {
+    ref: (ref: {}): React.Element<'button'> => ref
 };
 
 

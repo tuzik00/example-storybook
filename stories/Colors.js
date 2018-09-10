@@ -3,29 +3,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import colors from '../src/styles/config/colors.json';
-import style from './styles.styl';
+import { Color, Colors } from '../src/storiesDecorators/Colors';
+import colors from '../src/config/colors.json';
 
-
-const Colors = (props: object): React.Element<'div'> => {
-    return (
-        <div className={style.colors}>
-            {props.children}
-        </div>
-    );
-};
-
-const Color = (props: object): React.Element<'div'> => {
-    return (
-        <div
-            className={style.color}
-            style={{background: `${props.color}`}}
-        >
-            <div>${props.var}-color</div>
-            <div>{props.color}</div>
-        </div>
-    );
-};
 
 
 storiesOf('Цвета', module)

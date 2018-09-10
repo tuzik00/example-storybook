@@ -11,7 +11,15 @@ import Button from '../src/components/Button';
 
 storiesOf('Кнопки', module)
     .addDecorator(withKnobs)
-    .add('default', withInfo()((): React.Element<'Button'> => (
+    .add('базовая', withInfo()((): React.Element<'Button'> => (
+        <Button
+            onClick={action('Button click')}
+            disabled={boolean('Disabled', false)}
+        >
+            button
+        </Button>
+    )))
+    .add('размеры', withInfo()((): React.Element<'Button'> => (
         <ul>
             <li>
                 <Button small>small</Button>
@@ -19,6 +27,10 @@ storiesOf('Кнопки', module)
                 <Button large>large</Button>
                 <Button big>big</Button>
             </li>
+        </ul>
+    )))
+    .add('цвета', withInfo()((): React.Element<'Button'> => (
+        <ul>
             <li>
                 <Button>default</Button>
                 <Button primary>primary</Button>

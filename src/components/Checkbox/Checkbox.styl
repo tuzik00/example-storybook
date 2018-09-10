@@ -8,7 +8,6 @@ $checkbox-height = 1rem
         border: 1px solid #ccc
         border-radius 20px
         background-color #f7f7f7
-        transition $duration background
         cursor pointer
 
         &:hover
@@ -22,9 +21,8 @@ $checkbox-height = 1rem
             height 100%
             box-sizing border-box
             border-radius 100%
-            border: 1px solid $primary-color
             background $primary-color
-            transition $duration transform
+            transition $duration transform, $duration background
 
     .active
         &:after
@@ -33,5 +31,9 @@ $checkbox-height = 1rem
     .disabled
         cursor auto
 
+        &:hover
+            &:after
+                background #d1d1d1
+
         &:after
-            background saturate($primary-color, -50%)
+            background #d1d1d1

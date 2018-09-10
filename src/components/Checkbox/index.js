@@ -8,7 +8,8 @@ import style from './Checkbox.styl';
 type PropsType = {
     active?: boolean,
     disabled?: boolean,
-    onToggle: func
+    onToggle: func,
+    ref?: func
 };
 
 type StateType = {
@@ -20,7 +21,8 @@ class Checkbox extends Component<PropsType, StateType> {
     static defaultProps = {
         onToggle: () => {},
         active: false,
-        disabled: false
+        disabled: false,
+        ref: (ref: {}): React.Element<'div'> => ref
     };
 
     constructor(props: {}) {
@@ -61,6 +63,7 @@ class Checkbox extends Component<PropsType, StateType> {
         return (
             <div
                 tabIndex="1"
+                ref={(ref: {}): React.Element<'div'> => this.props.ref(ref)}
                 className={cn(style.checkbox, disabled && style.disabled, isActive && style.active)}
                 onClick={() => { this.handleToggle() }}
             />
