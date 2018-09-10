@@ -1,0 +1,37 @@
+$checkbox-width = 2rem
+$checkbox-height = 1rem
+
+:local
+    .checkbox
+        width $checkbox-width
+        height $checkbox-height
+        border: 1px solid #ccc
+        border-radius 20px
+        background-color #f7f7f7
+        transition $duration background
+        cursor pointer
+
+        &:hover
+            &:after
+                background saturate($primary-color, 50%)
+
+        &:after
+            content ''
+            display block
+            width ($checkbox-width / 2)
+            height 100%
+            box-sizing border-box
+            border-radius 100%
+            border: 1px solid $primary-color
+            background $primary-color
+            transition $duration transform
+
+    .active
+        &:after
+            transform translateX(100%)
+
+    .disabled
+        cursor auto
+
+        &:after
+            background saturate($primary-color, -50%)

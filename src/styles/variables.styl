@@ -1,0 +1,13 @@
+//font
+$font-size = 16px
+
+//transition
+$duration = 250ms
+
+//colors
+$black-color = #6b6b6b
+
+$colors = json('./config/colors.json', { hash: true })
+for $name, $color in $colors {
+	define('$' + $name + '-color', $color)
+}
