@@ -8,7 +8,7 @@ import {action} from '@storybook/addon-actions';
 
 import Checkbox from '../src/components/Checkbox';
 import Input from '../src/components/Input';
-import Select, { Option } from '../src/components/Select';
+import Select from '../src/components/Select';
 
 
 storiesOf('Элементы форм', module)
@@ -22,6 +22,7 @@ storiesOf('Элементы форм', module)
     )))
     .add('Input', withInfo()((): React.Element<'Input'> => (
         <Input
+            type="text"
             onClick={action('Input click')}
             onFocus={action('Input focus')}
             onBlur={action('Input blur')}

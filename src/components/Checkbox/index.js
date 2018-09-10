@@ -9,7 +9,8 @@ type PropsType = {
     active?: boolean,
     disabled?: boolean,
     onToggle: func,
-    ref?: func
+    ref?: func,
+    className?: string
 };
 
 type StateType = {
@@ -59,12 +60,19 @@ class Checkbox extends Component<PropsType, StateType> {
     render(): React.Element<'div'> {
         const {isActive} = this.state;
         const {disabled} = this.props;
+        const checkboxClasses = cn(
+            style.checkbox,
+            this.props.className,
+            disabled && style.disabled,
+            isActive && style.active
+        );
+
 
         return (
             <div
-                tabIndex="1"
+                tabIndex={0}
                 ref={(ref: {}): React.Element<'div'> => this.props.ref(ref)}
-                className={cn(style.checkbox, disabled && style.disabled, isActive && style.active)}
+                className={checkboxClasses}
                 onClick={() => { this.handleToggle() }}
             />
         )

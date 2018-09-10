@@ -11,25 +11,30 @@ type PropsType = {
     children: string,
     onClick?: func,
     disabled?: boolean,
-    ref?: func
+    ref?: func,
+    block?: boolean,
+    className?: string
 };
 
 
 const Button = (props: PropsType & ColorsType & SizesType): React.Element<'button'> => {
-    const buttonClasses = cn(style.button,
-        (props.disabled && style.disabled),
+    const buttonClasses = cn(
+        style.button,
+        props.className,
+        props.disabled && style.disabled,
+        props.block && style.block,
 
         //sizes
-        (props.small && style.small),
-        (props.large && style.large),
-        (props.big && style.big),
+        props.small && style.small,
+        props.large && style.large,
+        props.big && style.big,
 
         //colors
-        (props.primary && style.primary),
-        (props.success && style.success),
-        (props.info && style.info),
-        (props.warning && style.warning),
-        (props.danger && style.danger)
+        props.primary && style.primary,
+        props.success && style.success,
+        props.info && style.info,
+        props.warning && style.warning,
+        props.danger && style.danger
     );
 
     return (

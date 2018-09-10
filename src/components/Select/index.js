@@ -6,16 +6,24 @@ import cn from 'classnames';
 import style from './Select.styl';
 
 
+type DataArrayType = {
+    name: string | number,
+    value: string | number
+};
+
 type PropsType = {
     onChange?: func,
     disabled?: boolean,
-    dataArray?: array
+    className?: string,
+    dataArray?: $Shape<DataArrayType>
 };
 
 
-const Select = (props: PropsType): React.Element<'select'> => {
-    const selectClasses = cn(style.select,
-        (props.disabled && style.disabled)
+const Select = (props: PropsType): React.Ref<'select'> => {
+    const selectClasses = cn(
+        style.select,
+        props.className,
+        props.disabled && style.disabled
     );
 
     return (
@@ -35,7 +43,8 @@ const Select = (props: PropsType): React.Element<'select'> => {
 };
 
 Select.defaultProps = {
-    ref: (ref: {}): React.Element<'select'> => ref
+    ref: (ref: {}): React.Ref<'select'> => ref,
+    dataArray: []
 };
 
 

@@ -12,13 +12,17 @@ type PropsType = {
     onBlur?: func,
     onChange?: func,
     placeholder?: string,
-    disabled?: boolean
+    disabled?: boolean,
+    className?: string,
+    type: "text" | "number" | "email"
 };
 
 
 const Input = (props: PropsType): React.Element<'Input'> => {
-    const inputClasses = cn(style.input, 
-        (props.disabled && style.disabled)
+    const inputClasses = cn(
+        style.input,
+        props.className,
+        props.disabled && style.disabled
     );
 
     return (
@@ -27,6 +31,7 @@ const Input = (props: PropsType): React.Element<'Input'> => {
             className={inputClasses}
             ref={(ref: {}): React.Ref<'input'> => props.ref(ref)}
             placeholder={props.placeholder}
+            type={props.type}
             onClick={(e: {}) => { props.onClick(e.target.value) }}
             onFocus={(e: {}) => { props.onFocus(e.target.value) }}
             onBlur={(e: {}) => { props.onBlur(e.target.value) }}

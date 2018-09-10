@@ -4,15 +4,21 @@ $font-size = 16px
 //transition
 $duration = 250ms
 
+//border
+$default-border-radius = 5px
+
 //colors
 $black-color = #6b6b6b
 $white-color = #fff
 $gray-color = #e8e8e8
 
-//border
-$default-border-radius = 5px
-
 $colors = json('../config/colors.json', { hash: true })
 for $name, $color in $colors {
-	define('$' + $name + '-color', $color)
+    define('$' + $name + '-color', $color)
+}
+
+// media queries
+$breakpoints = json('../config/breakpoints.json', { hash: true })
+for $name, $breakpoint in $breakpoints {
+    define('$' + $name + '-breakpoint', $breakpoint)
 }
