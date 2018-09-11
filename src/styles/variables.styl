@@ -20,5 +20,5 @@ for $name, $color in $colors {
 // media queries
 $breakpoints = json('../config/breakpoints.json', { hash: true })
 for $name, $breakpoint in $breakpoints {
-    define('$' + $name + '-breakpoint', $breakpoint)
+    define('$' + $name + '-breakpoint', unit($breakpoint, 'px'))
 }
