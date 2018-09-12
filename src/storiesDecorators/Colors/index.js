@@ -28,11 +28,13 @@ const Color = (props: ColorPropsType): React.Element<'div'> => {
             className={style.color}
             style={{background: `${props.color}`}}
         >
-            <div>${props.var}-color</div>
-            <div>{props.color}</div>
+            <div className={style.colorInfo}>
+                <div>${props.var}-color</div>
+                <div>{props.color}</div>
+            </div>
         </div>
     );
 };
 
 
-export { Color, Colors };
+export {Color, Colors};

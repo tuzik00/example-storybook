@@ -12,7 +12,7 @@ import Button from '../src/components/Button';
 
 storiesOf('Кнопки', module)
     .addDecorator(withKnobs)
-    .add('базовая', withInfo()((): React.Element<'Button'> => (
+    .add('Базовая', withInfo()((): React.Element<'Button'> => (
         <Container>
             <Button
                 onClick={action('Button click')}
@@ -22,7 +22,7 @@ storiesOf('Кнопки', module)
             </Button>
         </Container>
     )))
-    .add('размеры', withInfo()((): React.Element<'Button'> => (
+    .add('Размеры', withInfo()((): React.Element<'Button'> => (
         <Container>
             <ul className="example-list">
                 <li>
@@ -40,7 +40,7 @@ storiesOf('Кнопки', module)
             </ul>
         </Container>
     )))
-    .add('широкие', withInfo()((): React.Element<'Button'> => (
+    .add('Широкие', withInfo()((): React.Element<'Button'> => (
         <Container>
             <ul className="example-list">
                 <li>
@@ -64,7 +64,7 @@ storiesOf('Кнопки', module)
             </ul>
         </Container>
     )))
-    .add('цвета', withInfo()((): React.Element<'Button'> => (
+    .add('Цвета', withInfo()((): React.Element<'Button'> => (
         <Container>
             <ul className="example-list">
                 <li>
