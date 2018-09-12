@@ -1,4 +1,7 @@
 {
+    "black"     : "#333333",
+    "white"     : "#fff",
+    "gray"      : "#e8e8e8",
     "default"   : "#f7f7f7",
     "primary"   : "#337ab7",
     "success"   : "#5cb85c",

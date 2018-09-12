@@ -1,4 +1,7 @@
-import './Colors'
+import './styles.styl';
+
+import './Text';
+import './Colors';
 import './Forms';
 import './Button';
 import './ExampleForm';

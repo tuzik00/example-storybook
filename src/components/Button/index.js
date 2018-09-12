@@ -39,7 +39,7 @@ const Button = (props: PropsType & ColorsType & SizesType): React.Element<'butto
 
     return (
         <button
-            onClick={props.onClick}
+            onClick={(): func => props.onClick()}
             ref={props.ref}
             className={buttonClasses}
         >
