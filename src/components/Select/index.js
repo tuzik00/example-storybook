@@ -7,8 +7,8 @@ import style from './Select.styl';
 
 
 type DataArrayType = {
-    name: string | number,
-    value: string | number
+    name: string,
+    value: string
 };
 
 type PropsType = {
@@ -20,24 +20,28 @@ type PropsType = {
 
 
 const Select = (props: PropsType): React.Ref<'select'> => {
+    const {className, dataArray, disabled, ref, onChange} = props;
+
     const selectClasses = cn(
         style.select,
-        props.className,
-        props.disabled && style.disabled
+        className,
+        disabled && style.disabled
     );
 
     return (
         <select
-            {...props}
             className={selectClasses}
-            onChange={(e: {}) => { props.onChange(e.target.value) }}
-            ref={(ref: {}): React.Ref<'input'> => props.ref(ref)}
+            onChange={(e: {}): func => onChange(e.target.value)}
+            ref={ref}
         >
-            {
-                props.dataArray.map((option: object): React.Element<'option'> => (
-                    <option value={option.value}>{option.name}</option>
-                ))
-            }
+            {dataArray.map((option: DataArrayType, index: number): React.Element<'option'> => (
+                <option
+                    key={index}
+                    value={option.value}
+                >
+                    {option.name}
+                </option>
+            ))}
         </select>
     );
 };

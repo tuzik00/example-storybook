@@ -8,14 +8,29 @@ import style from './Label.styl';
 
 type PropsType = {
     children: React.Node,
-    className?: string
+    className?: string,
+    text?: string,
+    required?: boolean,
+    error?: boolean
 };
 
 
 const Label = (props: PropsType): React.Element<'label'> => {
+    const { text, children, className, required, error } = props;
+
+    const classNames = cn(
+        style.label,
+        className
+    );
+
     return (
-        <label className={cn(style.label, props.className)}>
-            {props.children}
+        <label className={classNames}>
+            <div className={cn(style.text, error && style.error)}>
+                {required ? '*' : null}{text}:
+            </div>
+            <div className={style.field}>
+                {children}
+            </div>
         </label>
     );
 };

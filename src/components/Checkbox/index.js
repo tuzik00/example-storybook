@@ -34,7 +34,7 @@ class Checkbox extends Component<PropsType, StateType> {
         }
     }
 
-    componentWillReceiveProps(nextProps: {}) {
+    UNSAFE_componentWillReceiveProps(nextProps: {}) {
         if (this.state.isActive !== nextProps.active && !nextProps.disabled) {
             this.setState({
                 isActive: nextProps.active
@@ -42,8 +42,8 @@ class Checkbox extends Component<PropsType, StateType> {
         }
     }
 
-    handleToggle() {
-        const {disabled} = this.props;
+    handleToggle = () => {
+        const {disabled, onToggle} = this.props;
         const {isActive} = this.state;
 
         if (disabled) {
@@ -52,28 +52,26 @@ class Checkbox extends Component<PropsType, StateType> {
 
         this.setState({
             isActive: !isActive
-        }, () => {
-            this.props.onToggle(!isActive)
-        })
-    }
+        }, (): func => onToggle(!isActive))
+    };
 
     render(): React.Element<'div'> {
         const {isActive} = this.state;
-        const {disabled} = this.props;
+        const {disabled, className, ref} = this.props;
+
         const checkboxClasses = cn(
             style.checkbox,
-            this.props.className,
+            className,
             disabled && style.disabled,
             isActive && style.active
         );
 
-
         return (
             <div
                 tabIndex={0}
-                ref={(ref: {}): React.Element<'div'> => this.props.ref(ref)}
+                ref={ref}
                 className={checkboxClasses}
-                onClick={() => { this.handleToggle() }}
+                onClick={this.handleToggle}
             />
         )
     }

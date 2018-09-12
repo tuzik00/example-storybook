@@ -14,16 +14,23 @@ type PropsType = {
 
 
 const Column = (props: PropsType): React.Element<'div'> => {
+    const { children, className } = props;
+
     const columnStyle = {
         flex: props.flex
     };
 
+    const columnClassNames = cn(
+        style.column,
+        className
+    );
+
     return (
         <div
             style={columnStyle}
-            className={cn(style.column, props.className)}
+            className={columnClassNames}
         >
-            {props.children}
+            {children}
         </div>
     );
 };

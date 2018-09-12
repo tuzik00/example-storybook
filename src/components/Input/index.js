@@ -43,7 +43,11 @@ const Input = (props: PropsType): React.Element<'Input'> => {
 };
 
 Input.defaultProps = {
-    ref: (ref: {}): React.Element<'input'> => ref
+    ref: (ref: {}): React.Element<'input'> => ref,
+    onClick: () => {},
+    onFocus: () => {},
+    onBlur: () => {},
+    onChange: () => {}
 };
 
 
