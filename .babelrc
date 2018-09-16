@@ -1,12 +1,19 @@
 {
-  "plugins": [
-      "transform-class-properties"
-  ],
-  "presets": [
-    "react"
-  ],
-  "env": {
-    "development": {},
-    "production": {}
-  }
+    "plugins": [
+        "transform-class-properties",
+        [
+            "transform-object-rest-spread",
+            {
+                "useBuiltIns": true
+            }
+        ]
+    ],
+    "presets": [
+        "react",
+        "env"
+    ],
+    "env": {
+        "development": {},
+        "production": {}
+    }
 }

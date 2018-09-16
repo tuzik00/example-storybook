@@ -1,0 +1,25 @@
+:local
+    .tab_bar{
+        display flex
+        flex-wrap wrap
+        position relative
+    }
+
+    .tab_bar_item{
+        margin  .5rem
+        cursor pointer
+    }
+
+    .active {
+        font-weight bold
+        cursor auto
+    }
+
+    .line {
+        position: absolute;
+		bottom: -1px;
+		left: 0;
+		height: 2px;
+		background-color: #000;
+		transition: left 250ms ease-in-out, width 250ms ease-in-out;
+    }
