@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {storiesOf, setAddon} from '@storybook/react';
-import {withKnobs, boolean} from '@storybook/addon-knobs';
+import {withKnobs, boolean, number} from '@storybook/addon-knobs';
 import {withInfo} from '@storybook/addon-info';
 import {action} from '@storybook/addon-actions';
 
@@ -17,16 +17,16 @@ storiesOf('Элементы навигации', module)
             <Tabs
                 onChangeTab={action('Tab change')}
                 // renderTabBar={action('render label')}
-                initialTab={2}
+                initialTab={1}
             >
-                <Tab heading={'test'}>
-                    content 1
+                <Tab heading={<span>Скандалы</span>}>
+                    Tab 1
                 </Tab>
-                <Tab heading={'test'}>
-                    content 2
+                <Tab heading="Интриги">
+                    Tab 2
                 </Tab>
-                <Tab heading={'test'}>
-                    content 3
+                <Tab heading="Расследования">
+                    Tab 3
                 </Tab>
             </Tabs>
         </Container>

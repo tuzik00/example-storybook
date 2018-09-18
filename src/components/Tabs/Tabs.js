@@ -10,8 +10,8 @@ import style from './Tabs.styl';
 type PropsType = {
     children: React.Node,
     className?: string,
-    onChangeTab?: string,
-    renderTabBar?: string,
+    onChangeTab?: func,
+    renderTabBar?: func | boolean,
     initialTab?: number
 };
 
