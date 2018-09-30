@@ -1,6 +1,7 @@
 // @flow
 
-import React, {PureComponent} from 'react'
+import React, {PureComponent, Fragment} from 'react'
+import cn from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
 import {TimelineMax} from 'gsap';
 
@@ -9,6 +10,7 @@ import style from './Sidebar.styl';
 
 type PropsType = {
     children: React.Node,
+    classNames: React.string,
     open?: boolean,
     onClose: func
 };
@@ -16,6 +18,7 @@ type PropsType = {
 class Sidebar extends PureComponent<PropsType> {
     static defaultProps = {
         open: false,
+        width: 300,
         onClose: () => {
         }
     };
@@ -25,11 +28,12 @@ class Sidebar extends PureComponent<PropsType> {
 
         this.state = {
             isOpen: this.props.open,
+            width: this.props.width,
             height: 0,
-            width: 0
         };
 
         this.$sidebar = null;
+        this.$overlay = null;
     }
 
     componentDidMount() {
@@ -60,34 +64,49 @@ class Sidebar extends PureComponent<PropsType> {
     handleToggle = () => {
         const {isOpen, width} = this.state;
         const timeLine = new TimelineMax({paused: true});
-        const node = this.$sidebar;
+        const $sidebar = this.$sidebar;
+        const $overlay = this.$overlay;
         const duration = 250 / 1000;
 
         if (isOpen) {
-            // timeLine
-            //     .fromTo(
-            //         node,
-            //         duration,
-            //         {width: 0},
-            //         {width: width},
-            //         0
-            //     )
+            timeLine
+                .fromTo(
+                    $sidebar,
+                    duration,
+                    {width: 0},
+                    {width},
+                    0
+                )
+                .fromTo(
+                    $overlay,
+                    duration,
+                    {opacity: 0},
+                    {opacity: 1},
+                    0
+                )
         } else {
             timeLine
                 .fromTo(
-                    node,
+                    $sidebar,
                     duration,
+                    {width},
                     {width: 0},
-                    {width: `${width}px`},
                     0
                 )
+                // .fromTo(
+                //     $overlay,
+                //     duration,
+                //     {opacity: 1},
+                //     {opacity: 0},
+                //     0
+                // )
         }
 
         timeLine.play();
 
-        // if (!isOpen) {
-        //     this.props.onClose();
-        // }
+        if (!isOpen) {
+            this.props.onClose();
+        }
     };
 
     setSidebarSize = () => {
@@ -97,32 +116,41 @@ class Sidebar extends PureComponent<PropsType> {
 
         this.setState({
             height: window.innerHeight,
-            width: this.$sidebar.offsetWidth
-        }, this.handleToggle);
+        });
     };
 
     render(): React.Element<'div'> {
-        const {children} = this.props;
-        const {height} = this.state;
-
-        const sidebarStyle = {
-            height
-        };
+        const {children, classNames} = this.props;
+        const {height, width, isOpen} = this.state;
 
         return (
-            <OutsideClickHandler
-                onOutsideClick={this.handleOutsideClick}
-            >
-                <div
-                    style={sidebarStyle}
-                    className={style.sidebar}
-                    ref={(el: HTMLElement): void => this.$sidebar = el}
+            <Fragment>
+                <OutsideClickHandler
+                    onOutsideClick={this.handleOutsideClick}
                 >
-                    {children}
-                </div>
-            </OutsideClickHandler>
+                    <div
+                        style={{height}}
+                        className={cn(style.sidebar, classNames)}
+                        ref={(el: HTMLElement): void => this.$sidebar = el}
+                    >
+                        <div
+                            className={style.content}
+                            style={{width, height}}
+                        >
+                            {children}
+                        </div>
+                    </div>
+                </OutsideClickHandler>
+                {isOpen ? (
+                    <div
+                        ref={(el: HTMLElement): HTMLElement => this.$overlay = el}
+                        className={style.overlay}
+                    />
+                ) : null}
+            </Fragment>
         );
     }
 }
+
 
 export default Sidebar;
