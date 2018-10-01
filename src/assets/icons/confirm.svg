@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title> confirm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="-confirm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-7" transform="translate(7.000000, 1.000000)" fill="#F07B1F">
+            <path d="M3,4.54961705 L3,36 C3,36.5522847 3.44771525,37 4,37 L24,37 C24.5522847,37 25,36.5522847 25,36 L25,4.54961705 L23.3333333,5.26390276 L18.6666667,3.26390276 L14,5.26390276 L9.33333333,3.26390276 L4.66666667,5.26390276 L3,4.54961705 Z M0,0 L4.66666667,2 L9.33333333,0 L14,2 L18.6666667,0 L23.3333333,2 L28,0 L28,36 C28,38.209139 26.209139,40 24,40 L4,40 C1.790861,40 2.705415e-16,38.209139 0,36 L0,0 Z" id="Rectangle-10-Copy" fill-rule="nonzero"></path>
+            <rect id="Rectangle" x="6" y="23" width="14" height="3"></rect>
+            <rect id="Rectangle-Copy-2" x="6" y="9" width="14" height="3"></rect>
+        </g>
+    </g>
+</svg>

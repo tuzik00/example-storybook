@@ -7,3 +7,4 @@ import './Button';
 import './ExampleForm';
 import './Grid';
 import './Navigation';
+import './Icons';
