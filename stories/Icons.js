@@ -6,7 +6,6 @@ import {storiesOf, setAddon} from '@storybook/react';
 import Container from '../src/components/Container';
 
 import Compare from '../src/assets/icons/compare.svg';
-import Catalog from '../src/assets/icons/catalog.svg';
 import Configurator from '../src/assets/icons/configurator.svg';
 import Confirm from '../src/assets/icons/confirm.svg';
 import Payment from '../src/assets/icons/payment.svg';
@@ -21,7 +20,6 @@ storiesOf('Иконки (svg)', module)
         return (
             <Container>
                 <Compare />
-                <Catalog />
                 <Configurator />
                 <Confirm />
                 <Payment />

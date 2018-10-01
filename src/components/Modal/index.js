@@ -5,50 +5,41 @@ import cn from 'classnames';
 import {TimelineMax} from 'gsap';
 import Portal from '../Portal';
 
-import style from './Sidebar.styl';
+import style from './Modal.styl';
 
 
 type PropsType = {
     children: React.Node,
     classNames: React.string,
     open?: boolean,
+    maxWidth?: number,
     onClose: func
 };
 
 class Sidebar extends PureComponent<PropsType> {
     static defaultProps = {
         open: false,
-        width: 300,
-        onClose: () => {}
+        maxWidth: 500,
+        onClose: () => {
+        }
     };
 
     constructor(props: object) {
         super(props);
 
         this.state = {
-            isOpen: this.props.open,
-            width: this.props.width,
-            height: 0
+            isOpen: this.props.open
         };
 
-        this.$sidebar = null;
         this.$overlay = null;
-    }
-
-    componentDidMount() {
-        this.setSidebarSize();
-        window.addEventListener('resize', this.setSidebarSize);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.setSidebarSize);
+        this.$modal = null;
     }
 
     componentWillReceiveProps(nextProps: object) {
         if (this.state.isOpen !== nextProps.open) {
             this.setState({
                 isOpen: nextProps.open
-            }, this.handleToggle)
+            }, this.handleToggle);
         }
     }
 
@@ -65,13 +56,6 @@ class Sidebar extends PureComponent<PropsType> {
         if (isOpen) {
             timeLine
                 .fromTo(
-                    this.$sidebar,
-                    duration,
-                    {width: 0},
-                    {width: this.state.width},
-                    0
-                )
-                .fromTo(
                     this.$overlay,
                     duration,
                     {opacity: 0},
@@ -80,13 +64,6 @@ class Sidebar extends PureComponent<PropsType> {
                 )
         } else {
             timeLine
-                .fromTo(
-                    this.$sidebar,
-                    duration,
-                    {width: this.state.width},
-                    {width: 0},
-                    0
-                )
                 .fromTo(
                     this.$overlay,
                     duration,
@@ -104,29 +81,18 @@ class Sidebar extends PureComponent<PropsType> {
         timeLine.play();
     };
 
-    setSidebarSize = () => {
-        this.setState({
-            height: window.innerHeight
-        });
-    };
-
     render(): React.Element<'div'> {
-        const {children, classNames} = this.props;
-        const {height, width, isOpen} = this.state;
+        const {children, classNames, maxWidth} = this.props;
+        const {isOpen} = this.state;
 
         return isOpen ? (
             <Portal selector="body">
                 <div
-                    style={{height}}
-                    className={cn(style.sidebar, classNames)}
-                    ref={(el: HTMLElement): void => this.$sidebar = el}
+                    style={{maxWidth}}
+                    className={cn(style.modal, classNames)}
+                    ref={(el: HTMLElement): void => this.$modal = el}
                 >
-                    <div
-                        className={style.content}
-                        style={{width, height}}
-                    >
-                        {children}
-                    </div>
+                    {children}
                 </div>
 
                 <div
