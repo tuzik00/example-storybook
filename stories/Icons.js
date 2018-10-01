@@ -2,8 +2,6 @@
 
 import React from 'react';
 import {storiesOf, setAddon} from '@storybook/react';
-import {withKnobs, boolean} from '@storybook/addon-knobs';
-import {withInfo} from '@storybook/addon-info';
 
 import Container from '../src/components/Container';
 
