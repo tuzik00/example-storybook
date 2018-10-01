@@ -4,6 +4,7 @@ import React, {PureComponent} from 'react'
 
 import Sidebar from '../../components/Sidebar';
 import Button from '../../components/Button';
+import Container from '../../components/Container';
 
 
 class SidebarWithContent extends PureComponent {
@@ -19,42 +20,28 @@ class SidebarWithContent extends PureComponent {
                     open={this.state.isOpen}
                     onClose={(): void => this.setState({isOpen: false})}
                 >
-                    <ul>
-                        <li>Link 1</li>
-                        <li>Link 2</li>
-                        <li>Link 3</li>
-                        <li>Link 4</li>
-                        <li>Link 5</li>
-                        <li>Link 1</li>
-                        <li>Link 2</li>
-                        <li>Link 3</li>
-                        <li>Link 4</li>
-                        <li>Link 5</li>
-                        <li>Link 3</li>
-                        <li>Link 4</li>
-                        <li>Link 5</li>
-                        <li>Link 1</li>
-                        <li>Link 2</li>
-                        <li>Link 3</li>
-                        <li>Link 4</li>
-                        <li>Link 5</li>
-                        <li>Link 3</li>
-                        <li>Link 4</li>
-                        <li>Link 5</li>
-                        <li>Link 1</li>
-                        <li>Link 2</li>
-                        <li>Link 3</li>
-                        <li>Link 4</li>
-                        <li>Link 5</li>
-                        <li>Link 3</li>
-                        <li>Link 4</li>
-                        <li>Link 5</li>
-                        <li>Link 1</li>
-                        <li>Link 2</li>
-                        <li>Link 3</li>
-                        <li>Link 4</li>
-                        <li>Link 5</li>
-                    </ul>
+                    <Container>
+                        <ul className="example-list">
+                            <li>
+                                <Button block>default</Button>
+                            </li>
+                            <li>
+                                <Button block primary>primary</Button>
+                            </li>
+                            <li>
+                                <Button block success>success</Button>
+                            </li>
+                            <li>
+                                <Button block info>info</Button>
+                            </li>
+                            <li>
+                                <Button block danger>danger</Button>
+                            </li>
+                            <li>
+                                <Button block warning>warning</Button>
+                            </li>
+                        </ul>
+                    </Container>
                 </Sidebar>
             </div>
         );

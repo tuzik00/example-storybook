@@ -19,7 +19,6 @@ storiesOf('Элементы навигации', module)
             <Tabs
                 initialTab={1}
                 onChangeTab={action('Tab change')}
-                // renderTabBar={(props) => props}
             >
                 <Tab heading={<span>Скандалы</span>}>
                     Tab 1
