@@ -1,9 +1,12 @@
 // @flow
 
-import React, {PureComponent, Fragment} from 'react'
+import React, {PureComponent} from 'react'
 import cn from 'classnames';
-import {TimelineMax} from 'gsap';
+import OutsideClickHandler from 'react-outside-click-handler';
+
 import Portal from '../Portal';
+import Overlay from '../Overlay';
+import FadeAndScale from '../Animations/FadeAndScale';
 
 import style from './Modal.styl';
 
@@ -16,7 +19,7 @@ type PropsType = {
     onClose: func
 };
 
-class Sidebar extends PureComponent<PropsType> {
+class Modal extends PureComponent<PropsType> {
     static defaultProps = {
         open: false,
         maxWidth: 500,
@@ -30,80 +33,46 @@ class Sidebar extends PureComponent<PropsType> {
         this.state = {
             isOpen: this.props.open
         };
-
-        this.$overlay = null;
-        this.$modal = null;
     }
 
     componentWillReceiveProps(nextProps: object) {
         if (this.state.isOpen !== nextProps.open) {
             this.setState({
                 isOpen: nextProps.open
-            }, this.handleToggle);
+            })
         }
     }
 
     handleOutsideClick = () => {
-        if (this.state.isOpen) {
-            this.handleToggle(false);
-        }
-    };
-
-    handleToggle = (isOpen: boolean = this.state.isOpen) => {
-        const timeLine = new TimelineMax();
-        const duration = 0.3;
-
-        if (isOpen) {
-            timeLine
-                .fromTo(
-                    this.$overlay,
-                    duration,
-                    {opacity: 0},
-                    {opacity: 1},
-                    0
-                )
-        } else {
-            timeLine
-                .fromTo(
-                    this.$overlay,
-                    duration,
-                    {opacity: 1},
-                    {opacity: 0},
-                    0,
-                )
-                .call(() => {
-                    this.setState({
-                        isOpen: false
-                    }, this.props.onClose);
-                })
-        }
-
-        timeLine.play();
+        this.setState({
+            isOpen: false
+        });
     };
 
     render(): React.Element<'div'> {
-        const {children, classNames, maxWidth} = this.props;
         const {isOpen} = this.state;
+        const {children, classNames, maxWidth, onClose} = this.props;
 
-        return isOpen ? (
+        return (
             <Portal selector="body">
-                <div
-                    style={{maxWidth}}
-                    className={cn(style.modal, classNames)}
-                    ref={(el: HTMLElement): void => this.$modal = el}
-                >
-                    {children}
-                </div>
-
-                <div
-                    onClick={this.handleOutsideClick}
-                    ref={(el: HTMLElement): HTMLElement => this.$overlay = el}
-                    className={style.overlay}
-                />
+                <OutsideClickHandler onOutsideClick={this.handleOutsideClick}>
+                    <FadeAndScale
+                        in={isOpen}
+                        onExit={onClose}
+                    >
+                        <div
+                            style={{maxWidth}}
+                            className={cn(style.modal, classNames)}
+                        >
+                            {children}
+                        </div>
+                    </FadeAndScale>
+                </OutsideClickHandler>
+                <Overlay show={isOpen}/>
             </Portal>
-        ) : null
+        );
     }
 }
 
 
-export default Sidebar;
+export default Modal;
