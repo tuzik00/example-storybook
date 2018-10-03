@@ -20,7 +20,7 @@
     "react-outside-click-handler": "^1.2.2"
   },
   "devDependencies": {
-    "@storybook/addon-info": "^3.4.10",
+    "@storybook/addon-info": "^3.4.11",
     "@storybook/addon-knobs": "^3.4.10",
     "@storybook/addon-options": "^3.4.10",
     "@storybook/react": "^3.4.8",
@@ -54,8 +54,10 @@
     "postcss-loader": "^2.1.6",
     "promise": "^8.0.1",
     "react-dev-utils": "^5.0.1",
+    "react-docgen": "^2.21.0",
     "react-svg-loader": "^2.1.0",
     "storybook-addon-jsx": "^5.4.0",
+    "storybook-addon-props": "^3.0.4",
     "style-loader": "^0.21.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",

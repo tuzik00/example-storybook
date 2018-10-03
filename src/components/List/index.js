@@ -24,6 +24,11 @@ const List = (props: PropsType): React.Element<'ul'> => {
 };
 
 
+List.defaultProps = {
+    dotted: false
+};
+
+
 const ListItem = (props: PropsType): React.Element<'li'> => {
     const { classNames, children } = props;
 

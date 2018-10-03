@@ -11,15 +11,15 @@ import {
 import style from './Button.styl';
 
 
-type PropsType = {
+export type PropsType = {
     children: string | React.Node,
     disabled?: boolean,
     block?: boolean,
     className?: string
-} | ColorsType | SizesType;
+} & ColorsType & SizesType;
 
 
-const Button = (props: PropsType): React.Element<'button'> => {
+const Button = <PropsType>(props: PropsType): React.Element<'button'> => {
     const {small, large, big} = props;
     const {primary, success, info, warning, danger } = props;
 
@@ -52,6 +52,12 @@ const Button = (props: PropsType): React.Element<'button'> => {
             {children}
         </button>
     );
+};
+
+
+Button.defaultProps = {
+    disabled: false,
+    block: false
 };
 
 

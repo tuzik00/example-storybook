@@ -32,6 +32,7 @@ const Heading = (props: PropsType): React.Element<'h1'> => {
     );
 };
 
+
 Heading.defaultProps = {
     type: '1'
 };

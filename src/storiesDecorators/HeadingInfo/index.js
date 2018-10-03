@@ -1,6 +1,7 @@
 // @flow
 
-import React, {Component, Fragment, cloneElement} from 'react';
+import React, {Component} from 'react';
+
 import style from './HeadingInfo.styl';
 
 
@@ -10,7 +11,7 @@ type HeadingItemPropsType = {
 };
 
 class HeadingItem extends Component<HeadingItemPropsType> {
-    constructor(props: object) {
+    constructor(props: {}) {
         super(props);
 
         this.state = {
@@ -24,6 +25,7 @@ class HeadingItem extends Component<HeadingItemPropsType> {
 
     componentDidMount() {
         this.getStyles();
+
         window.addEventListener('load', this.getStyles);
     };
 
@@ -81,13 +83,14 @@ type HeadingInfoPropsType = {
 };
 
 const HeadingInfo = (props: HeadingInfoPropsType): React.Element<'div'> => {
-    return (
-        <Fragment>
-            {props.children.map((child: Ract.Node): React.Element<'HeadingItem'> => (
-                <HeadingItem {...child.props}>{cloneElement(child)}</HeadingItem>
-            ))}
-        </Fragment>
-    );
+    const { children } = props;
+
+    return children.map((child: React.Children): React.Element<'HeadingItem'> => (
+        <HeadingItem {...child.props}>
+            {React.cloneElement(child)}
+        </HeadingItem>
+    ));
 };
+
 
 export default HeadingInfo;
