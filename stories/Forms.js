@@ -7,6 +7,7 @@ import {withInfo} from '@storybook/addon-info';
 import {action} from '@storybook/addon-actions';
 
 import Checkbox from '../src/components/Checkbox';
+import ToggleSwitch from '../src/components/ToggleSwitch';
 import Input from '../src/components/Input';
 import Select from '../src/components/Select';
 import Label from '../src/components/Label';
@@ -93,6 +94,21 @@ storiesOf('Элементы форм', module)
                             {value: 'Option 3', name: 'Option 3'}
                         ]}
                         onChange={action('Change select')}
+                    />
+                </Column>
+                <Column></Column>
+                <Column></Column>
+            </Row>
+        </Container>
+    )))
+    .add('ToggleSwitch', withInfo()((): React.Element<'select'> => (
+        <Container>
+            <Row>
+                <Column>
+                    <ToggleSwitch
+                        active={boolean('Active', false)}
+                        disabled={boolean('Disabled', false)}
+                        onToggle={action('Checkbox-toggle')}
                     />
                 </Column>
                 <Column></Column>

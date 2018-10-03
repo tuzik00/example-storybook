@@ -12,7 +12,7 @@ type PropsType = {
 };
 
 
-export default (props: PropsType): React.element<'div'> => {
+export default (props: PropsType): React.Element<'section'> => {
     const { children, className } = props;
 
     return (

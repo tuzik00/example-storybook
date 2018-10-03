@@ -19,20 +19,20 @@ type PropsType = {
 };
 
 
-const Select = (props: PropsType): React.Ref<'select'> => {
-    const {className, dataArray, disabled, ref, onChange} = props;
+const Select = (props: PropsType): React.Element<'select'> => {
+    const {className, dataArray, disabled, onChange, ...otherProps} = props;
 
     const selectClasses = cn(
         style.select,
-        className,
-        disabled && style.disabled
+        disabled && style.disabled,
+        className
     );
 
     return (
         <select
             className={selectClasses}
-            onChange={(e: {}): func => onChange(e.target.value)}
-            ref={ref}
+            onChange={(e: MouseEvent): void => onChange(e.target.value)}
+            {...otherProps}
         >
             {dataArray.map((option: DataArrayType, index: number): React.Element<'option'> => (
                 <option
@@ -46,8 +46,8 @@ const Select = (props: PropsType): React.Ref<'select'> => {
     );
 };
 
+
 Select.defaultProps = {
-    ref: (ref: {}): React.Ref<'select'> => ref,
     dataArray: []
 };
 

@@ -37,7 +37,7 @@ class HeadingItem extends Component<HeadingItemPropsType> {
         this.setState({
             fontSize: computedStyle.fontSize,
             lineHeight: computedStyle.lineHeight,
-            fontWeight: computedStyle.fontWeight,
+            fontWeight: computedStyle.fontWeight
         });
     };
 

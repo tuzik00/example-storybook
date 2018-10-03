@@ -4,22 +4,19 @@ import React from 'react'
 import cn from 'classnames';
 import FadeIn from '../Animations/FadeIn';
 
-
 import style from './Overlay.styl';
 
 
 type PropsType = {
     children: React.Node,
-    classNames: React.string,
+    className: React.string,
     show?: boolean,
-    onShow: func,
-    onHide: func,
     onClick: func
 };
 
 
 const Overlay = (props: PropsType): React.Element<'FadeIn'> => {
-    const {children, classNames, show, onShow, onHide, onClick} = props;
+    const {children, className, show, onShow, onHide, onClick} = props;
 
     return (
         <FadeIn
@@ -29,7 +26,7 @@ const Overlay = (props: PropsType): React.Element<'FadeIn'> => {
         >
             <div
                 onClick={(): void => onClick()}
-                className={cn(style.overlay, classNames)}
+                className={cn(style.overlay, className)}
             >
                 {children}
             </div>
@@ -40,8 +37,6 @@ const Overlay = (props: PropsType): React.Element<'FadeIn'> => {
 
 Overlay.defaultProps = {
     open: false,
-    onShow: () => {},
-    onHide: () => {},
     onClick: () => {}
 };
 

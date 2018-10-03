@@ -1,33 +1,31 @@
 :local
-    .button
-        font-size 1rem
-        border 1px solid #eee
-        padding .5em 1.5em
-        border-radius $default-border-radius
-        cursor pointer
-        color $black-color
-        background $default-color
-        transition $duration background
+  .button
+    font-size 1rem
+    border 1px solid #eee
+    padding .5em 1.5em
+    border-radius $default-border-radius
+    cursor pointer
+    color $black-color
+    background $default-color
+    transition $duration background
 
-    .disabled
-        cursor auto
-        background #d1d1d1
+  .disabled
+    cursor auto
+    background #d1d1d1
 
-    .block
-        width 100%
+  .block
+    width 100%
 
-    //sizes
-    $button-sizes = (small 0.8rem) (large 1.2rem) (big 1.4rem)
-    for $size in $button-sizes
-        .{$size[0]}
-            font-size: $size[1]
+  //sizes
+  $button-sizes = (small 0.8rem) (large 1.2rem) (big 1.4rem)
+  for $size in $button-sizes
+    .{$size[0]}
+      font-size: $size[1] //colors
+  $button-colors = (primary $primary-color) (success $success-color) (info $info-color) (warning $warning-color) (danger $danger-color)
+  for $color in $button-colors
+    .{$color[0]}
+      background: $color[1]
+      color #fff
 
-    //colors
-    $button-colors = (primary $primary-color) (success $success-color) (info $info-color) (warning $warning-color) (danger $danger-color)
-    for $color in $button-colors
-        .{$color[0]}
-            background: $color[1]
-            color #fff
-
-            &:hover
-                background saturate($color[1], 50%)
+      &:hover
+        background saturate($color[1], 50%)

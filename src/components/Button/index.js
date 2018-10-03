@@ -1,70 +1,57 @@
 // @flow
 
-import React, {Component} from 'react';
+import React from 'react';
 import cn from 'classnames';
 
-import {ColorsType, SizesType} from "../../constants/types";
+import {
+    ColorsType,
+    SizesType
+} from "../../constants/types";
 
 import style from './Button.styl';
 
 
 type PropsType = {
-    children: string,
-    onClick?: func,
+    children: string | React.Node,
     disabled?: boolean,
-    ref?: func,
     block?: boolean,
     className?: string
-};
+} | ColorsType | SizesType;
 
 
-class Button extends Component<PropsType & ColorsType & SizesType> {
-    state = {
-        start: false
-    };
+const Button = (props: PropsType): React.Element<'button'> => {
+    const {small, large, big} = props;
+    const {primary, success, info, warning, danger } = props;
 
-    render(): React.Element<'Button'> {
-        const {children, onClick, ...props} = this.props;
+    const {children, className, disabled, block, ...otherProps} = props;
 
-        const buttonClasses = cn(
-            style.button,
-            props.className,
-            props.disabled && style.disabled,
-            props.block && style.block,
+    const classNames = cn(
+        style.button,
+        disabled && style.disabled,
+        block && style.block,
 
-            //sizes
-            props.small && style.small,
-            props.large && style.large,
-            props.big && style.big,
+        //sizes
+        small   && style.small,
+        large   && style.large,
+        big     && style.big,
 
-            //colors
-            props.primary && style.primary,
-            props.success && style.success,
-            props.info && style.info,
-            props.warning && style.warning,
-            props.danger && style.danger
-        );
+        //colors
+        primary && style.primary,
+        success && style.success,
+        info    && style.info,
+        warning && style.warning,
+        danger  && style.danger,
+        className
+    );
 
-        return (
-            <button
-                onClick={(): func => {
-                    onClick();
-                    this.setState({
-                        start: true
-                    })
-                }}
-                className={buttonClasses}
-            >
-                {children}
-            </button>
-        );
-    }
-};
-
-Button.defaultProps = {
-    ref: (ref: {}): React.Element<'button'> => ref,
-    onClick: () => {
-    }
+    return (
+        <button
+            className={classNames}
+            {...otherProps}
+        >
+            {children}
+        </button>
+    );
 };
 
 

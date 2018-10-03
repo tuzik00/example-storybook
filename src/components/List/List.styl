@@ -1,23 +1,23 @@
 :local
-    .list
-        display block
+  .list
+    display block
 
-    .dotted
-        .item
-            position relative
-            padding-left 15px
-
-            &:before
-                content: '•';
-                font-size 1rem
-                position: absolute;
-                width: 15px;
-                height: 15px;
-                border-radius: 100%;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                text-align: center;
-
+  .dotted
     .item
-        margin .5rem 0
+      position relative
+      padding-left 15px
+
+      &:before
+        content '•'
+        font-size 1rem
+        position absolute
+        width 15px
+        height 15px
+        border-radius 100%
+        left 0
+        top 50%
+        transform translateY(-50%)
+        text-align center;
+
+  .item
+    margin .5rem 0

@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react'
 import cn from 'classnames';
+
 import style from './Checkbox.styl';
 
 
@@ -9,7 +10,6 @@ type PropsType = {
     active?: boolean,
     disabled?: boolean,
     onToggle: func,
-    ref?: func,
     className?: string
 };
 
@@ -22,8 +22,7 @@ class Checkbox extends Component<PropsType, StateType> {
     static defaultProps = {
         onToggle: () => {},
         active: false,
-        disabled: false,
-        ref: (ref: {}): React.Element<'div'> => ref
+        disabled: false
     };
 
     constructor(props: {}) {
@@ -31,14 +30,14 @@ class Checkbox extends Component<PropsType, StateType> {
 
         this.state = {
             isActive: this.props.active
-        }
+        };
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps: {}) {
+    componentWillReceiveProps(nextProps: PropsType) {
         if (this.state.isActive !== nextProps.active && !nextProps.disabled) {
             this.setState({
                 isActive: nextProps.active
-            })
+            });
         }
     }
 
@@ -52,25 +51,24 @@ class Checkbox extends Component<PropsType, StateType> {
 
         this.setState({
             isActive: !isActive
-        }, (): func => onToggle(!isActive))
+        }, (): void => onToggle(!isActive))
     };
 
     render(): React.Element<'div'> {
         const {isActive} = this.state;
-        const {disabled, className, ref} = this.props;
+        const {disabled, className} = this.props;
 
-        const checkboxClasses = cn(
+        const classNames = cn(
             style.checkbox,
-            className,
+            isActive && style.active,
             disabled && style.disabled,
-            isActive && style.active
+            className,
         );
 
         return (
             <div
                 tabIndex={0}
-                ref={ref}
-                className={checkboxClasses}
+                className={classNames}
                 onClick={this.handleToggle}
             />
         )

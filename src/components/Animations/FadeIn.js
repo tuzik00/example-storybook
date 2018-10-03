@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import {TimelineMax} from 'gsap';
 import Transition from 'react-transition-group/Transition';
 
+
 type PropsType = {
     in: boolean,
     duration: number

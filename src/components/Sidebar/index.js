@@ -9,13 +9,12 @@ import Portal from '../Portal';
 import Overlay from '../Overlay';
 import WidthScale from '../Animations/WidthScale';
 
-
 import style from './Sidebar.styl';
 
 
 type PropsType = {
     children: React.Node,
-    classNames: React.string,
+    className: React.string,
     open?: boolean,
     onClose: func
 };
@@ -27,7 +26,6 @@ class Sidebar extends PureComponent<PropsType> {
         onClose: () => {}
     };
 
-
     constructor(props: object) {
         super(props);
 
@@ -37,17 +35,14 @@ class Sidebar extends PureComponent<PropsType> {
         };
     }
 
-
     componentDidMount() {
         this.setSidebarSize();
         window.addEventListener('resize', this.setSidebarSize);
     }
 
-
     componentWillUnmount() {
         window.removeEventListener('resize', this.setSidebarSize);
     }
-
 
     componentWillReceiveProps(nextProps: object) {
         if (this.state.isOpen !== nextProps.open) {
@@ -57,13 +52,11 @@ class Sidebar extends PureComponent<PropsType> {
         }
     }
 
-
     handleOutsideClick = () => {
         this.setState({
             isOpen: false
         })
     };
-
 
     setSidebarSize = () => {
         this.setState({
@@ -71,9 +64,8 @@ class Sidebar extends PureComponent<PropsType> {
         });
     };
 
-
     render(): React.Element<'div'> {
-        const {children, width, classNames, onClose} = this.props;
+        const {children, width, className, onClose} = this.props;
         const {height, isOpen} = this.state;
 
         return (
@@ -86,7 +78,7 @@ class Sidebar extends PureComponent<PropsType> {
                     >
                         <div
                             style={{height}}
-                            className={cn(style.sidebar, classNames)}
+                            className={cn(style.sidebar, className)}
                         >
                             <div
                                 className={style.content}
@@ -97,6 +89,7 @@ class Sidebar extends PureComponent<PropsType> {
                         </div>
                     </WidthScale>
                 </OutsideClickHandler>
+
                 <Overlay show={isOpen} />
             </Portal>
         );

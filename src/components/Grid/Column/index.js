@@ -20,7 +20,7 @@ const Column = (props: PropsType): React.Element<'div'> => {
         flex: props.flex
     };
 
-    const columnClassNames = cn(
+    const classNames = cn(
         style.column,
         className
     );
@@ -28,7 +28,7 @@ const Column = (props: PropsType): React.Element<'div'> => {
     return (
         <div
             style={columnStyle}
-            className={columnClassNames}
+            className={classNames}
         >
             {children}
         </div>

@@ -13,11 +13,12 @@ import style from './Modal.styl';
 
 type PropsType = {
     children: React.Node,
-    classNames: React.string,
+    className: React.string,
     open?: boolean,
     maxWidth?: number,
     onClose: func
 };
+
 
 class Modal extends PureComponent<PropsType> {
     static defaultProps = {
@@ -26,7 +27,7 @@ class Modal extends PureComponent<PropsType> {
         onClose: () => {}
     };
 
-    constructor(props: object) {
+    constructor(props: {}) {
         super(props);
 
         this.state = {
@@ -34,7 +35,7 @@ class Modal extends PureComponent<PropsType> {
         };
     }
 
-    componentWillReceiveProps(nextProps: object) {
+    componentWillReceiveProps(nextProps: PropsType) {
         if (this.state.isOpen !== nextProps.open) {
             this.setState({
                 isOpen: nextProps.open
@@ -50,7 +51,7 @@ class Modal extends PureComponent<PropsType> {
 
     render(): React.Element<'div'> {
         const {isOpen} = this.state;
-        const {children, classNames, maxWidth, onClose} = this.props;
+        const {children, className, maxWidth, onClose} = this.props;
 
         return (
             <Portal selector="body">
@@ -61,7 +62,7 @@ class Modal extends PureComponent<PropsType> {
                     >
                         <div
                             style={{maxWidth}}
-                            className={cn(style.modal, classNames)}
+                            className={cn(style.modal, className)}
                         >
                             {children}
                         </div>

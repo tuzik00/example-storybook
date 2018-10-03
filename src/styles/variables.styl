@@ -9,18 +9,15 @@ $default-border-radius = 5px
 
 //colors
 $colors = json('../config/colors.json', { hash: true })
-for $name, $color in $colors {
+for $name, $color in $colors
     define('$' + $name + '-color', $color)
-}
 
 // media queries
 $breakpoints = json('../config/breakpoints.json', { hash: true })
-for $name, $breakpoint in $breakpoints {
+for $name, $breakpoint in $breakpoints
     define('$' + $name + '-breakpoint', unit($breakpoint, 'px'))
-}
 
 // headings
 $headings = json('../config/headings.json', { hash: true })
-for $name, $heading in $headings {
+for $name, $heading in $headings
     define('$' + $name + '-heading', $heading)
-}

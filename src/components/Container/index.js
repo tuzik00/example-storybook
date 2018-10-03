@@ -13,9 +13,11 @@ type PropsType = {
 
 
 const Container = (props: PropsType): React.Element<'div'> => {
+    const { children, className } = props;
+    
     return (
-        <div className={cn(style.container, props.className)}>
-            {props.children}
+        <div className={cn(style.container, className)}>
+            {children}
         </div>
     );
 };

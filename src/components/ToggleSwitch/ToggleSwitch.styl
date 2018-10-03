@@ -1,0 +1,34 @@
+$toggle-switch-width = 35px
+$toggle-switch-height = 15px
+$toggle-switch-padding = 2px
+
+:local
+  .toggle__switch
+    border-radius 20px
+    cursor pointer
+    display inline-block
+    width $toggle-switch-width
+    height $toggle-switch-height
+    background-color $primary-color
+    padding $toggle-switch-padding
+
+    &:after
+      content ''
+      display block
+      width "calc(50% - %s)" % $toggle-switch-padding
+      height 100%
+      box-sizing border-box
+      border-radius 100%
+      background $white-color
+      transition $duration transform
+
+  .checked
+    &:after
+      transform translateX($toggle-switch-width / 2)
+
+  .disabled
+    cursor auto
+    background $gray-color
+
+    &:after
+      background $white-color

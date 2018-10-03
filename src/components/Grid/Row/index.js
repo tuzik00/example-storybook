@@ -13,13 +13,13 @@ type PropsType = {
 
 
 const Row = (props: PropsType): React.Element<'div'> => {
-    const rowClasses = cn(
+    const classNames = cn(
         style.row,
         props.className
     );
 
     return (
-        <div className={rowClasses}>
+        <div className={classNames}>
             {props.children}
         </div>
     );
