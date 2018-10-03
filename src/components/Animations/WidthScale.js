@@ -6,13 +6,14 @@ import Transition from 'react-transition-group/Transition';
 
 type PropsType = {
     in: boolean,
-    duration: number
+    duration: number,
+    width: number
 };
 
 
-class FadeIn extends Component<PropsType> {
+class WidthScale extends Component<PropsType> {
     static defaultProps = {
-        duration: 0.5,
+        width: 0,
         onEnter: () => {},
         onExit: () => {}
     };
@@ -23,9 +24,9 @@ class FadeIn extends Component<PropsType> {
         timeLine
             .fromTo(
                 node,
-                this.props.duration,
-                {opacity: 0},
-                {opacity: 1, clearProps: 'transform, opacity'},
+                0.3,
+                {width: 0},
+                {width: this.props.width},
                 0
             );
 
@@ -38,9 +39,9 @@ class FadeIn extends Component<PropsType> {
         timeLine
             .fromTo(
                 node,
-                this.props.duration,
-                {opacity: 1},
-                {opacity: 0},
+                0.3,
+                {width: this.props.width},
+                {width: 0},
                 0
             )
             .call(this.props.onExit)
@@ -65,4 +66,4 @@ class FadeIn extends Component<PropsType> {
 }
 
 
-export default FadeIn;
+export default WidthScale;

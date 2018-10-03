@@ -12,6 +12,7 @@ type PropsType = {
 
 class FadeAndScale extends Component<PropsType> {
     static defaultProps = {
+        duration: 0.6,
         onEnter: () => {},
         onExit: () => {}
     };
@@ -22,7 +23,7 @@ class FadeAndScale extends Component<PropsType> {
         timeLine
             .fromTo(
                 node,
-                0.4,
+                0.3,
                 {scale: 0.7, opacity: 0},
                 {scale: 1, opacity: 1, clearProps: 'transform, opacity'},
                 0
@@ -37,7 +38,7 @@ class FadeAndScale extends Component<PropsType> {
         timeLine
             .fromTo(
                 node,
-                0.4,
+                0.3,
                 {scale: 1, opacity: 1},
                 {scale: 0.7, opacity: 0},
                 0
@@ -51,7 +52,7 @@ class FadeAndScale extends Component<PropsType> {
         return (
             <Transition
                 in={inProp}
-                timeout={600}
+                timeout={300}
                 onEnter={this.onEnter}
                 onExit={this.onExit}
                 unmountOnExit

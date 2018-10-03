@@ -11,8 +11,7 @@ import Input from '../src/components/Input';
 import Select from '../src/components/Select';
 import Label from '../src/components/Label';
 import Container from '../src/components/Container';
-import Row from '../src/components/Row';
-import Column from '../src/components/Column';
+import {Row, Column} from '../src/components/Grid';
 
 
 storiesOf('Элементы форм', module)

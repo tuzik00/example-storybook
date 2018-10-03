@@ -10,8 +10,7 @@ import Checkbox from '../src/components/Checkbox';
 import Input from '../src/components/Input';
 import Select from '../src/components/Select';
 import Button from '../src/components/Button';
-import Row from '../src/components/Row';
-import Column from '../src/components/Column';
+import {Row, Column} from '../src/components/Grid';
 import Label from '../src/components/Label';
 import Container from '../src/components/Container';
 

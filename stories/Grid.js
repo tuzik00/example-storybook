@@ -7,8 +7,7 @@ import {withInfo} from '@storybook/addon-info';
 
 import GridItem from '../src/storiesDecorators/GridItem';
 
-import Row from '../src/components/Row';
-import Column from '../src/components/Column';
+import {Row, Column} from '../src/components/Grid';
 import Container from '../src/components/Container';
 
 
@@ -16,7 +15,7 @@ const grid = [
     [1, 1, 1, 1, 1, 1],
     [1, 2, 3],
     [1, 2],
-    [1],
+    [1]
 ];
 
 storiesOf('Сетка', module)

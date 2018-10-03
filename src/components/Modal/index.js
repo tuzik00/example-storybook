@@ -23,8 +23,7 @@ class Modal extends PureComponent<PropsType> {
     static defaultProps = {
         open: false,
         maxWidth: 500,
-        onClose: () => {
-        }
+        onClose: () => {}
     };
 
     constructor(props: object) {
