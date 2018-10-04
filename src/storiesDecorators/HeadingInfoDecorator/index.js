@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 
-import style from './HeadingInfo.styl';
+import style from './HeadingInfoDecorator.styl';
 
 
 type HeadingItemPropsType = {
@@ -82,7 +82,7 @@ type HeadingInfoPropsType = {
     children: React.Node
 };
 
-const HeadingInfo = (props: HeadingInfoPropsType): React.Element<'div'> => {
+const HeadingInfoDecorator = (props: HeadingInfoPropsType): React.Element<'div'> => {
     const { children } = props;
 
     return children.map((child: React.Children): React.Element<'HeadingItem'> => (
@@ -93,4 +93,4 @@ const HeadingInfo = (props: HeadingInfoPropsType): React.Element<'div'> => {
 };
 
 
-export default HeadingInfo;
+export default HeadingInfoDecorator;

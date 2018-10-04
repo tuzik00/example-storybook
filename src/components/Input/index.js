@@ -33,4 +33,9 @@ const Input = (props: PropsType): React.Element<'Input'> => {
 };
 
 
+Input.defaultType = {
+    type: 'text'
+};
+
+
 export default Input;

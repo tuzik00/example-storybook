@@ -13,7 +13,7 @@ import style from './Modal.styl';
 
 type PropsType = {
     children: React.Node,
-    className: React.string,
+    className?: React.string,
     open?: boolean,
     maxWidth?: number,
     onClose: func

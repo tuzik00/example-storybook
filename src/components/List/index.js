@@ -7,7 +7,7 @@ import style from './List.styl';
 
 
 type PropsType = {
-    children?: React.Node,
+    children: React.Node,
     className?: string,
     dotted?: boolean
 };

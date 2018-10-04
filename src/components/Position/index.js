@@ -3,7 +3,6 @@
 import React, {Component} from 'react';
 import cn from 'classnames';
 
-
 import style from './Position.styl';
 
 
@@ -14,7 +13,6 @@ type PropsType = {
     right?: boolean,
     center?: boolean
 };
-
 
 const Position = (props: PropsType): React.Element<'div'> => {
     const {children, left, right, center, className} = props;

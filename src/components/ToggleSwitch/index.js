@@ -8,6 +8,7 @@ import style from './ToggleSwitch.styl';
 
 type PropsType = {
     disabled?: boolean,
+    className?: string,
     checked?: boolean,
     onToggle?: func
 };

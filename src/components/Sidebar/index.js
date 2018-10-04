@@ -14,19 +14,21 @@ import style from './Sidebar.styl';
 
 type PropsType = {
     children: React.Node,
-    className: React.string,
+    className?: React.string,
     open?: boolean,
-    onClose: func
+    onClose: func,
+    outsideClick?: boolean
 };
 
 class Sidebar extends PureComponent<PropsType> {
     static defaultProps = {
         open: false,
         width: 300,
+        outsideClick: true,
         onClose: () => {}
     };
 
-    constructor(props: object) {
+    constructor(props: {}) {
         super(props);
 
         this.state = {
@@ -44,7 +46,7 @@ class Sidebar extends PureComponent<PropsType> {
         window.removeEventListener('resize', this.setSidebarSize);
     }
 
-    componentWillReceiveProps(nextProps: object) {
+    componentWillReceiveProps(nextProps: PropsType) {
         if (this.state.isOpen !== nextProps.open) {
             this.setState({
                 isOpen: nextProps.open
@@ -53,6 +55,10 @@ class Sidebar extends PureComponent<PropsType> {
     }
 
     handleOutsideClick = () => {
+        if (!this.props.outsideClick){
+            return;
+        }
+
         this.setState({
             isOpen: false
         })

@@ -15,7 +15,7 @@ type PropsType = {
     onChange?: func,
     disabled?: boolean,
     className?: string,
-    dataArray?: $Shape<DataArrayType>
+    dataArray?: DataArrayType
 };
 
 
@@ -48,7 +48,9 @@ const Select = (props: PropsType): React.Element<'select'> => {
 
 
 Select.defaultProps = {
-    dataArray: []
+    dataArray: [],
+    onChange: () => {},
+    disabled: false
 };
 
 

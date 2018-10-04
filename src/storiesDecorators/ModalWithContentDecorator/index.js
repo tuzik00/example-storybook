@@ -7,9 +7,10 @@ import Button from '../../components/Button';
 import Content from '../../components/Content';
 import Heading from '../../components/Heading';
 import Container from '../../components/Container';
+import Position from '../../components/Position';
 
 
-class SidebarWithContent extends PureComponent {
+class ModalWithContentDecorator extends PureComponent {
     state = {
         isOpen: false
     };
@@ -53,9 +54,14 @@ class SidebarWithContent extends PureComponent {
                             является
                             буквальным переводом на английский язык русского названия крепость Росс.
                         </Content>
-                        <Content>
-                            <Button onClick={(): void => this.setState({isOpen: false})}>Закрыть</Button>
-                        </Content>
+                        <Position right>
+                            <Button
+                                primary
+                                onClick={(): void => this.setState({isOpen: false})}
+                            >
+                                Закрыть
+                            </Button>
+                        </Position>
                     </Container>
                 </Modal>
             </Container>
@@ -63,4 +69,4 @@ class SidebarWithContent extends PureComponent {
     }
 }
 
-export default SidebarWithContent;
+export default ModalWithContentDecorator;

@@ -4,19 +4,19 @@ import {storiesOf} from '@storybook/react';
 import Heading from '../src/components/Heading';
 import Content from '../src/components/Content';
 import {List, ListItem} from "../src/components/List";
-import HeadingInfo from '../src/storiesDecorators/HeadingInfo';
+import HeadingInfoDecorator from '../src/storiesDecorators/HeadingInfoDecorator';
 
 
 storiesOf('Типографика', module)
     .addWithDoc('Заголовки', Heading, null, () => (
-        <HeadingInfo>
+        <HeadingInfoDecorator>
             <Heading>h1. Heading</Heading>
             <Heading type="2">h2. Heading</Heading>
             <Heading type="3">h3. Heading</Heading>
             <Heading type="4">h4. Heading</Heading>
             <Heading type="5">h5. Heading</Heading>
             <Heading type="6">h6. Heading</Heading>
-        </HeadingInfo>
+        </HeadingInfoDecorator>
     ))
     .addWithDoc('Параграфы', Content, null, () => (
         <div>

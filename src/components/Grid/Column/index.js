@@ -12,7 +12,6 @@ type PropsType = {
     flex?: number
 };
 
-
 const Column = (props: PropsType): React.Element<'div'> => {
     const { children, className } = props;
 
@@ -34,6 +33,7 @@ const Column = (props: PropsType): React.Element<'div'> => {
         </div>
     );
 };
+
 
 Column.defaultProps = {
     flex: 1

@@ -7,7 +7,7 @@ import Button from '../../components/Button';
 import Container from '../../components/Container';
 
 
-class SidebarWithContent extends PureComponent {
+class SidebarWithContentDecorator extends PureComponent {
     state = {
         isOpen: false
     };
@@ -20,8 +20,8 @@ class SidebarWithContent extends PureComponent {
                     open={this.state.isOpen}
                     onClose={(): void => this.setState({isOpen: false})}
                 >
-                    <Container>
-                        <ul className="example-list">
+                    <div className="story-container">
+                        <ul className="story-list">
                             <li>
                                 <Button block>default</Button>
                             </li>
@@ -41,11 +41,11 @@ class SidebarWithContent extends PureComponent {
                                 <Button block warning>warning</Button>
                             </li>
                         </ul>
-                    </Container>
+                    </div>
                 </Sidebar>
             </div>
         );
     }
 }
 
-export default SidebarWithContent;
+export default SidebarWithContentDecorator;

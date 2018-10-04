@@ -9,9 +9,10 @@ import style from './Overlay.styl';
 
 type PropsType = {
     children: React.Node,
-    className: React.string,
+    className?: React.string,
     show?: boolean,
-    onClick: func
+    onClick: func,
+    open: boolean
 };
 
 

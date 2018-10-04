@@ -11,7 +11,6 @@ type PropsType = {
     className?: string
 };
 
-
 const Row = (props: PropsType): React.Element<'div'> => {
     const classNames = cn(
         style.row,
