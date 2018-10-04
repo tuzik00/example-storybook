@@ -26,7 +26,7 @@ storiesOf('Карточки', module)
             </Footer>
         </Card>
     ))
-    .addWithDoc('Карточка с контентом', Card, null, () => (
+    .addWithDoc('Карточка с текстом', Card, null, () => (
         <Card>
             <Header>
                 <Heading type="3">Title</Heading>
@@ -47,7 +47,7 @@ storiesOf('Карточки', module)
             </Footer>
         </Card>
     ))
-    .addWithDoc('Карточка с кортинкой', Card, null, () => (
+    .addWithDoc('Карточка с картинкой', Card, null, () => (
         <Card>
             <Img src="https://dummyimage.com/300x200/CCC/000" alt=""/>
             <Body>
