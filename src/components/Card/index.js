@@ -12,7 +12,7 @@ type PropsType = {
 };
 
 
-export default (props: PropsType): React.Element<'section'> => {
+const Card = (props: PropsType): React.Element<'section'> => {
     const { children, className } = props;
 
     return (
@@ -21,3 +21,6 @@ export default (props: PropsType): React.Element<'section'> => {
         </section>
     );
 };
+
+
+export default Card;

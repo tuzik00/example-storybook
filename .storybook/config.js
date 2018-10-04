@@ -18,7 +18,7 @@ addDecorator(MainDecorator);
 addDecorator(GlobalStyleDecorator);
 
 
-const req = require.context('../stories', true, /.story.js$/);
+const req = require.context('../stories', true, /\.stories.js$/);
 
 function loadStories() {
     req.keys().forEach((filename) => req(filename));

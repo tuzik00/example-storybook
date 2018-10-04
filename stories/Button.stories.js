@@ -16,7 +16,7 @@ storiesOf('Кнопки', module)
         </Button>
     ))
     .addWithDoc('Размеры', Button, null, () => (
-        <ul>
+        <ul className="story-list">
             <li>
                 <Button small>small</Button>
             </li>
@@ -32,7 +32,7 @@ storiesOf('Кнопки', module)
         </ul>
     ))
     .addWithDoc('Цвета', Button, null, () => (
-        <ul>
+        <ul className="story-list">
             <li>
                 <Button>default</Button>
             </li>
@@ -54,7 +54,7 @@ storiesOf('Кнопки', module)
         </ul>
     ))
     .addWithDoc('Широкие', Button, null, () => (
-        <ul>
+        <ul className="story-list">
             <li>
                 <Button block>default</Button>
             </li>
