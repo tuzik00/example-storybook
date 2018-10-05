@@ -169,7 +169,7 @@ module.exports = {
                     {
                         loader: require.resolve('stylus-loader'),
                         options: {
-                            import: require.resolve('../src/styles/common.styl'),
+                            import: require.resolve('../src/styles/index.styl'),
                             resolveUrl: true,
                             sourceMap: false
                         }
