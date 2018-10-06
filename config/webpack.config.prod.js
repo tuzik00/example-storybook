@@ -102,39 +102,6 @@ module.exports = {
                 ]
             },
             {
-                test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                     {
-                        loader: require.resolve("css-loader"),
-                        options: {
-                            importLoaders: 1,
-                            sourceMap: true,
-                            module: true,
-                            localIdentName: '[local]--[hash:base64:5]'
-                        }
-                    },
-                    {
-                        loader: require.resolve('postcss-loader'),
-                        options: {
-                            ident: 'postcss',
-                            plugins: () => [
-                                require('postcss-flexbugs-fixes'),
-                                autoprefixer({
-                                    browsers: [
-                                        '>1%',
-                                        'last 4 versions',
-                                        'Firefox ESR',
-                                        'not ie < 9'
-                                    ],
-                                    flexbox: 'no-2009'
-                                })
-                            ]
-                        }
-                    }
-                ]
-            },
-            {
                 test: /\.styl$/,
                 include: paths.appSrc,
                 use: [
@@ -142,9 +109,10 @@ module.exports = {
                     {
                         loader: require.resolve('css-loader'),
                         options: {
-                            importLoaders: 2,
-                            minimize: true,
-                            sourceMap: false
+                            importLoaders: 1,
+                            sourceMap: true,
+                            module: true,
+                            localIdentName: '[name]__[local]--[hash:base64:5]'
                         }
                     },
                     {

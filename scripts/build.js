@@ -25,8 +25,7 @@ const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const printHostingInstructions = require('react-dev-utils/printHostingInstructions');
 const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
 
-const measureFileSizesBeforeBuild =
-    FileSizeReporter.measureFileSizesBeforeBuild;
+const measureFileSizesBeforeBuild = FileSizeReporter.measureFileSizesBeforeBuild;
 const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
 const useYarn = fs.existsSync(paths.yarnLockFile);
 
@@ -69,6 +68,7 @@ measureFileSizesBeforeBuild(paths.appBuild)
             }
 
             console.log('File sizes after gzip:\n');
+
             printFileSizesAfterBuild(
                 stats,
                 previousFileSizes,
@@ -76,12 +76,14 @@ measureFileSizesBeforeBuild(paths.appBuild)
                 WARN_AFTER_BUNDLE_GZIP_SIZE,
                 WARN_AFTER_CHUNK_GZIP_SIZE
             );
+
             console.log();
 
             const appPackage = require(paths.appPackageJson);
             const publicUrl = paths.publicUrl;
             const publicPath = config.output.publicPath;
             const buildFolder = path.relative(process.cwd(), paths.appBuild);
+
             printHostingInstructions(
                 appPackage,
                 publicUrl,
@@ -108,10 +110,13 @@ function build(previousFileSizes) {
             if (err) {
                 return reject(err);
             }
+
             const messages = formatWebpackMessages(stats.toJson({}, true));
+
             if (messages.errors.length) {
                 return reject(new Error(messages.errors.join('\n\n')));
             }
+
             if (
                 process.env.CI &&
                 (typeof process.env.CI !== 'string' ||
@@ -124,8 +129,10 @@ function build(previousFileSizes) {
                         'Most CI servers set it automatically.\n'
                     )
                 );
+
                 return reject(new Error(messages.warnings.join('\n\n')));
             }
+
             return resolve({
                 stats,
                 previousFileSizes,
