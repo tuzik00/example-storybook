@@ -7,16 +7,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
-                include: paths.appSrc,
-                exclude: /(node_modules)/,
-                enforce: 'pre',
-                loader: require.resolve('eslint-loader'),
-                options: {
-                    configFile: '.eslintrc'
-                }
-            },
-            {
                 exclude: [
                     /\.html$/,
                     /\.(js|jsx)$/,
