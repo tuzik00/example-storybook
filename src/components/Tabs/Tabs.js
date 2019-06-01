@@ -7,22 +7,13 @@ import DefaultTabBar from './DefaultTabBar';
 import style from './Tabs.styl';
 
 
-type PropsType = {
-    children: React.Node,
-    className?: string,
-    onChangeTab?: func,
-    renderTabBar?: func | boolean,
-    initialTab?: number
-};
-
-
-class Tabs extends Component<PropsType> {
+class Tabs extends Component {
     static defaultProps = {
         initialTab: 0,
         onChangeTab: () => {}
     };
 
-    constructor(props: object) {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -30,19 +21,19 @@ class Tabs extends Component<PropsType> {
         };
     }
 
-    getChildren(children: React.Children = this.props.children): React.Children {
-        return React.Children.map(children, (child: React.Children): React.Children => child);
+    getChildren(children = this.props.children) {
+        return React.Children.map(children, (child) => child);
     }
 
 
-    goToTab = (activeIndex: number) => {
+    goToTab = (activeIndex) => {
         this.setState({
             activeIndex
         });
     };
 
-    renderTabBar(tabBarOptions: object): React.Element {
-        if (this.props.renderTabBar == false){
+    renderTabBar(tabBarOptions) {
+        if (this.props.renderTabBar === false){
             return null;
         }
 
@@ -53,9 +44,9 @@ class Tabs extends Component<PropsType> {
         return <DefaultTabBar {...tabBarOptions} />
     }
 
-    composeTabs(activeTab: number): React.Children{
-        return this.getChildren().map((child: React.Children, index: number): React.Children => {
-            if (activeTab == index){
+    composeTabs(activeTab){
+        return this.getChildren().map((child, index) => {
+            if (activeTab === index){
                 this.props.onChangeTab(index);
 
                 return React.cloneElement(child, {
@@ -67,13 +58,13 @@ class Tabs extends Component<PropsType> {
         });
     }
 
-    render(): React.Element<'div'> {
+    render() {
         const { activeIndex } = this.state;
         const { className } = this.props;
 
         const tabBarOptions = {
             activeIndex,
-            headings: this.getChildren().map((child: React.Children): React.Node => child.props.heading),
+            headings: this.getChildren().map((child) => child.props.heading),
             goToTab: this.goToTab
         };
 

@@ -1,25 +1,10 @@
-// @flow
-
 import React from 'react';
 import cn from 'classnames';
 
 import style from './Select.styl';
 
 
-type DataArrayType = {
-    name: string,
-    value: string
-};
-
-type PropsType = {
-    onChange?: func,
-    disabled?: boolean,
-    className?: string,
-    dataArray?: DataArrayType
-};
-
-
-const Select = (props: PropsType): React.Element<'select'> => {
+const Select = (props) => {
     const {className, dataArray, disabled, onChange, ...otherProps} = props;
 
     const selectClasses = cn(
@@ -31,10 +16,10 @@ const Select = (props: PropsType): React.Element<'select'> => {
     return (
         <select
             className={selectClasses}
-            onChange={(e: MouseEvent): void => onChange(e.target.value)}
+            onChange={(e) => onChange(e.target.value)}
             {...otherProps}
         >
-            {dataArray.map((option: DataArrayType, index: number): React.Element<'option'> => (
+            {dataArray.map((option, index) => (
                 <option
                     key={index}
                     value={option.value}

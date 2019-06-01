@@ -1,18 +1,10 @@
-// @flow
-
 import React from 'react';
 import cn from 'classnames';
 
 import style from './Card.styl';
 
 
-type PropsType = {
-    children: React.node,
-    className?: string
-};
-
-
-const Card = (props: PropsType): React.Element<'section'> => {
+const Card = (props) => {
     const { children, className } = props;
 
     return (

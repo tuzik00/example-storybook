@@ -1,24 +1,16 @@
-// @flow
-
 import React, {Component} from 'react';
 import {TimelineMax} from 'gsap';
 import Transition from 'react-transition-group/Transition';
 
 
-type PropsType = {
-    in: boolean,
-    duration: number
-};
-
-
-class FadeAndScale extends Component<PropsType> {
+class FadeAndScale extends Component {
     static defaultProps = {
         duration: 0.6,
         onEnter: () => {},
         onExit: () => {}
     };
 
-    onEnter = (node: HTMLElement) => {
+    onEnter = (node) => {
         const timeLine = new TimelineMax();
 
         timeLine
@@ -33,7 +25,7 @@ class FadeAndScale extends Component<PropsType> {
         this.props.onEnter();
     };
 
-    onExit = (node: HTMLElement) => {
+    onExit = (node) => {
         const timeLine = new TimelineMax();
 
         timeLine
@@ -47,7 +39,7 @@ class FadeAndScale extends Component<PropsType> {
             .call(this.props.onExit)
     };
 
-    render(): React.Element<'Transition'> {
+    render() {
         const {in: inProp, children} = this.props;
 
         return (

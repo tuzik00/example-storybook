@@ -1,19 +1,10 @@
-// @flow
-
 import React from 'react';
 import cn from 'classnames';
 
 import style from './List.styl';
 
 
-type PropsType = {
-    children: React.Node,
-    className?: string,
-    dotted?: boolean
-};
-
-
-const List = (props: PropsType): React.Element<'ul'> => {
+const List = (props) => {
     const { classNames, children, dotted } = props;
 
     return (
@@ -29,7 +20,7 @@ List.defaultProps = {
 };
 
 
-const ListItem = (props: PropsType): React.Element<'li'> => {
+const ListItem = (props) => {
     const { classNames, children } = props;
 
     return (

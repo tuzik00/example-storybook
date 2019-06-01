@@ -1,18 +1,10 @@
-// @flow
-
 import React from 'react';
 import cn from 'classnames';
 
 import style from './Input.styl';
 
 
-type PropsType = {
-    className?: string,
-    type: "text" | "number" | "email"
-};
-
-
-const Input = (props: PropsType): React.Element<'Input'> => {
+const Input = (props) => {
     const { children, className, disabled, type, ...otherProps } = props;
 
     const classNames = cn(

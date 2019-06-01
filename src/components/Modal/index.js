@@ -1,5 +1,3 @@
-// @flow
-
 import React, {PureComponent} from 'react'
 import cn from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
@@ -11,23 +9,14 @@ import FadeAndScale from '../Animations/FadeAndScale';
 import style from './Modal.styl';
 
 
-type PropsType = {
-    children: React.Node,
-    className?: React.string,
-    open?: boolean,
-    maxWidth?: number,
-    onClose: func
-};
-
-
-class Modal extends PureComponent<PropsType> {
+class Modal extends PureComponent {
     static defaultProps = {
         open: false,
         maxWidth: 500,
         onClose: () => {}
     };
 
-    constructor(props: {}) {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -35,7 +24,7 @@ class Modal extends PureComponent<PropsType> {
         };
     }
 
-    componentWillReceiveProps(nextProps: PropsType) {
+    componentWillReceiveProps(nextProps) {
         if (this.state.isOpen !== nextProps.open) {
             this.setState({
                 isOpen: nextProps.open
@@ -49,7 +38,7 @@ class Modal extends PureComponent<PropsType> {
         });
     };
 
-    render(): React.Element<'div'> {
+    render() {
         const {isOpen} = this.state;
         const {children, className, maxWidth, onClose} = this.props;
 

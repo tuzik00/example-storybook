@@ -1,20 +1,11 @@
-// @flow
-
 import React, {PureComponent} from 'react';
 import cn from 'classnames';
 
 import style from './DefaultTabBar.styl';
 
 
-type PropsType = {
-    activeIndex: number,
-    headings: array,
-    goToTab: func
-};
-
-
-class DefaultTabBar extends PureComponent<PropsType> {
-    constructor(props: object) {
+class DefaultTabBar extends PureComponent {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -41,11 +32,11 @@ class DefaultTabBar extends PureComponent<PropsType> {
         }, false);
     }
 
-    getCurrentTabElement(): HTMLElement {
+    getCurrentTabElement() {
         return this.$labels[this.state.activeIndex];
     }
 
-    setActiveTab(index: number) {
+    setActiveTab(index) {
         this.setState({
             activeIndex: index
         }, () => {
@@ -54,7 +45,7 @@ class DefaultTabBar extends PureComponent<PropsType> {
         });
     }
 
-    setLineStyle = (el: HTMLElement) => {
+    setLineStyle = (el) => {
         if (!el) {
             return;
         }
@@ -63,24 +54,24 @@ class DefaultTabBar extends PureComponent<PropsType> {
             lineWidth: `${el.clientWidth}px`,
             lineLeft: `${el.offsetLeft}px`
         }, () => {
-            setTimeout((): void => this.setState({opacity: 1}), 500)
+            setTimeout(() => this.setState({opacity: 1}), 500)
         });
     };
 
-    renderHeading(): React.Children {
+    renderHeading() {
         const {headings, activeIndex} = this.props;
 
-        return headings.map((heading: string | React.Element, index: number): React.Element<'div'> => {
+        return headings.map((heading, index) => {
             const classNames = cn(
                 style.tab_bar_item,
-                index == activeIndex && style.active
+                index === activeIndex && style.active
             );
 
             return (
                 <div
                     key={index}
-                    ref={(el: HTMLElement): number => this.$labels.push(el)}
-                    onClick={(): void => this.setActiveTab(index)}
+                    ref={(el) => this.$labels.push(el)}
+                    onClick={() => this.setActiveTab(index)}
                     className={classNames}
                 >
                     {heading}
@@ -89,7 +80,7 @@ class DefaultTabBar extends PureComponent<PropsType> {
         });
     }
 
-    render(): React.Element<'div'> {
+    render() {
         const lineStyle = {
             left: this.state.lineLeft,
             width: this.state.lineWidth,

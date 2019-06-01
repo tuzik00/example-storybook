@@ -1,25 +1,15 @@
-// @flow
-
 import React, {Component} from 'react';
 import cn from 'classnames';
 
 import style from './ToggleSwitch.styl';
 
 
-type PropsType = {
-    disabled?: boolean,
-    className?: string,
-    checked?: boolean,
-    onToggle?: func
-};
-
-
-class ToggleSwitch extends Component<PropsType> {
+class ToggleSwitch extends Component {
     static defaultProps = {
         checked: false
     };
 
-    constructor(props: object) {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -27,7 +17,7 @@ class ToggleSwitch extends Component<PropsType> {
         };
     }
 
-    componentWillReceiveProps(nextProps: PropsType) {
+    componentWillReceiveProps(nextProps) {
         if (this.state.isChecked !== nextProps.checked) {
             this.setState({
                 isChecked: nextProps.checked
@@ -45,11 +35,11 @@ class ToggleSwitch extends Component<PropsType> {
 
         this.setState({
             isChecked: !isChecked
-        }, (): void => onToggle(!isChecked))
+        }, () => onToggle(!isChecked))
     };
 
 
-    render(): React.Element<'div'> {
+    render() {
         const {isChecked} = this.state;
         const {disabled, className} = this.props;
 

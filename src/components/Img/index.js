@@ -1,19 +1,16 @@
-// @flow
-
 import React from 'react';
 import cn from 'classnames';
 
 import style from './Img.styl';
 
 
-export type PropsType = {
-    src: boolean,
-    className?: string
-};
-
-
-const Img = (props: PropsType): React.Element<'img'> => {
-    const {src, className, ...otherProps} = props;
+const Img = (props) => {
+    const {
+        src,
+        className,
+        alt,
+        ...otherProps
+    } = props;
 
     const classNames = cn(
         style.img,
@@ -23,6 +20,7 @@ const Img = (props: PropsType): React.Element<'img'> => {
     return (
         <img
             src={src}
+            alt={alt}
             className={classNames}
             {...otherProps}
        />

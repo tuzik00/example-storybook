@@ -1,18 +1,10 @@
-// @flow
-
 import React from 'react';
 import cn from 'classnames';
 
 import style from './Column.styl';
 
 
-type PropsType = {
-    children: React.Node,
-    className?: string,
-    flex?: number
-};
-
-const Column = (props: PropsType): React.Element<'div'> => {
+const Column = (props) => {
     const { children, className } = props;
 
     const columnStyle = {

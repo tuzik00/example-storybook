@@ -1,17 +1,10 @@
-// @flow
-
 import React from 'react';
 import cn from 'classnames';
 
 import style from './Row.styl';
 
 
-type PropsType = {
-    children: React.Node,
-    className?: string
-};
-
-const Row = (props: PropsType): React.Element<'div'> => {
+const Row = (props) => {
     const classNames = cn(
         style.row,
         props.className

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import cn from 'classnames';
 import FadeIn from '../Animations/FadeIn';
@@ -7,16 +5,7 @@ import FadeIn from '../Animations/FadeIn';
 import style from './Overlay.styl';
 
 
-type PropsType = {
-    children: React.Node,
-    className?: React.string,
-    show?: boolean,
-    onClick: func,
-    open: boolean
-};
-
-
-const Overlay = (props: PropsType): React.Element<'FadeIn'> => {
+const Overlay = (props) => {
     const {children, className, show, onShow, onHide, onClick} = props;
 
     return (
@@ -26,7 +15,7 @@ const Overlay = (props: PropsType): React.Element<'FadeIn'> => {
             onExit={onHide}
         >
             <div
-                onClick={(): void => onClick()}
+                onClick={() => onClick()}
                 className={cn(style.overlay, className)}
             >
                 {children}

@@ -1,18 +1,10 @@
-// @flow
-
 import React from 'react';
 import cn from 'classnames';
 
 import style from './Tab.styl';
 
 
-type PropsType = {
-    children: React.Node,
-    className?: string
-};
-
-
-const Tab = (props: PropsType): React.Element<'div'> => {
+const Tab = (props) => {
     return (
         <div className={cn(style.tab, props.className)}>
             {props.children}

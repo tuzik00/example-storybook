@@ -3,8 +3,8 @@ import {setOptions} from '@storybook/addon-options';
 import {withKnobs} from '@storybook/addon-knobs';
 import addWithDoc from 'storybook-addon-props';
 
-import GlobalStyleDecorator from '../src/storiesDecorators/GlobalStyleDecorator';
-import MainDecorator from '../src/storiesDecorators/MainDecorator';
+import GlobalStyleDecorator from './storiesDecorators/GlobalStyleDecorator';
+import MainDecorator from './storiesDecorators/MainDecorator';
 
 
 setOptions({
@@ -18,7 +18,7 @@ addDecorator(MainDecorator);
 addDecorator(GlobalStyleDecorator);
 
 
-const req = require.context('../stories', true, /\.stories.js$/);
+const req = require.context('./stories', true, /\.stories.js$/);
 
 function loadStories() {
     req.keys().forEach((filename) => req(filename));

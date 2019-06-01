@@ -1,31 +1,17 @@
-// @flow
-
 import React, {Component} from 'react'
 import cn from 'classnames';
 
 import style from './Checkbox.styl';
 
 
-type PropsType = {
-    active?: boolean,
-    disabled?: boolean,
-    onToggle: func,
-    className?: string
-};
-
-type StateType = {
-    isActive: boolean
-};
-
-
-class Checkbox extends Component<PropsType, StateType> {
+class Checkbox extends Component {
     static defaultProps = {
         onToggle: () => {},
         active: false,
         disabled: false
     };
 
-    constructor(props: {}) {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -33,7 +19,7 @@ class Checkbox extends Component<PropsType, StateType> {
         };
     }
 
-    componentWillReceiveProps(nextProps: PropsType) {
+    componentWillReceiveProps(nextProps) {
         if (this.state.isActive !== nextProps.active && !nextProps.disabled) {
             this.setState({
                 isActive: nextProps.active
@@ -51,10 +37,10 @@ class Checkbox extends Component<PropsType, StateType> {
 
         this.setState({
             isActive: !isActive
-        }, (): void => onToggle(!isActive))
+        }, () => onToggle(!isActive))
     };
 
-    render(): React.Element<'div'> {
+    render() {
         const {isActive} = this.state;
         const {disabled, className} = this.props;
 
