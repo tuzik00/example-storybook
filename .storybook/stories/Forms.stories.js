@@ -5,11 +5,13 @@ import {action} from '@storybook/addon-actions';
 
 import ExampleFormDecorator from '../storiesDecorators/ExampleFormDecorator';
 
-import Checkbox from '../../src/components/Checkbox';
-import ToggleSwitch from '../../src/components/ToggleSwitch';
-import Input from '../../src/components/Input';
-import Select from '../../src/components/Select';
-import Label from '../../src/components/Label';
+import {
+    Checkbox,
+    ToggleSwitch,
+    Input,
+    Select,
+    Label,
+} from '../../src';
 
 
 storiesOf('Форма', module)

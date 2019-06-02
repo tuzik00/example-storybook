@@ -1,14 +1,19 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Card from '../../src/components/Card';
-import {Header, Body, Footer} from '../../src/components/Layout';
 import CardDecorator from '../storiesDecorators/CardDecorator';
-import Heading from '../../src/components/Heading';
-import Content from '../../src/components/Content';
-import Button from '../../src/components/Button';
-import Position from '../../src/components/Position';
-import Img from '../../src/components/Img';
+
+import {
+    Card,
+    Header,
+    Body,
+    Footer,
+    Heading,
+    Content,
+    Button,
+    Position,
+    Img,
+} from '../../src';
 
 
 storiesOf('Карточки', module)

@@ -1,8 +1,11 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Modal from '../../src/components/Modal';
 import ModalWithContentDecorator from '../storiesDecorators/ModalWithContentDecorator';
+
+import {
+    Modal,
+} from '../../src';
 
 
 storiesOf('Окна', module)

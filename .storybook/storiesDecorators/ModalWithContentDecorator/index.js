@@ -1,11 +1,13 @@
 import React, {PureComponent} from 'react'
 
-import Modal from '../../../src/components/Modal';
-import Button from '../../../src/components/Button';
-import Content from '../../../src/components/Content';
-import Heading from '../../../src/components/Heading';
-import Container from '../../../src/components/Container';
-import Position from '../../../src/components/Position';
+import {
+    Modal,
+    Button,
+    Content,
+    Heading,
+    Container,
+    Position,
+} from '../../../src';
 
 
 class ModalWithContentDecorator extends PureComponent {

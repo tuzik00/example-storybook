@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react'
 
-import Sidebar from '../../../src/components/Sidebar';
-import Button from '../../../src/components/Button';
-import Container from '../../../src/components/Container';
+import {
+    Sidebar,
+    Button,
+    Container
+} from '../../../src';
 
 
 class SidebarWithContentDecorator extends PureComponent {

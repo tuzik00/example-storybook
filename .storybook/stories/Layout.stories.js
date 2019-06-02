@@ -1,10 +1,14 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Container from '../../src/components/Container';
-import Position from '../../src/components/Position';
-import Overlay from '../../src/components/Overlay';
-import { Header, Body, Footer } from '../../src/components/Layout';
+import {
+    Container,
+    Position,
+    Overlay,
+    Header,
+    Body,
+    Footer,
+} from '../../src/';
 
 
 storiesOf('Layout', module)

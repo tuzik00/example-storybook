@@ -2,8 +2,11 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import GridItemDecorator from '../storiesDecorators/GridItemDecorator';
-import Row from '../../src/components/Grid/Row';
-import Column from '../../src/components/Grid/Column';
+
+import {
+    Row,
+    Column,
+} from '../../src';
 
 
 storiesOf('Сетка', module)

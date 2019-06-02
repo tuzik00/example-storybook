@@ -2,10 +2,13 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 
-import {Tabs, Tab} from '../../src/components/Tabs';
-import Sidebar from '../../src/components/Sidebar';
-
 import SidebarWithContentDecorator from '../storiesDecorators/SidebarWithContentDecorator';
+
+import {
+    Tabs,
+    Tab,
+    Sidebar,
+} from '../../src';
 
 
 storiesOf('Элементы навигации', module)

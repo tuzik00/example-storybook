@@ -1,14 +1,16 @@
 import React from 'react';
 
-import Checkbox from '../../../src/components/Checkbox';
-import Input from '../../../src/components/Input';
-import Select from '../../../src/components/Select';
-import Button from '../../../src/components/Button';
-import Column from '../../../src/components/Grid/Column';
-import Row from '../../../src/components/Grid/Row';
-import Label from '../../../src/components/Label';
-import Container from '../../../src/components/Container';
-import Position from '../../../src/components/Position';
+import {
+    Checkbox,
+    Input,
+    Select,
+    Button,
+    Column,
+    Row,
+    Label,
+    Container,
+    Position,
+} from '../../../src';
 
 
 const country = [
@@ -46,14 +48,14 @@ const ExampleFormDecorator = () => (
         <Row>
             <Column>
                 <Label text="Страна">
-                    <Select dataArray={country} />
+                    <Select dataArray={country}/>
                 </Label>
             </Column>
         </Row>
         <Row>
             <Column>
                 <Label text="Нажми">
-                    <Checkbox />
+                    <Checkbox/>
                 </Label>
             </Column>
         </Row>

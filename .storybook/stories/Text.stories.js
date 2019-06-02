@@ -1,10 +1,14 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Heading from '../../src/components/Heading';
-import Content from '../../src/components/Content';
-import {List, ListItem} from "../../src/components/List";
 import HeadingInfoDecorator from '../storiesDecorators/HeadingInfoDecorator';
+
+import {
+    Heading,
+    Content,
+    List,
+    ListItem,
+} from '../../src';
 
 
 storiesOf('Типографика', module)

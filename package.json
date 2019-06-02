@@ -1,12 +1,12 @@
-                               {
+{
   "name": "uikit",
   "version": "0.1.1",
   "description": "A React-based UI toolkit",
   "author": "Demidov Evgeniy",
   "license": "MIT",
   "private": false,
-  "homepage": "https://tuzik00.github.io/example-storybook",
-  "repository": "https://github.com/tuzik00/example-storybook",
+  "homepage": "https://tuzik00.github.io/uikit",
+  "repository": "https://github.com/tuzik00/uikit",
   "type": "git",
   "main": "./src/index.js",
   "scripts": {
@@ -15,8 +15,7 @@
     "sync": "./node_modules/.bin/react-builder sync",
     "storybook:start": "start-storybook -p 9001 -c .storybook",
     "storybook:build": "build-storybook -c .storybook -o public",
-    "deploy": "gh-pages -d public",
-    "publish": "npm run storybook:build && npm run deploy"
+    "publish": "npm run storybook:build && gh-pages -d public"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -28,7 +27,7 @@
     "react-outside-click-handler": "^1.2.2"
   },
   "devDependencies": {
-    "react-builder": "git+https://github.com/tuzik00/react-builder#v0.1.11",
+    "react-builder": "git+https://github.com/tuzik00/react-builder#v0.1.12",
     "@storybook/addon-info": "^5.0.11",
     "@storybook/addon-knobs": "^5.0.11",
     "@storybook/addon-options": "^5.0.11",
@@ -37,5 +36,11 @@
     "gh-pages": "^2.0.1",
     "storybook-addon-jsx": "^5.4.0",
     "storybook-addon-props": "^3.0.4"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
