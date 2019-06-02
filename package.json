@@ -1,6 +1,6 @@
                                {
   "name": "uikit",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A React-based UI toolkit",
   "author": "Demidov Evgeniy",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "react-outside-click-handler": "^1.2.2"
   },
   "devDependencies": {
-    "react-builder": "git+https://github.com/tuzik00/react-builder#v0.1.10",
+    "react-builder": "git+https://github.com/tuzik00/react-builder#v0.1.11",
     "@storybook/addon-info": "^5.0.11",
     "@storybook/addon-knobs": "^5.0.11",
     "@storybook/addon-options": "^5.0.11",
