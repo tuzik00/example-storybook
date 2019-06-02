@@ -27,7 +27,7 @@
     "react-outside-click-handler": "^1.2.2"
   },
   "devDependencies": {
-    "react-builder": "git+https://github.com/tuzik00/react-builder#v0.1.12",
+    "react-builder": "git+https://github.com/tuzik00/react-builder#v0.1.14",
     "@storybook/addon-info": "^5.0.11",
     "@storybook/addon-knobs": "^5.0.11",
     "@storybook/addon-options": "^5.0.11",
