@@ -10,9 +10,9 @@
   "type": "git",
   "main": "./src/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/react-builder build",
-    "start": "./node_modules/.bin/react-builder start",
-    "sync": "./node_modules/.bin/react-builder sync",
+    "build": "react-builder build",
+    "start": "react-builder start",
+    "sync": "react-builder sync",
     "sb:start": "start-storybook -p 9001 -c .storybook",
     "sb:build": "build-storybook -c .storybook -o public",
     "sb:publish": "npm run storybook:build && gh-pages -d public"
