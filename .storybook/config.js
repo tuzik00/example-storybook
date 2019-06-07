@@ -1,7 +1,7 @@
 import {configure, setAddon, addDecorator} from '@storybook/react';
 import {setOptions} from '@storybook/addon-options';
 import {withKnobs} from '@storybook/addon-knobs';
-import addWithDoc from 'storybook-addon-props';
+// import addWithDoc from 'storybook-addon-props';
 
 import GlobalStyleDecorator from './storiesDecorators/GlobalStyleDecorator';
 import MainDecorator from './storiesDecorators/MainDecorator';
@@ -11,7 +11,7 @@ setOptions({
     addonPanelInRight: true
 });
 
-setAddon(addWithDoc);
+// setAddon(addWithDoc);
 
 addDecorator(withKnobs);
 addDecorator(MainDecorator);
