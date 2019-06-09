@@ -5,9 +5,7 @@ import {
     Container,
     Position,
     Overlay,
-    Header,
-    Body,
-    Footer,
+    Layout,
 } from '../../src/';
 
 
@@ -31,17 +29,28 @@ storiesOf('Layout', module)
         </div>
     ))
     .add('Layout', () => (
-        <div>
-            <Header>
-                Header
-            </Header>
-            <Body>
-            Body
-            </Body>
-            <Footer>
-                Footer
-            </Footer>
-        </div>
+        <Layout
+            sidebar={(
+                <ul>
+                    <li>link</li>
+                    <li>link</li>
+                    <li>link</li>
+                </ul>
+            )}
+            nav={(
+                <ul>
+                    <li>test</li>
+                    <li>test</li>
+                    <li>test</li>
+                </ul>
+            )}
+        >
+            <section>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+            </section>
+        </Layout>
     ))
-    .add('Overlay', () => <Overlay show={true} />);
+    .add('Overlay', () => <Overlay show={true}/>);
 

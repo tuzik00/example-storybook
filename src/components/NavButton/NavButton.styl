@@ -1,0 +1,23 @@
+.NavButton
+  width 30px
+  display inline-block
+  margin 0 rem(7)
+
+  &:after, &:before, & div
+    background-color $black-color
+    border-radius 3px
+    content ''
+    display block
+    height 3px
+    margin 7px 0
+    transition all .2s ease-in-out
+
+  &_active
+    &:before
+      transform: translateY(10px) rotate(135deg)
+
+    &:after
+      transform: translateY(-10px) rotate(-135deg)
+
+    & div
+      transform: scale(0)

@@ -1,33 +1,45 @@
 import React from 'react'
-import cn from 'classnames';
-import FadeIn from '../Animations/FadeIn';
+import PropTypes from 'prop-types';
+import {CSSTransition} from 'react-transition-group';
 
-import style from './Overlay.styl';
+import './Overlay.styl';
 
 
 const Overlay = (props) => {
-    const {children, className, show, onShow, onHide, onClick} = props;
+    const {isShow, onEnter, onExited, onClick} = props;
 
     return (
-        <FadeIn
-            in={show}
-            onEnter={onShow}
-            onExit={onHide}
+        <CSSTransition
+            in={isShow}
+            timeout={200}
+            unmountOnExit
+            onEnter={onEnter}
+            onExited={onExited}
+            classNames={{
+                enterActive: 'Overlay_enter',
+                enterDone: 'Overlay_enter',
+            }}
         >
             <div
-                onClick={() => onClick()}
-                className={cn(style.overlay, className)}
-            >
-                {children}
-            </div>
-        </FadeIn>
+                className={'Overlay'}
+                onClick={onClick}
+            />
+        </CSSTransition>
     );
 };
 
+Overlay.propTypes = {
+    isShow: PropTypes.bool,
+    onClick: PropTypes.func,
+    onEnter: PropTypes.func,
+    onExited: PropTypes.func,
+};
 
 Overlay.defaultProps = {
-    open: false,
-    onClick: () => {}
+    isShow: false,
+    onClick: () => {},
+    onEnter: () => {},
+    onExited: () => {},
 };
 
 

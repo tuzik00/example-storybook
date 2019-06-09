@@ -1,0 +1,36 @@
+.LayoutSidebar
+  width 70px
+  border-right 1px solid $gray-color
+  transition 200ms width ease, transform 200ms ease
+  background-color $white-color
+  +mobile()
+    position absolute
+    top 0
+    left 0
+    height 100vh
+    width 250px
+    max-width 100%
+    z-index 1
+    transform translateX(-100%)
+
+    &_open
+        transform translateX(0%)
+        box-shadow 0 0 3px #e8e8e8
+
+  &_open
+    width 250px
+
+  &__header
+    height 70px
+    display flex
+    justify-content space-between
+    align-items center
+
+  &__toggler
+    transition 200ms opacity ease-in-out
+    opacity 0
+    +mobile()
+      display none !important
+
+    &_show
+      opacity 1

@@ -4,7 +4,7 @@ import {withKnobs} from '@storybook/addon-knobs';
 import addWithDoc from 'storybook-addon-props';
 
 import GlobalStyleDecorator from './storiesDecorators/GlobalStyleDecorator';
-import MainDecorator from './storiesDecorators/MainDecorator';
+// import MainDecorator from './storiesDecorators/MainDecorator';
 
 
 setOptions({
@@ -14,7 +14,7 @@ setOptions({
 setAddon(addWithDoc);
 
 addDecorator(withKnobs);
-addDecorator(MainDecorator);
+// addDecorator(MainDecorator);
 addDecorator(GlobalStyleDecorator);
 
 

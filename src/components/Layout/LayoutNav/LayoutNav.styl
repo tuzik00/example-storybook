@@ -1,0 +1,14 @@
+.LayoutNav
+  display flex
+  align-items center
+  border-bottom 1px solid $gray-color
+  height 70px
+
+  &__item
+    &_first
+      margin-left auto
+
+  &__toggle
+    display none
+    +mobile()
+      display inline-block
