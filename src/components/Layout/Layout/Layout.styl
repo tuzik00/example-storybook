@@ -1,8 +1,12 @@
 .Layout
   display flex
   height 100vh
-  background $white-color
+  background-color $white-color
   position relative
+
+  &_theme-dark
+    color alpha($white-color, 90%)
+    background-color alpha($black-color, 95%)
 
   &__main
     flex-grow 1

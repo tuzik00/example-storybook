@@ -30,6 +30,7 @@ const Layout = (props) => {
             </LayoutSidebar>
             <main className={'Layout__main'}>
                 <LayoutNav
+                    dark={dark}
                     isSidebarActive={isSidebarOpen}
                     onToggle={toggleSidebar}
                 >

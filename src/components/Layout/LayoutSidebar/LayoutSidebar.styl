@@ -19,11 +19,22 @@
     transform translateX(-100%)
 
     &_open
-        transform translateX(0%)
-        box-shadow 0 0 3px #e8e8e8
+      transform translateX(0%)
+      box-shadow 0 0 3px #e8e8e8
 
   &_open
     width 250px
+
+  &_theme-dark
+    border-right 1px solid alpha($black-color, 90%)
+    background-color alpha($black-color, 95%)
+
+    &^[0]_open
+      +mobile()
+        box-shadow 0 0 3px alpha($black-color, 80%) !important
+
+    & ^[0]__content
+      background-color alpha($black-color, 80%)
 
   &__toggler
     position absolute
@@ -31,7 +42,7 @@
     right 0
     padding rem(10)
     transition 200ms color ease-in-out
-    color rgba(0,0,0,0)
+    color rgba(0, 0, 0, 0)
     +mobile()
       display none !important
 

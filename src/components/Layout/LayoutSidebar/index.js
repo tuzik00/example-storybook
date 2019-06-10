@@ -83,8 +83,14 @@ class LayoutSidebar extends Component {
             return;
         }
 
+        const isActive = e.type === 'mouseenter';
+
         this.setState({
-            isActive: e.type === 'mouseenter',
+            isActive,
+        }, () => {
+            if (!isActive){
+                this.props.onClose();
+            }
         })
     };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import {select} from '@storybook/addon-knobs';
+import {boolean} from '@storybook/addon-knobs';
 
 import {
     Container,
@@ -31,7 +31,7 @@ storiesOf('Layout', module)
     ))
     .add('Layout', () => (
         <Layout
-            theme={select('theme', ['light', 'dark'], 'light')}
+            dark={boolean('dark', false)}
             renderSidebar={({ isActive }) => (
                 <div>
                     sidebar
