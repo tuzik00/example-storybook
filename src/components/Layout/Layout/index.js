@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import { isMobile } from '../../../utils';
+
 import LayoutSidebar from '../LayoutSidebar';
 import LayoutNav from '../LayoutNav';
 
@@ -17,25 +19,30 @@ const Layout = (props) => {
         dark,
     } = props;
 
-    const [isSidebarOpen, toggleSidebar] = useState(isOpenSidebar);
+    const isOpen = isMobile() && isOpenSidebar ? false : isOpenSidebar;
+    const [isSidebarOpen, toggleSidebar] = useState(isOpen);
 
     return (
         <div className={cn('Layout', dark && 'Layout_theme-dark')}>
-            <LayoutSidebar
-                dark={dark}
-                isActive={isSidebarOpen}
-                onClose={() => toggleSidebar(false)}
-            >
-                {renderSidebar}
-            </LayoutSidebar>
-            <main className={'Layout__main'}>
-                <LayoutNav
+            {typeof renderSidebar === 'function' ? (
+                <LayoutSidebar
                     dark={dark}
-                    isSidebarActive={isSidebarOpen}
-                    onToggle={toggleSidebar}
+                    isActive={isSidebarOpen}
+                    onClose={() => toggleSidebar(false)}
                 >
-                    {renderNav(isSidebarOpen)}
-                </LayoutNav>
+                    {renderSidebar}
+                </LayoutSidebar>
+            ) : null}
+            <main className={'Layout__main'}>
+                {typeof renderNav === 'function' ? (
+                    <LayoutNav
+                        dark={dark}
+                        isSidebarActive={isSidebarOpen}
+                        onToggle={toggleSidebar}
+                    >
+                        {renderNav(isSidebarOpen)}
+                    </LayoutNav>
+                ) : null}
 
                 <section className={'Layout__content'}>
                     {children}
@@ -54,8 +61,6 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
-    renderSidebar: () => {},
-    renderNav: () => {},
     isOpenSidebar: false,
     dark: false,
 };

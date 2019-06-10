@@ -11,6 +11,7 @@ const IconButton = (props) => {
     const {
         className,
         name,
+        icon,
         primary,
         success,
         info,
@@ -40,7 +41,7 @@ const IconButton = (props) => {
         [`IconButton_position_${position}`]: !!position,
     });
 
-    const Icon = Icons[name];
+    const Icon = icon || Icons[name];
 
     const iconSize = {
         small: '14px',
@@ -54,9 +55,11 @@ const IconButton = (props) => {
             disabled={disabled}
             className={classNames}
         >
-            <span className={cn('IconButton__text')}>
-                {children}
-            </span>
+            {children ? (
+                <span className={cn('IconButton__text')}>
+                    {children}
+                </span>
+            ) : null}
 
             <Icon width={iconSize[size] || iconSize.small}/>
         </button>
@@ -65,7 +68,7 @@ const IconButton = (props) => {
 
 IconButton.propTypes = {
     disabled: PropTypes.bool,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     primary: PropTypes.bool,
     success: PropTypes.bool,
     info: PropTypes.bool,
@@ -79,6 +82,7 @@ IconButton.propTypes = {
     position: PropTypes.oneOf(['left', 'right']),
     children: PropTypes.node,
     bold: PropTypes.bool,
+    icon: PropTypes.node,
 };
 
 IconButton.defaultProps = {

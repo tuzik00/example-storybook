@@ -41,13 +41,13 @@
     top 0
     right 0
     padding rem(10)
-    transition 200ms color ease-in-out
+    transition 200ms color ease-out
     color rgba(0, 0, 0, 0)
     +mobile()
       display none !important
 
     &_show
-      color $black-color
+      color alpha($black-color, .8)
 
   &__content
     width 250px

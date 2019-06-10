@@ -139,7 +139,7 @@ class LayoutSidebar extends Component {
                 >
                     <CSSTransition
                         in={isActive}
-                        timeout={200}
+                        timeout={5000}
                         unmountOnExit
                         classNames={{
                             enterActive: 'LayoutSidebar__toggler_show',
