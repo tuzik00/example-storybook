@@ -1,0 +1,58 @@
+.IconButton
+  background none
+  border none
+  outline none
+  padding rem(7)
+  color $black-color
+  display flex
+  align-items center
+
+  &_position
+    &_left
+      flex-direction: row-reverse;
+
+    &_right
+      flex-direction: row
+
+  &_color
+    &_gray
+      color: $gray-color
+
+    &_primary
+      color: $primary-color
+
+    &_success
+      color: $success-color
+
+    &_info
+      color: $info-color
+
+    &_warning
+      color: $warning-color
+
+    &_danger
+      color: $danger-color
+
+  &_disabled
+    background: $danger-color
+    color #fff
+
+  &_transparent
+    opacity .5
+
+  &_size
+    &_smal
+      font-size 14px
+
+    &_normal
+      font-size 18px
+
+    &_large
+      font-size 24px
+
+  &_bold
+    font-weight bold
+
+  &__text
+    padding 0 rem(7)
+    color $black-color

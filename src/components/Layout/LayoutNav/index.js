@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {NavButton} from '../../..';
+
+import LayoutToggleButton from '../LayoutToggleButton';
 
 import './LayoutNav.styl';
 
@@ -14,7 +15,7 @@ const LayoutNav = (props) => {
 
     return (
         <nav className={'LayoutNav'}>
-            <NavButton
+            <LayoutToggleButton
                 className={'LayoutNav__toggle'}
                 onClick={() => onToggle(!isSidebarActive)}
                 isActive={isSidebarActive}

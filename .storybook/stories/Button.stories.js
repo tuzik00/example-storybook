@@ -3,7 +3,7 @@ import {storiesOf} from '@storybook/react';
 import {boolean} from '@storybook/addon-knobs';
 import {action} from '@storybook/addon-actions';
 
-import { Button } from '../../src';
+import { Button, IconButton } from '../../src';
 
 
 storiesOf('Кнопки', module)
@@ -14,6 +14,12 @@ storiesOf('Кнопки', module)
         >
             Button
         </Button>
+    ))
+    .add('С иконкой', () => (
+        <IconButton
+            transparent
+            name={'PushPin'}
+        />
     ))
     .add('Размеры', () => (
         <ul className="story-list">

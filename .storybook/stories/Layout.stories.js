@@ -1,5 +1,6 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
+import {select} from '@storybook/addon-knobs';
 
 import {
     Container,
@@ -30,27 +31,18 @@ storiesOf('Layout', module)
     ))
     .add('Layout', () => (
         <Layout
-            sidebar={(
-                <ul>
-                    <li>link</li>
-                    <li>link</li>
-                    <li>link</li>
-                </ul>
+            theme={select('theme', ['light', 'dark'], 'light')}
+            renderSidebar={({ isActive }) => (
+                <div>
+                    sidebar
+                </div>
             )}
-            nav={(
-                <ul>
-                    <li>test</li>
-                    <li>test</li>
-                    <li>test</li>
-                </ul>
+            renderNav={() => (
+                <div>nav</div>
             )}
         >
-            <section>
-                <p>Test</p>
-                <p>Test</p>
-                <p>Test</p>
-            </section>
+            <div>content</div>
         </Layout>
     ))
-    .add('Overlay', () => <Overlay show={true}/>);
+    .add('Overlay', () => <Overlay isShow={true}/>);
 

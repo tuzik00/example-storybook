@@ -1,37 +1,39 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
-import {
-    LayoutSidebar,
-    LayoutNav,
-} from '../../..';
+import LayoutSidebar from '../LayoutSidebar';
+import LayoutNav from '../LayoutNav';
 
 import './Layout.styl';
 
 
 const Layout = (props) => {
     const {
-        sidebar,
+        renderSidebar,
+        renderNav,
         children,
-        nav,
+        isOpenSidebar,
+        dark,
     } = props;
 
-    const [isSidebarOpen, toggleSidebar] = useState(false);
+    const [isSidebarOpen, toggleSidebar] = useState(isOpenSidebar);
 
     return (
-        <div className={'Layout'}>
+        <div className={cn('Layout', dark && 'Layout_theme-dark')}>
             <LayoutSidebar
+                dark={dark}
                 isActive={isSidebarOpen}
                 onClose={() => toggleSidebar(false)}
             >
-                {sidebar}
+                {renderSidebar}
             </LayoutSidebar>
             <main className={'Layout__main'}>
                 <LayoutNav
                     isSidebarActive={isSidebarOpen}
                     onToggle={toggleSidebar}
                 >
-                    {nav}
+                    {renderNav(isSidebarOpen)}
                 </LayoutNav>
 
                 <section className={'Layout__content'}>
@@ -43,11 +45,18 @@ const Layout = (props) => {
 };
 
 Layout.propTypes = {
-    sidebar: PropTypes.node,
+    renderSidebar: PropTypes.func,
+    renderNav: PropTypes.func,
     children: PropTypes.node,
-    nav: PropTypes.node,
+    isOpenSidebar: PropTypes.bool,
+    dark: PropTypes.bool,
 };
 
-Layout.defaultProps = {};
+Layout.defaultProps = {
+    renderSidebar: () => {},
+    renderNav: () => {},
+    isOpenSidebar: false,
+    dark: false,
+};
 
 export default Layout;

@@ -9,8 +9,8 @@ import {
 } from '../../../utils';
 
 import {
-    NavButton,
     Overlay,
+    IconButton,
 } from '../../..';
 
 import './LayoutSidebar.styl';
@@ -21,13 +21,16 @@ class LayoutSidebar extends Component {
         isFixed: PropTypes.bool,
         isActive: PropTypes.bool,
         onClose: PropTypes.func,
-        children: PropTypes.node,
+        children: PropTypes.func,
+        logo: PropTypes.node,
+        dark: PropTypes.bool,
     };
 
     static defaultProps = {
         isFixed: false,
         isActive: false,
         onClose: () => {},
+        dark: false,
     };
 
     constructor(props) {
@@ -35,26 +38,27 @@ class LayoutSidebar extends Component {
 
         this.state = {
             isActive: props.isActive,
-            isFixed: props.isFixed,
+            isFixed: props.isActive,
             isMobile: isMobile(),
+            isMount: !isMobile(),
         };
 
-        this.LayoutSidebarRef = React.createRef();
+        this.layoutSidebarRef = React.createRef();
 
         this.handleToggleLayoutSidebar = _.debounce(this.handleToggleLayoutSidebar, 100);
-        this.handleWindowSizeChange = _.debounce(this.handleWindowSizeChange, 200);
+        this.handleWindowSizeChange = _.debounce(this.handleWindowSizeChange, 100);
     }
 
     componentDidMount() {
-        this.LayoutSidebarRef.current.addEventListener('mouseenter', this.handleToggleLayoutSidebar);
-        this.LayoutSidebarRef.current.addEventListener('mouseleave', this.handleToggleLayoutSidebar);
+        this.layoutSidebarRef.current.addEventListener('mouseenter', this.handleToggleLayoutSidebar);
+        this.layoutSidebarRef.current.addEventListener('mouseleave', this.handleToggleLayoutSidebar);
 
         window.addEventListener('resize', this.handleWindowSizeChange);
     }
 
     componentWillUnmount() {
-        this.LayoutSidebarRef.current.removeEventListener('mouseenter', this.handleToggleLayoutSidebar);
-        this.LayoutSidebarRef.current.removeEventListener('mouseleave', this.handleToggleLayoutSidebar);
+        this.layoutSidebarRef.current.removeEventListener('mouseenter', this.handleToggleLayoutSidebar);
+        this.layoutSidebarRef.current.removeEventListener('mouseleave', this.handleToggleLayoutSidebar);
 
         window.removeEventListener('resize', this.handleWindowSizeChange);
     }
@@ -63,10 +67,11 @@ class LayoutSidebar extends Component {
         if (this.props.isActive !== prevProps.isActive) {
             this.setState({
                 isActive: this.props.isActive,
+                isMount: true,
             })
         }
 
-        if (this.state.isMobile && this.state.isFixed){
+        if (this.state.isMobile && this.state.isFixed) {
             this.setState({
                 isFixed: false,
             })
@@ -98,12 +103,14 @@ class LayoutSidebar extends Component {
     render() {
         const {
             children,
+            dark,
         } = this.props;
 
         const {
             isActive,
             isFixed,
             isMobile,
+            isMount,
         } = this.state;
 
         return (
@@ -116,29 +123,33 @@ class LayoutSidebar extends Component {
                 ) : null}
 
                 <aside
-                    className={cn('LayoutSidebar', isActive && 'LayoutSidebar_open')}
-                    ref={this.LayoutSidebarRef}
+                    style={{'display': !isMount ? 'none' : 'block'}}
+                    className={cn(
+                        'LayoutSidebar',
+                        isActive && 'LayoutSidebar_open',
+                        dark && `LayoutSidebar_theme-dark`
+                    )}
+                    ref={this.layoutSidebarRef}
                 >
-                    <div className={'LayoutSidebar__header'}>
-                        <div>Logo</div>
-
-                        <CSSTransition
-                            in={isActive}
-                            timeout={200}
-                            unmountOnExit
-                            classNames={{
-                                enterActive: 'LayoutSidebar__toggler_show',
-                                enterDone: 'LayoutSidebar__toggler_show',
-                            }}
-                        >
-                            <NavButton
-                                className={cn('LayoutSidebar__toggler', isActive && 'LayoutSidebar__toggler_show')}
-                                isActive={isFixed}
-                                onClick={() => this.setState({isFixed: !isFixed})}
-                            />
-                        </CSSTransition>
+                    <CSSTransition
+                        in={isActive}
+                        timeout={200}
+                        unmountOnExit
+                        classNames={{
+                            enterActive: 'LayoutSidebar__toggler_show',
+                            enterDone: 'LayoutSidebar__toggler_show',
+                        }}
+                    >
+                        <IconButton
+                            className={cn('LayoutSidebar__toggler', isActive && 'LayoutSidebar__toggler_show')}
+                            transparent={isFixed}
+                            onClick={() => this.setState({isFixed: !isFixed})}
+                            name={'PushPin'}
+                        />
+                    </CSSTransition>
+                    <div className={'LayoutSidebar__content'}>
+                        {children({ isActive, isMobile, isFixed })}
                     </div>
-                    {children}
                 </aside>
             </Fragment>
         );

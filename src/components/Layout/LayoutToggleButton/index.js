@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import './NavButton.styl';
+import './LayoutToggleButton.styl';
 
 
-const NavButton = (props) => {
+const LayoutToggleButton = (props) => {
     const {
         isActive,
         onClick,
@@ -14,7 +14,7 @@ const NavButton = (props) => {
 
     return (
         <div
-            className={cn(className, 'NavButton', isActive && 'NavButton_active')}
+            className={cn(className, 'LayoutToggleButton', isActive && 'LayoutToggleButton_active')}
             onClick={onClick}
         >
             <div />
@@ -22,16 +22,16 @@ const NavButton = (props) => {
     );
 };
 
-NavButton.propTypes = {
+LayoutToggleButton.propTypes = {
     isActive: PropTypes.bool,
     onClick: PropTypes.func,
     className: PropTypes.string,
 };
 
 
-NavButton.defaultProps = {
+LayoutToggleButton.defaultProps = {
     onClick: () => {},
 };
 
 
-export default NavButton;
+export default LayoutToggleButton;

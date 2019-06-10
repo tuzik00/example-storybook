@@ -1,8 +1,13 @@
 .LayoutSidebar
   width 70px
+  position relative
+  overflow hidden
   border-right 1px solid $gray-color
   transition 200ms width ease, transform 200ms ease
   background-color $white-color
+  background-image url("../../../assets/images/sidenav.jpg")
+  background-size cover
+  box-sizing border-box
   +mobile()
     position absolute
     top 0
@@ -20,17 +25,20 @@
   &_open
     width 250px
 
-  &__header
-    height 70px
-    display flex
-    justify-content space-between
-    align-items center
-
   &__toggler
-    transition 200ms opacity ease-in-out
-    opacity 0
+    position absolute
+    top 0
+    right 0
+    padding rem(10)
+    transition 200ms color ease-in-out
+    color rgba(0,0,0,0)
     +mobile()
       display none !important
 
     &_show
-      opacity 1
+      color $black-color
+
+  &__content
+    width 250px
+    background-color alpha($white-color, 80%)
+    height 100%

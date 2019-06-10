@@ -1,4 +1,5 @@
 export { default as Button } from './components/Button';
+export { default as IconButton } from './components/IconButton';
 export { default as FadeAndScale } from './components/Animations/FadeAndScale';
 export { default as FadeIn } from './components/Animations/FadeIn';
 export { default as WidthScale } from './components/Animations/WidthScale';
@@ -20,7 +21,4 @@ export { default as Select } from './components/Select';
 export { default as ToggleSwitch } from './components/ToggleSwitch';
 export { Tabs, Tab, DefaultTabBar } from './components/Tabs';
 export { List, ListItem } from './components/List';
-export { default as NavButton } from './components/NavButton';
 export { default as Layout } from './components/Layout/Layout';
-export { default as LayoutNav } from './components/Layout/LayoutNav';
-export { default as LayoutSidebar } from './components/Layout/LayoutSidebar';
