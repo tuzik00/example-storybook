@@ -36,10 +36,7 @@ const Layout = (props) => {
                     {renderSidebar}
                 </LayoutSidebar>
             ) : null}
-            <main className={cn(
-                'Layout__main',
-                isOpenSidebar && isMobile && 'Layout__main_blur'
-            )}>
+            <main className={cn('Layout__main')}>
                 {typeof renderNav === 'function' ? (
                     <LayoutNav
                         dark={dark}
