@@ -1,32 +1,68 @@
-.button
-  font-size 1rem
-  border 1px solid #eee
-  padding .5em 1.5em
+.Button
+  padding rem(10) rem(20)
+  display inline-block
   border-radius $default-border-radius
   cursor pointer
-  color $black-color
-  background $default-color
-  transition $duration background
+  transition $duration all ease
+  outline none
+  box-sizing border-box
+  border 1px solid
 
-.disabled
-  cursor auto
-  background #d1d1d1
+  &_bold
+    font-weight bold
 
-.block
-  width 100%
+  &_disabled
+    cursor auto
+    opacity .7
 
-//sizes
-$button-sizes = (small 0.8rem) (large 1.2rem) (big 1.4rem)
-for $size in $button-sizes
-  .{$size[0]}
-    font-size: $size[1]
+  &_block
+    text-align center
+    width 100%
 
-//colors
-$button-colors = (primary $primary-color) (success $success-color) (info $info-color) (warning $warning-color) (danger $danger-color)
-for $color in $button-colors
-  .{$color[0]}
-    background: $color[1]
-    color #fff
+  &_inactive
+    cursor default
 
-    &:hover
-      background saturate($color[1], 50%)
+  $headings-list = (small rem($h6-heading - 2px)) (normal rem($h6-heading)) (large rem($h4-heading)) (big rem($h3-heading))
+  for $size in $headings-list
+    &_size_{$size[0]}
+      font-size: $size[1]
+
+      svg
+        width $size[1]
+
+  $colors-list = (default $default-color) (primary $primary-color) (success $success-color) (info $info-color) (warning $warning-color) (danger $danger-color)
+  for $color in $colors-list
+    &_color_{$color[0]}
+      background-color $color[1]
+      border-color $color[1]
+      color #fff
+      if $color[0] == default
+        color alpha($black-color, .9)
+
+      &:hover
+        border-color saturate($color[1], 50%)
+        background-color saturate($color[1], 50%)
+
+    &_transparent_{$color[0]}
+      background-color transparent !important
+      border-color transparent !important
+      color $color[1]
+      if $color[0] == default
+        color alpha($black-color, .9)
+
+      &:hover
+        color saturate($color[1], 50%)
+        if $color[0] == default
+          color saturate($black-color, .9)
+
+    &_bordered_{$color[0]}
+      background-color transparent !important
+      color $color[1]
+      if $color[0] == default
+        color alpha($black-color, .9)
+
+      &:hover
+        color saturate($color[1], 50%)
+        border-color saturate($color[1], 50%)
+        if $color[0] == default
+          color saturate($black-color, .9)

@@ -1,47 +1,67 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
-import style from './Button.styl';
+
+import './Button.styl';
 
 
 const Button = (props) => {
-    const {small, large, big} = props;
-    const {primary, success, info, warning, danger } = props;
+    const {
+        size,
+        color,
+        children,
+        className,
+        disabled,
+        block,
+        onClick,
+        transparent,
+        bordered,
+        bold,
+        tagName,
+        ...otherProps
+    } = props;
 
-    const {children, className, disabled, block, ...otherProps} = props;
-
-    const classNames = cn(
-        style.button,
-        disabled && style.disabled,
-        block && style.block,
-
-        //sizes
-        small   && style.small,
-        large   && style.large,
-        big     && style.big,
-
-        //colors
-        primary && style.primary,
-        success && style.success,
-        info    && style.info,
-        warning && style.warning,
-        danger  && style.danger,
-        className
+    const classNames = cn(className, 'Button',
+        !!size && [`Button_size_${size}`],
+        !!color && [`Button_color_${color}`],
+        !onClick && 'Button_inactive',
+        disabled && 'Button_disabled',
+        block && 'Button_block',
+        transparent && [`Button_transparent_${color}`],
+        bordered && `Button_bordered_${color}`,
+        bold && 'Button_bold',
     );
 
+    const TagName = tagName || 'button';
+
     return (
-        <button
+        <TagName
             className={classNames}
+            onClick={onClick}
+            disabled={disabled}
             {...otherProps}
         >
             {children}
-        </button>
+        </TagName>
     );
 };
 
+Button.propTypes = {
+    size: PropTypes.oneOf(['small', 'normal', 'large', 'big']),
+    color: PropTypes.oneOf(['default', 'primary', 'success', 'info', 'warning', 'danger']),
+    transparent: PropTypes.bool,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    block: PropTypes.bool,
+    bordered: PropTypes.bool,
+    onClick: PropTypes.func,
+    tagName: PropTypes.string,
+};
 
 Button.defaultProps = {
-    disabled: false,
-    block: false
+    size: 'normal',
+    color: 'default',
 };
 
 

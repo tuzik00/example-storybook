@@ -5,98 +5,74 @@ import cn from 'classnames';
 import * as Icons from '../../assets/icons';
 
 import './IconButton.styl';
+import Button from '../Button';
 
 
 const IconButton = (props) => {
-    const {
-        className,
-        name,
-        icon,
-        primary,
-        success,
-        info,
-        warning,
-        danger,
-        gray,
-        transparent,
-        disabled,
-        onClick,
+     const {
         size,
-        position,
+        color,
         children,
+        className,
+        disabled,
+        block,
+        onClick,
+        transparent,
+        bordered,
+        tagName,
         bold,
+        icon,
+        position,
+        ...otherProps
     } = props;
 
-    const classNames = cn(className, 'IconButton', {
-        'IconButton_transparent': transparent,
-        'IconButton_disabled': disabled,
-        'IconButton_color_gray': gray,
-        'IconButton_color_primary': primary,
-        'IconButton_color_success': success,
-        'IconButton_color_info': info,
-        'IconButton_color_warning': warning,
-        'IconButton_color_danger': danger,
-        'IconButton_bold': bold,
-        [`IconButton_size_${size}`]: !size,
-        [`IconButton_position_${position}`]: !!position,
-    });
-
-    const Icon = icon || Icons[name];
-
-    const iconSize = {
-        small: '14px',
-        normal: '18px',
-        large: '24px',
-    };
+    const classNames = cn(className, 'IconButton',
+        !!position && [`IconButton_position_${position}`]
+    );
 
     return (
-        <button
-            onClick={onClick}
-            disabled={disabled}
+        <Button
             className={classNames}
+            size={size}
+            bold={bold}
+            color={color}
+            disabled={disabled}
+            block={block}
+            onClick={onClick}
+            transparent={transparent}
+            bordered={bordered}
+            tagName={tagName}
+            {...otherProps}
         >
             {children ? (
                 <span className={cn('IconButton__text')}>
                     {children}
                 </span>
             ) : null}
-
-            <Icon width={iconSize[size] || iconSize.small}/>
-        </button>
+            {icon}
+        </Button>
     );
 };
 
 IconButton.propTypes = {
-    disabled: PropTypes.bool,
-    name: PropTypes.string,
-    primary: PropTypes.bool,
-    success: PropTypes.bool,
-    info: PropTypes.bool,
-    warning: PropTypes.bool,
-    danger: PropTypes.bool,
-    gray: PropTypes.bool,
-    transparent: PropTypes.bool,
-    onClick: PropTypes.func,
-    className: PropTypes.string,
-    size: PropTypes.oneOf(['small', 'normal', 'large']),
+    size: PropTypes.oneOf(['small', 'normal', 'large', 'big']),
+    color: PropTypes.oneOf(['default', 'primary', 'success', 'info', 'warning', 'danger']),
     position: PropTypes.oneOf(['left', 'right']),
+    transparent: PropTypes.bool,
     children: PropTypes.node,
-    bold: PropTypes.bool,
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    block: PropTypes.bool,
+    bordered: PropTypes.bool,
+    onClick: PropTypes.func,
+    tagName: PropTypes.string,
     icon: PropTypes.node,
 };
 
 IconButton.defaultProps = {
-    disabled: false,
-    primary: false,
-    success: false,
-    info: false,
-    warning: false,
-    danger: false,
-    gray: false,
-    transparent: false,
-    onClick: () => {},
+    size: 'normal',
+    color: 'default',
     position: 'right',
-    size: 'normal'
 };
 
 

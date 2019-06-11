@@ -9,6 +9,8 @@ import {
     IconButton,
 } from '../../..';
 
+import { PushPin } from '../../../assets/icons';
+
 import './LayoutSidebar.styl';
 
 
@@ -142,11 +144,12 @@ class LayoutSidebar extends Component {
                             className={cn(
                                 'LayoutSidebar__toggler',
                                 isMobile && 'LayoutSidebar__toggler_mobile',
-                                isActive && 'LayoutSidebar__toggler_show'
+                                isActive && 'LayoutSidebar__toggler_show',
+                                isFixed && 'LayoutSidebar__toggler_fixed',
                             )}
-                            transparent={isFixed}
+                            transparent
                             onClick={() => this.setState({isFixed: !isFixed})}
-                            name={'PushPin'}
+                            icon={<PushPin/>}
                         />
                     </CSSTransition>
                     <div className={'LayoutSidebar__content'}>

@@ -1,6 +1,5 @@
-heading($font-size, $line-height, $font-weight=700, $color=$black-color){
+heading($font-size, $font-weight = 700, $color = $black-color) {
   font-size $font-size
-  line-height $line-height
   font-weight $font-weight
   color $color
 }
@@ -10,15 +9,15 @@ rem($value, $base = $font-size)
 
   $remValues = ()
   for $i in (0...$max)
-    push($remValues, _convert-to-rem( $value[$i], $base ))
+    push($remValues, _convert-to-rem($value[$i], $base))
 
   return $remValues
 
 _convert-to-rem($px, $base)
   if $is-ie && $is-ie--version <= 8
-    ($px)px
+    ($px) px
   else if (typeof($px) == 'unit')
     if ((unit($px) == '' || unit($px) == 'px') && ($px != 0))
-      return (round($px / $base, 3))rem
+      return (round($px / $base, 3)) rem
     else
       return 0
