@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { isMobile } from '../../../utils';
-
 import LayoutSidebar from '../LayoutSidebar';
 import LayoutNav from '../LayoutNav';
 
@@ -15,32 +13,42 @@ const Layout = (props) => {
         renderSidebar,
         renderNav,
         children,
-        isOpenSidebar,
+        defaultOpenSidebar,
         dark,
+        isMobile,
     } = props;
 
-    const isOpen = isMobile() && isOpenSidebar ? false : isOpenSidebar;
-    const [isSidebarOpen, toggleSidebar] = useState(isOpen);
+    const [isOpenSidebar, toggleSidebar] = useState(
+        isMobile && defaultOpenSidebar
+            ? false
+            : defaultOpenSidebar
+    );
 
     return (
         <div className={cn('Layout', dark && 'Layout_theme-dark')}>
             {typeof renderSidebar === 'function' ? (
                 <LayoutSidebar
                     dark={dark}
-                    isActive={isSidebarOpen}
+                    isActive={isOpenSidebar}
+                    isMobile={isMobile}
                     onClose={() => toggleSidebar(false)}
+                    onOpen={() => toggleSidebar(true)}
                 >
                     {renderSidebar}
                 </LayoutSidebar>
             ) : null}
-            <main className={'Layout__main'}>
+            <main className={cn(
+                'Layout__main',
+                isOpenSidebar && isMobile && 'Layout__main_blur'
+            )}>
                 {typeof renderNav === 'function' ? (
                     <LayoutNav
                         dark={dark}
-                        isSidebarActive={isSidebarOpen}
+                        isMobile={isMobile}
+                        isSidebarActive={isOpenSidebar}
                         onToggle={toggleSidebar}
                     >
-                        {renderNav(isSidebarOpen)}
+                        {renderNav(isOpenSidebar)}
                     </LayoutNav>
                 ) : null}
 
@@ -58,11 +66,13 @@ Layout.propTypes = {
     children: PropTypes.node,
     isOpenSidebar: PropTypes.bool,
     dark: PropTypes.bool,
+    isMobile: PropTypes.bool,
 };
 
 Layout.defaultProps = {
     isOpenSidebar: false,
     dark: false,
+    isMobile: false,
 };
 
 export default Layout;

@@ -13,12 +13,19 @@ const LayoutNav = (props) => {
         isSidebarActive,
         children,
         dark,
+        isMobile,
     } = props;
 
     return (
-        <nav className={cn('LayoutNav', dark && 'LayoutNav_theme-dark')}>
+        <nav className={cn(
+            'LayoutNav',
+            dark && 'LayoutNav_theme-dark'
+        )}>
             <LayoutToggleButton
-                className={'LayoutNav__toggle'}
+                className={cn(
+                    'LayoutNav__toggle',
+                    isMobile && 'LayoutNav__toggle_mobile'
+                )}
                 onClick={() => onToggle(!isSidebarActive)}
                 isActive={isSidebarActive}
             />
@@ -29,6 +36,7 @@ const LayoutNav = (props) => {
 
 LayoutNav.propTypes = {
     isSidebarActive: PropTypes.bool,
+    isMobile: PropTypes.bool,
     onToggle: PropTypes.func,
     dark: PropTypes.bool,
 };
@@ -37,6 +45,7 @@ LayoutNav.defaultProps = {
     isSidebarActive: false,
     onToggle: () => {},
     dark: false,
+    isMobile: false,
 };
 
 export default LayoutNav

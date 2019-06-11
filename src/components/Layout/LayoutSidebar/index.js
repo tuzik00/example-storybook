@@ -5,10 +5,6 @@ import cn from 'classnames';
 import {CSSTransition} from 'react-transition-group';
 
 import {
-    isMobile
-} from '../../../utils';
-
-import {
     Overlay,
     IconButton,
 } from '../../..';
@@ -21,14 +17,17 @@ class LayoutSidebar extends Component {
         isFixed: PropTypes.bool,
         isActive: PropTypes.bool,
         onClose: PropTypes.func,
+        onOpen: PropTypes.func,
         children: PropTypes.func,
-        logo: PropTypes.node,
         dark: PropTypes.bool,
+        isMobile: PropTypes.bool,
     };
 
     static defaultProps = {
         isFixed: false,
         isActive: false,
+        isMobile: false,
+        onOpen: () => {},
         onClose: () => {},
         dark: false,
     };
@@ -39,28 +38,24 @@ class LayoutSidebar extends Component {
         this.state = {
             isActive: props.isActive,
             isFixed: props.isActive,
-            isMobile: isMobile(),
-            isMount: !isMobile(),
+            isMount: !props.isMobile,
         };
 
         this.layoutSidebarRef = React.createRef();
 
         this.handleToggleLayoutSidebar = _.debounce(this.handleToggleLayoutSidebar, 100);
-        this.handleWindowSizeChange = _.debounce(this.handleWindowSizeChange, 100);
     }
 
     componentDidMount() {
         this.layoutSidebarRef.current.addEventListener('mouseenter', this.handleToggleLayoutSidebar);
         this.layoutSidebarRef.current.addEventListener('mouseleave', this.handleToggleLayoutSidebar);
 
-        window.addEventListener('resize', this.handleWindowSizeChange);
+        setTimeout(() => this.setState({ isMount: true }), 0);
     }
 
     componentWillUnmount() {
         this.layoutSidebarRef.current.removeEventListener('mouseenter', this.handleToggleLayoutSidebar);
         this.layoutSidebarRef.current.removeEventListener('mouseleave', this.handleToggleLayoutSidebar);
-
-        window.removeEventListener('resize', this.handleWindowSizeChange);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -71,15 +66,21 @@ class LayoutSidebar extends Component {
             })
         }
 
-        if (this.state.isMobile && this.state.isFixed) {
+        if (this.props.isMobile && this.state.isFixed) {
             this.setState({
                 isFixed: false,
             })
         }
+
+        if (this.props.isActive){
+            this.props.onOpen();
+        } else {
+            this.props.onClose();
+        }
     }
 
     handleToggleLayoutSidebar = (e) => {
-        if (this.state.isFixed) {
+        if (this.state.isFixed || this.props.isMobile) {
             return;
         }
 
@@ -87,17 +88,7 @@ class LayoutSidebar extends Component {
 
         this.setState({
             isActive,
-        }, () => {
-            if (!isActive){
-                this.props.onClose();
-            }
         })
-    };
-
-    handleWindowSizeChange = () => {
-        this.setState({
-            isMobile: isMobile(),
-        });
     };
 
     handleClose = () => {
@@ -110,12 +101,12 @@ class LayoutSidebar extends Component {
         const {
             children,
             dark,
+            isMobile,
         } = this.props;
 
         const {
             isActive,
             isFixed,
-            isMobile,
             isMount,
         } = this.state;
 
@@ -132,6 +123,7 @@ class LayoutSidebar extends Component {
                     style={{'display': !isMount ? 'none' : 'block'}}
                     className={cn(
                         'LayoutSidebar',
+                        isMobile && 'LayoutSidebar_mobile',
                         isActive && 'LayoutSidebar_open',
                         dark && `LayoutSidebar_theme-dark`
                     )}
@@ -147,7 +139,11 @@ class LayoutSidebar extends Component {
                         }}
                     >
                         <IconButton
-                            className={cn('LayoutSidebar__toggler', isActive && 'LayoutSidebar__toggler_show')}
+                            className={cn(
+                                'LayoutSidebar__toggler',
+                                isMobile && 'LayoutSidebar__toggler_mobile',
+                                isActive && 'LayoutSidebar__toggler_show'
+                            )}
                             transparent={isFixed}
                             onClick={() => this.setState({isFixed: !isFixed})}
                             name={'PushPin'}

@@ -32,15 +32,15 @@ storiesOf('Layout', module)
     .add('Layout', () => (
         <Layout
             dark={boolean('dark', false)}
-            isOpenSidebar={boolean('isOpenSidebar', false)}
+            isMobile={boolean('isMobile', false)}
+            defaultOpenSidebar={boolean('defaultOpenSidebar', false)}
             renderSidebar={({ isActive }) => (
                 <div>
                     sidebar
                 </div>
             )}
             renderNav={() => (
-                <div>nav</div>
-            )}
+                <div>nav</div>)}
         >
             <div>content</div>
         </Layout>

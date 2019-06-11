@@ -8,7 +8,8 @@
   background-image url("../../../assets/images/sidenav.jpg")
   background-size cover
   box-sizing border-box
-  +mobile()
+
+  &_mobile
     position absolute
     top 0
     left 0
@@ -18,7 +19,7 @@
     z-index 1
     transform translateX(-100%)
 
-    &_open
+    &^[0]_open
       transform translateX(0%)
       box-shadow 0 0 3px #e8e8e8
 
@@ -30,7 +31,7 @@
     background-color alpha($black-color, 95%)
 
     &^[0]_open
-      +mobile()
+      &^[0]_mobile
         box-shadow 0 0 3px alpha($black-color, 80%) !important
 
     & ^[0]__content
@@ -43,7 +44,8 @@
     padding rem(10)
     transition 200ms color ease-out
     color rgba(0, 0, 0, 0)
-    +mobile()
+
+    &_mobile
       display none !important
 
     &_show
