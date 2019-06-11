@@ -31,8 +31,7 @@ const Layout = (props) => {
                     dark={dark}
                     isActive={isOpenSidebar}
                     isMobile={isMobile}
-                    onClose={() => toggleSidebar(false)}
-                    onOpen={() => toggleSidebar(true)}
+                    onToggle={(isOpen) => toggleSidebar(isOpen)}
                 >
                     {renderSidebar}
                 </LayoutSidebar>

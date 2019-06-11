@@ -18,8 +18,7 @@ class LayoutSidebar extends Component {
     static propTypes = {
         isFixed: PropTypes.bool,
         isActive: PropTypes.bool,
-        onClose: PropTypes.func,
-        onOpen: PropTypes.func,
+        onToggle: PropTypes.func,
         children: PropTypes.func,
         dark: PropTypes.bool,
         isMobile: PropTypes.bool,
@@ -29,8 +28,7 @@ class LayoutSidebar extends Component {
         isFixed: false,
         isActive: false,
         isMobile: false,
-        onOpen: () => {},
-        onClose: () => {},
+        onToggle: () => {},
         dark: false,
     };
 
@@ -73,12 +71,6 @@ class LayoutSidebar extends Component {
                 isFixed: false,
             })
         }
-
-        if (this.props.isActive){
-            this.props.onOpen();
-        } else {
-            this.props.onClose();
-        }
     }
 
     handleToggleLayoutSidebar = (e) => {
@@ -90,13 +82,17 @@ class LayoutSidebar extends Component {
 
         this.setState({
             isActive,
-        })
+        }, () => {
+            this.props.onToggle(isActive)
+        });
     };
 
     handleClose = () => {
         this.setState({
             isActive: false,
-        }, this.props.onClose);
+        }, () => {
+            this.props.onToggle(false);
+        });
     };
 
     render() {
@@ -143,7 +139,7 @@ class LayoutSidebar extends Component {
                         <IconButton
                             className={cn(
                                 'LayoutSidebar__toggler',
-                                isMobile && 'LayoutSidebar__toggler_mobile',
+                                isMobile && 'LayoutSidebar__toggler_hide',
                                 isActive && 'LayoutSidebar__toggler_show',
                                 isFixed && 'LayoutSidebar__toggler_fixed',
                             )}
