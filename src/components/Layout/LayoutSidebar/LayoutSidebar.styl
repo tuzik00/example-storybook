@@ -37,30 +37,6 @@
     & ^[0]__content
       background-color alpha($black-color, 80%)
 
-  &__toggler
-    position absolute
-    top 0
-    right 0
-    padding rem(10)
-    z-index 999
-    transition 200ms color ease-out
-    color rgba(0, 0, 0, 0)
-
-    &_hide
-      display none !important
-
-    &_show
-      color alpha($black-color, .8)
-
-      &:hover
-        color alpha($black-color, .8)
-
-    &_fixed
-      color alpha($black-color, .5)
-
-      &:hover
-        color alpha($black-color, .5)
-
   &__content
     width 250px
     background-color alpha($white-color, .9)

@@ -42,21 +42,12 @@ class LayoutSidebar extends Component {
         };
 
         this.layoutSidebarRef = React.createRef();
-
-        this.handleToggleLayoutSidebar = _.debounce(this.handleToggleLayoutSidebar, 100);
     }
 
     componentDidMount() {
-        this.layoutSidebarRef.current.addEventListener('mouseenter', this.handleToggleLayoutSidebar);
-        this.layoutSidebarRef.current.addEventListener('mouseleave', this.handleToggleLayoutSidebar);
-
         setTimeout(() => this.setState({ isMount: true }), 0);
     }
 
-    componentWillUnmount() {
-        this.layoutSidebarRef.current.removeEventListener('mouseenter', this.handleToggleLayoutSidebar);
-        this.layoutSidebarRef.current.removeEventListener('mouseleave', this.handleToggleLayoutSidebar);
-    }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.isActive !== prevProps.isActive) {
@@ -72,20 +63,6 @@ class LayoutSidebar extends Component {
             })
         }
     }
-
-    handleToggleLayoutSidebar = (e) => {
-        if (this.state.isFixed || this.props.isMobile) {
-            return;
-        }
-
-        const isActive = e.type === 'mouseenter';
-
-        this.setState({
-            isActive,
-        }, () => {
-            this.props.onToggle(isActive)
-        });
-    };
 
     handleClose = () => {
         this.setState({
@@ -127,27 +104,6 @@ class LayoutSidebar extends Component {
                     )}
                     ref={this.layoutSidebarRef}
                 >
-                    <CSSTransition
-                        in={isActive}
-                        timeout={5000}
-                        unmountOnExit
-                        classNames={{
-                            enterActive: 'LayoutSidebar__toggler_show',
-                            enterDone: 'LayoutSidebar__toggler_show',
-                        }}
-                    >
-                        <IconButton
-                            className={cn(
-                                'LayoutSidebar__toggler',
-                                isMobile && 'LayoutSidebar__toggler_hide',
-                                isActive && 'LayoutSidebar__toggler_show',
-                                isFixed && 'LayoutSidebar__toggler_fixed',
-                            )}
-                            transparent
-                            onClick={() => this.setState({isFixed: !isFixed})}
-                            icon={<PushPin/>}
-                        />
-                    </CSSTransition>
                     <div className={'LayoutSidebar__content'}>
                         {children({ isActive, isMobile, isFixed })}
                     </div>

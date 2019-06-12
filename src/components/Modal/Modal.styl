@@ -1,10 +1,48 @@
-:local
-  .modal
-    min-width 200px
-    background $white-color
-    z-index 9999
-    position absolute
-    top 15%
-    left 50%
-    box-shadow 0 2px 2px rgba(0, 0, 0, .3)
-    transform translate(-50%, 0)
+$modal-max-width = 500px
+$modal-max-height = 200px
+
+.Modal
+  position absolute
+  max-height 100%
+  overflow auto
+  background $white-color
+  z-index 9999
+  box-shadow 0 2px 2px rgba(0, 0, 0, .3)
+  +mobile()
+    width 100%
+    height 100%
+    max-height 100% !important
+    top 0
+    left 0
+    transform translate(0, 0)
+
+  &_position
+    &_center
+      top 15%
+      left 50%
+      transform translate(-50%, -15%)
+      width $modal-max-width
+
+    &_bottom
+      bottom 0
+      left 0
+      width 100%
+      max-height $modal-max-height
+
+    &_top
+      top 0
+      left 0
+      width 100%
+      max-height $modal-max-height
+
+    &_left
+      top 0
+      left 0
+      height 100%
+      max-width $modal-max-width
+
+    &_right
+      top 0
+      right 0
+      height 100%
+      max-width $modal-max-width

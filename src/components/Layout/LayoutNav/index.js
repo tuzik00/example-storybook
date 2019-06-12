@@ -22,10 +22,7 @@ const LayoutNav = (props) => {
             dark && 'LayoutNav_theme-dark'
         )}>
             <LayoutToggleButton
-                className={cn(
-                    'LayoutNav__toggle',
-                    isMobile && 'LayoutNav__toggle_mobile'
-                )}
+                className={cn('LayoutNav__toggle')}
                 onClick={() => onToggle(!isSidebarActive)}
                 isActive={isSidebarActive}
             />

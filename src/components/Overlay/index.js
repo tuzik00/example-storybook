@@ -6,15 +6,30 @@ import './Overlay.styl';
 
 
 const Overlay = (props) => {
-    const {isShow, onEnter, onExited, onClick} = props;
+    const {
+        isShow,
+        onEnter,
+        onExited,
+        onClick,
+    } = props;
+
+    const handleEnter = () => {
+        document.body.classList.add('overflow');
+        onEnter();
+    };
+
+    const handleExited = () => {
+        document.body.classList.remove('overflow');
+        onExited();
+    };
 
     return (
         <CSSTransition
             in={isShow}
             timeout={200}
             unmountOnExit
-            onEnter={onEnter}
-            onExited={onExited}
+            onEnter={handleEnter}
+            onExited={handleExited}
             classNames={{
                 enterActive: 'Overlay_enter',
                 enterDone: 'Overlay_enter',

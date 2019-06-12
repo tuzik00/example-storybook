@@ -1,18 +1,36 @@
 import React, {PureComponent} from 'react'
+import PropTypes from 'prop-types';
 import cn from 'classnames';
-import OutsideClickHandler from 'react-outside-click-handler';
 
 import Portal from '../Portal';
 import Overlay from '../Overlay';
 import FadeAndScale from '../Animations/FadeAndScale';
 
-import style from './Modal.styl';
+import './Modal.styl';
 
 
 class Modal extends PureComponent {
+    static propTypes = {
+        isOpen: PropTypes.bool,
+        onClose: PropTypes.func,
+        children: PropTypes.oneOfType([
+            PropTypes.node,
+            PropTypes.func,
+        ]),
+        position: PropTypes.oneOf([
+            'center',
+            'left',
+            'right',
+            'top',
+            'bottom',
+        ]),
+        isOverlay: PropTypes.bool,
+    };
+
     static defaultProps = {
-        open: false,
-        maxWidth: 500,
+        isOpen: false,
+        isOverlay: true,
+        position: 'center',
         onClose: () => {}
     };
 
@@ -20,14 +38,20 @@ class Modal extends PureComponent {
         super(props);
 
         this.state = {
-            isOpen: this.props.open
+            isOpen: false,
         };
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (this.state.isOpen !== nextProps.open) {
+    componentDidMount() {
+        this.setState({
+            isOpen: this.props.isOpen,
+        })
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.isOpen !== prevProps.isOpen) {
             this.setState({
-                isOpen: nextProps.open
+                isOpen: this.props.isOpen
             })
         }
     }
@@ -35,29 +59,46 @@ class Modal extends PureComponent {
     handleOutsideClick = () => {
         this.setState({
             isOpen: false
-        });
+        }, this.props.onClose);
     };
 
     render() {
-        const {isOpen} = this.state;
-        const {children, className, maxWidth, onClose} = this.props;
+        const {
+            isOpen,
+        } = this.state;
+
+        const {
+            children,
+            className,
+            onClose,
+            position,
+            isOverlay,
+        } = this.props;
+
+        const child = typeof children === 'function'
+            ? children(this.handleOutsideClick)
+            : children;
 
         return (
             <Portal selector="body">
-                <OutsideClickHandler onOutsideClick={this.handleOutsideClick}>
-                    <FadeAndScale
-                        in={isOpen}
-                        onExit={onClose}
-                    >
-                        <div
-                            style={{maxWidth}}
-                            className={cn(style.modal, className)}
-                        >
-                            {children}
-                        </div>
-                    </FadeAndScale>
-                </OutsideClickHandler>
-                <Overlay show={isOpen}/>
+                <FadeAndScale
+                    in={isOpen}
+                    onExit={onClose}
+                >
+                    <div className={cn(className,
+                        'Modal',
+                        !!position && `Modal_position_${position}`
+                    )}>
+                        {child}
+                    </div>
+                </FadeAndScale>
+
+                {isOverlay ? (
+                    <Overlay
+                        onClick={this.handleOutsideClick}
+                        isShow={isOpen}
+                    />
+                ) : null}
             </Portal>
         );
     }
