@@ -44,7 +44,7 @@ const Layout = (props) => {
                         isSidebarActive={isOpenSidebar}
                         onToggle={toggleSidebar}
                     >
-                        {renderNav(isOpenSidebar)}
+                        {renderNav({ isOpenSidebar, isMobile })}
                     </LayoutNav>
                 ) : null}
 

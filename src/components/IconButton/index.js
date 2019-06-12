@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import * as Icons from '../../assets/icons';
+import * as Icons from 'assets/icons';
 
 import './IconButton.styl';
 import Button from '../Button';
