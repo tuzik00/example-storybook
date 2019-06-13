@@ -1,15 +1,8 @@
 import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import cn from 'classnames';
-import {CSSTransition} from 'react-transition-group';
 
-import {
-    Overlay,
-    IconButton,
-} from '../../..';
-
-import { PushPin } from '../../../assets/icons';
+import { Overlay } from '../../..';
 
 import './LayoutSidebar.styl';
 

@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types';
 import cn from 'classnames';
+import {CSSTransition} from 'react-transition-group';
 
 import Portal from '../Portal';
 import Overlay from '../Overlay';
@@ -31,7 +32,8 @@ class Modal extends PureComponent {
         isOpen: false,
         isOverlay: true,
         position: 'center',
-        onClose: () => {}
+        onClose: () => {
+        }
     };
 
     constructor(props) {
@@ -75,23 +77,40 @@ class Modal extends PureComponent {
             isOverlay,
         } = this.props;
 
-        const child = typeof children === 'function'
-            ? children(this.handleOutsideClick)
-            : children;
+        const content = (
+            <div className={cn(className,
+                'Modal',
+                !!position && `Modal_position_${position}`
+            )}>
+                {typeof children === 'function'
+                    ? children(this.handleOutsideClick)
+                    : children}
+            </div>
+        );
 
         return (
             <Portal selector="body">
-                <FadeAndScale
-                    in={isOpen}
-                    onExit={onClose}
-                >
-                    <div className={cn(className,
-                        'Modal',
-                        !!position && `Modal_position_${position}`
-                    )}>
-                        {child}
-                    </div>
-                </FadeAndScale>
+                {position === 'center' ? (
+                    <FadeAndScale
+                        in={isOpen}
+                        onExit={onClose}
+                    >
+                        {content}
+                    </FadeAndScale>
+                ) : (
+                    <CSSTransition
+                        in={isOpen}
+                        timeout={200}
+                        onExit={onClose}
+                        unmountOnExit
+                        classNames={{
+                            enterActive: 'Modal_enter',
+                            enterDone: 'Modal_enter',
+                        }}
+                    >
+                        {content}
+                    </CSSTransition>
+                )}
 
                 {isOverlay ? (
                     <Overlay

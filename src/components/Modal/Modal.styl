@@ -18,9 +18,9 @@ $modal-max-height = 200px
 
   &_position
     &_center
-      top 15%
+      top 50%
       left 50%
-      transform translate(-50%, -15%)
+      transform translate(-50%, -50%)
       width $modal-max-width
 
     &_bottom
@@ -28,21 +28,45 @@ $modal-max-height = 200px
       left 0
       width 100%
       max-height $modal-max-height
+      transform translateY(102%)
+      transition transform 200ms ease
+      box-shadow 0 0 2px rgba(0, 0, 0, .3)
+
+      &^[0]_enter
+        transform translateY(0)
 
     &_top
       top 0
       left 0
       width 100%
       max-height $modal-max-height
+      transform translateY(-102%)
+      transition transform 200ms ease
+      box-shadow 0 0 2px rgba(0, 0, 0, .3)
+
+      &^[0]_enter
+        transform translateY(0)
 
     &_left
       top 0
       left 0
       height 100%
       max-width $modal-max-width
+      transform translateX(-102%)
+      transition transform 200ms ease
+      box-shadow 0 0 2px rgba(0, 0, 0, .3)
+
+      &^[0]_enter
+        transform translateX(0)
 
     &_right
       top 0
       right 0
       height 100%
       max-width $modal-max-width
+      transform translateX(102%)
+      transition transform 200ms ease
+      box-shadow 0 0 2px rgba(0, 0, 0, .3)
+
+      &^[0]_enter
+        transform translateX(0)

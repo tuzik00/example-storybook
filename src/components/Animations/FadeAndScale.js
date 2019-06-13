@@ -16,7 +16,7 @@ class FadeAndScale extends Component {
         timeLine
             .fromTo(
                 node,
-                0.3,
+                0.2,
                 {scale: 0.7, opacity: 0},
                 {scale: 1, opacity: 1, clearProps: 'transform, opacity'},
                 0
@@ -31,7 +31,7 @@ class FadeAndScale extends Component {
         timeLine
             .fromTo(
                 node,
-                0.3,
+                0.2,
                 {scale: 1, opacity: 1},
                 {scale: 0.7, opacity: 0},
                 0
@@ -45,7 +45,7 @@ class FadeAndScale extends Component {
         return (
             <Transition
                 in={inProp}
-                timeout={300}
+                timeout={200}
                 onEnter={this.onEnter}
                 onExit={this.onExit}
                 unmountOnExit
