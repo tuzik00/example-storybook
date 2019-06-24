@@ -5,13 +5,17 @@
   margin 0 rem(7)
 
   &:after, &:before, & div
-    background-color #6b6a6a
+    background-color $gray-color
     border-radius 3px
     content ''
     display block
     height 3px
     margin 7px 0
-    transition all .2s ease-in-out
+    transition transform .2s ease-in-out
+
+  &_theme-dark
+    &:after, &:before, & div
+      background-color lighten($black-color, 10%)
 
   &_active
     &:before

@@ -10,19 +10,26 @@ const LayoutToggleButton = (props) => {
         isActive,
         onClick,
         className,
+        dark,
     } = props;
 
     return (
         <div
-            className={cn(className, 'LayoutToggleButton', isActive && 'LayoutToggleButton_active')}
+            className={cn(
+                className,
+                'LayoutToggleButton',
+                isActive && 'LayoutToggleButton_active',
+                dark && 'LayoutToggleButton_theme-dark',
+            )}
             onClick={onClick}
         >
-            <div />
+            <div/>
         </div>
     );
 };
 
 LayoutToggleButton.propTypes = {
+    dark: PropTypes.bool,
     isActive: PropTypes.bool,
     onClick: PropTypes.func,
     className: PropTypes.string,
@@ -30,7 +37,8 @@ LayoutToggleButton.propTypes = {
 
 
 LayoutToggleButton.defaultProps = {
-    onClick: () => {},
+    onClick: () => {
+    },
 };
 
 

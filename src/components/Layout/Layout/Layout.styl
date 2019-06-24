@@ -5,11 +5,11 @@
   position relative
 
   &_theme-dark
-    color alpha($white-color, 90%)
-    background-color alpha($black-color, 95%)
+    color $gray-color
+    background-color lighten($black-color, 10%)
 
     & ^[0]__content
-      background-color alpha($black-color, 95%)
+      background-color lighten($black-color, 5%)
 
   &__main
     display flex

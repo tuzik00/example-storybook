@@ -36,6 +36,7 @@ const Layout = (props) => {
                     {renderSidebar}
                 </LayoutSidebar>
             ) : null}
+
             <main className={cn('Layout__main')}>
                 {typeof renderNav === 'function' ? (
                     <LayoutNav

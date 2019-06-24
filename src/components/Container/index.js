@@ -1,14 +1,14 @@
 import React from 'react';
 import cn from 'classnames';
 
-import style from './Container.styl';
+import './Container.styl';
 
 
 const Container = (props) => {
     const { children, className } = props;
 
     return (
-        <div className={cn(style.container, className)}>
+        <div className={cn(className, 'Container')}>
             {children}
         </div>
     );

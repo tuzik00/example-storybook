@@ -22,6 +22,7 @@ const LayoutNav = (props) => {
             dark && 'LayoutNav_theme-dark'
         )}>
             <LayoutToggleButton
+                dark={dark}
                 className={cn('LayoutNav__toggle')}
                 onClick={() => onToggle(!isSidebarActive)}
                 isActive={isSidebarActive}

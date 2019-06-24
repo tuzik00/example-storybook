@@ -14,13 +14,14 @@ const List = (props) => {
     );
 };
 
+List.propTypes = {};
 
 List.defaultProps = {
     dotted: false
 };
 
 
-const ListItem = (props) => {
+List.Item = (props) => {
     const { classNames, children } = props;
 
     return (
@@ -30,4 +31,9 @@ const ListItem = (props) => {
     );
 };
 
-export { List, ListItem };
+List.Item.propTypes = {
+
+};
+
+
+export default List;
