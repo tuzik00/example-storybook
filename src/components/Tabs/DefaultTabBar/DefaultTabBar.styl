@@ -1,21 +1,20 @@
-:local
-  .tab_bar
-    display flex
-    flex-wrap wrap
-    position relative
-    margin-bottom 1rem
+.DefaultTabBar
+  display flex
+  flex-wrap wrap
+  position relative
+  margin-bottom rem(15)
 
-  .tab_bar_item
-    padding .5rem 1rem
+  &__item
+    padding rem(7) rem(15)
     cursor pointer
     box-sizing border-box
 
-  .active
-    color $primary-color
-    transition color 250ms ease-in-out
-    cursor auto
+    &_active
+      color $primary-color
+      transition color 250ms ease-in-out
+      cursor auto
 
-  .line
+  &__line
     position absolute
     bottom -1px
     left 0

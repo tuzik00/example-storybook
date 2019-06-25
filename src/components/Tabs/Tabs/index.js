@@ -1,13 +1,19 @@
-// @flow
-
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import DefaultTabBar from './DefaultTabBar';
-import style from './Tabs.styl';
+import DefaultTabBar from '../DefaultTabBar';
+
+import './Tabs.styl';
 
 
 class Tabs extends Component {
+    static propTypes = {
+        initialTab: PropTypes.string,
+        onChangeTab: PropTypes.func,
+        renderTabBar: PropTypes.func,
+    };
+
     static defaultProps = {
         initialTab: 0,
         onChangeTab: () => {}
@@ -17,7 +23,7 @@ class Tabs extends Component {
         super(props);
 
         this.state = {
-            activeIndex: this.props.initialTab
+            activeIndex: props.initialTab,
         };
     }
 
@@ -33,7 +39,7 @@ class Tabs extends Component {
     };
 
     renderTabBar(tabBarOptions) {
-        if (this.props.renderTabBar === false){
+        if (this.props.renderTabBar === false) {
             return null;
         }
 
@@ -44,9 +50,9 @@ class Tabs extends Component {
         return <DefaultTabBar {...tabBarOptions} />
     }
 
-    composeTabs(activeTab){
+    composeTabs(activeTab) {
         return this.getChildren().map((child, index) => {
-            if (activeTab === index){
+            if (activeTab === index) {
                 this.props.onChangeTab(index);
 
                 return React.cloneElement(child, {
@@ -59,8 +65,8 @@ class Tabs extends Component {
     }
 
     render() {
-        const { activeIndex } = this.state;
-        const { className } = this.props;
+        const {activeIndex} = this.state;
+        const {className} = this.props;
 
         const tabBarOptions = {
             activeIndex,
@@ -69,11 +75,11 @@ class Tabs extends Component {
         };
 
         return (
-            <div className={cn(style.tabs, className)}>
-                <div className={style.tab__bar}>
+            <div className={cn('Tabs', className)}>
+                <div className={'Tabs__bar'}>
                     {this.renderTabBar(tabBarOptions)}
                 </div>
-                <div className={style.tab__content}>
+                <div className={'Tabs__content'}>
                     {this.composeTabs(activeIndex)}
                 </div>
             </div>

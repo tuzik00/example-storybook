@@ -10,24 +10,37 @@ import {
 
 const LayoutContent = (props) => {
     const {
-        sidebar,
+        rightBar,
+        leftBar,
         children,
     } = props;
 
     return (
-        <Row>
-            <Col md={9}>
-                {children}
-            </Col>
-            <Col md={3}>
-                {sidebar}
-            </Col>
-        </Row>
+        <Grid fluid>
+            <Row>
+                {leftBar ? (
+                    <Col md={3}>
+                        {leftBar}
+                    </Col>
+                ) : null}
+
+                <Col md={leftBar ? 6 : 9}>
+                    {children}
+                </Col>
+
+                {rightBar ? (
+                    <Col md={3}>
+                        {rightBar}
+                    </Col>
+                ) : null}
+            </Row>
+        </Grid>
     )
 };
 
 LayoutContent.propTypes = {
-    sidebar: PropTypes.node,
+    rightBar: PropTypes.node,
+    leftBar: PropTypes.node,
     children: PropTypes.node,
 };
 

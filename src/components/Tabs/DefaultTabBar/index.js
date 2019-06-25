@@ -1,15 +1,22 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import style from './DefaultTabBar.styl';
+import './DefaultTabBar.styl';
 
 
 class DefaultTabBar extends PureComponent {
+    static propTypes = {
+        activeIndex: PropTypes.number,
+        headings: PropTypes.node,
+        goToTab: PropTypes.func,
+    };
+
     constructor(props) {
         super(props);
 
         this.state = {
-            activeIndex: this.props.activeIndex,
+            activeIndex: props.activeIndex,
             lineLeft: 0,
             lineWidth: 0,
             opacity: 0
@@ -59,12 +66,15 @@ class DefaultTabBar extends PureComponent {
     };
 
     renderHeading() {
-        const {headings, activeIndex} = this.props;
+        const {
+            headings,
+            activeIndex,
+        } = this.props;
 
         return headings.map((heading, index) => {
             const classNames = cn(
-                style.tab_bar_item,
-                index === activeIndex && style.active
+                'DefaultTabBar__item',
+                index === activeIndex && 'DefaultTabBar__item_active'
             );
 
             return (
@@ -88,10 +98,10 @@ class DefaultTabBar extends PureComponent {
         };
 
         return (
-            <div className={style.tab_bar}>
+            <div className={'DefaultTabBar'}>
                 <div
                     style={lineStyle}
-                    className={style.line}
+                    className={'DefaultTabBar__line'}
                 />
                 {this.renderHeading()}
             </div>

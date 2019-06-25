@@ -1,3 +1,4 @@
-export { default as Tabs } from './Tabs';
-export { default as Tab } from './Tab';
-export { default as DefaultTabBar } from './DefaultTabBar';
+export DefaultTabBar from './DefaultTabBar';
+export ButtonsTabBar from './ButtonsTabBar';
+export Tabs from './Tabs';
+export Tab from './Tab';

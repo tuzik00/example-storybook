@@ -23,4 +23,4 @@ export List from './components/List';
 export Layout from './components/Layout';
 export LayoutContent from './components/Layout/LayoutContent';
 export { Grid, Row, Col } from './components/Grid';
-export { Tabs, Tab, DefaultTabBar } from './components/Tabs';
+export * from './components/Tabs';
