@@ -32,8 +32,7 @@ class Modal extends PureComponent {
         isOpen: false,
         isOverlay: true,
         position: 'center',
-        onClose: () => {
-        }
+        onClose: () => {}
     };
 
     constructor(props) {
@@ -78,13 +77,16 @@ class Modal extends PureComponent {
         } = this.props;
 
         const content = (
-            <div className={cn(className,
-                'Modal',
-                !!position && `Modal_position_${position}`
-            )}>
+            <div
+                className={cn(className,
+                    'Modal',
+                    !!position && `Modal_position_${position}`
+                )}
+            >
                 {typeof children === 'function'
                     ? children(this.handleOutsideClick)
-                    : children}
+                    : children
+                }
             </div>
         );
 

@@ -1,14 +1,17 @@
 import React from 'react';
 import cn from 'classnames';
 
-import style from './Content.styl';
+import './Content.styl';
 
 
 const Content = (props) => {
-    const { classNames, children } = props;
+    const {
+        classNames,
+        children,
+    } = props;
 
     return (
-        <p className={cn(style.content, classNames)}>
+        <p className={cn(classNames, 'Content')}>
             {children}
         </p>
     );

@@ -11,6 +11,7 @@ export Card from './components/Card';
 export Checkbox from './components/Checkbox';
 export Container from './components/Container';
 export Content from './components/Content';
+export Heading from './components/Heading';
 export Column from './components/Grid/Column';
 export Row from './components/Grid/Row';
 export Input from './components/Input';

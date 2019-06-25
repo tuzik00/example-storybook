@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import style from './HeadingInfoDecorator.styl';
+import './HeadingInfoDecorator.styl';
 
 
 class HeadingItem extends Component {
@@ -51,7 +51,7 @@ class HeadingItem extends Component {
                 <div ref={this.getDOMNode}>
                     {children}
                 </div>
-                <ul className={style.list}>
+                <ul className={'HeadingInfoDecorator'}>
                     <li>
                         fontSize: {fontSize}
                     </li>

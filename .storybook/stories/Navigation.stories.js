@@ -2,12 +2,9 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 
-import SidebarWithContentDecorator from '../storiesDecorators/SidebarWithContentDecorator';
-
 import {
     Tabs,
     Tab,
-    Sidebar,
 } from '../../src';
 
 
@@ -27,5 +24,4 @@ storiesOf('Элементы навигации', module)
                 Tab 3
             </Tab>
         </Tabs>
-    ))
-    .add('Sidebar', () => <SidebarWithContentDecorator/>);
+    ));
