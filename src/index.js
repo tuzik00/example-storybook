@@ -1,6 +1,7 @@
 export FadeAndScale from './components/Animations/FadeAndScale';
 export FadeIn from './components/Animations/FadeIn';
 export WidthScale from './components/Animations/WidthScale';
+export SlideTop from './components/Animations/SlideTop';
 export Headin from './components/Heading';
 export Img from './components/Img';
 export Portal from './components/Portal';
@@ -12,8 +13,6 @@ export Checkbox from './components/Checkbox';
 export Container from './components/Container';
 export Content from './components/Content';
 export Heading from './components/Heading';
-export Column from './components/Grid/Column';
-export Row from './components/Grid/Row';
 export Input from './components/Input';
 export Label from './components/Label';
 export Overlay from './components/Overlay';
@@ -22,5 +21,6 @@ export Select from './components/Select';
 export ToggleSwitch from './components/ToggleSwitch';
 export List from './components/List';
 export Layout from './components/Layout';
-
+export LayoutContent from './components/Layout/LayoutContent';
+export { Grid, Row, Col } from './components/Grid';
 export { Tabs, Tab, DefaultTabBar } from './components/Tabs';

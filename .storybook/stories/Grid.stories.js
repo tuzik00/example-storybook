@@ -1,36 +1,46 @@
 import React from 'react';
+import _ from 'lodash';
 import {storiesOf} from '@storybook/react';
-
-import GridItemDecorator from '../storiesDecorators/GridItemDecorator';
+import {boolean, number, select, array} from '@storybook/addon-knobs';
 
 import {
     Row,
-    Column,
+    Col,
+    Grid,
+    Position,
 } from '../../src';
 
 
 storiesOf('Сетка', module)
     .add('Пример', () => {
-        const grid = [
-            [1, 2, 3, 4, 5, 6],
-            [1, 2, 3],
-            [1, 2],
-            [1]
-        ];
+        const grid = array('grid size', [3, 3]);
 
         return (
-            <div>
-                {grid.map((row) => (
-                    <Row>
-                        {row.map((column) => (
-                            <Column flex={column}>
-                                <GridItemDecorator>
-                                    Column-{column}
-                                </GridItemDecorator>
-                            </Column>
+            <Grid fluid={boolean('Grid fluid', true)}>
+                {_.range(grid[0]).map((row) => (
+                    <Row
+                         start={select('Row start', ['', 'xs', 'md', 'lg'], '')}
+                         center={select('Row  center', ['', 'xs', 'md', 'lg'], '')}
+                         end={select('Row end', ['', 'xs', 'md', 'lg'], '')}
+                         around={select('Row around', ['', 'xs', 'md', 'lg'], '')}
+                         between={select('Row between', ['', 'xs', 'md', 'lg'], '')}
+                    >
+                        {_.range(grid[1]).map((column) => (
+                            <Col
+                                xs={number('Col xs', 6)}
+                                md={number('Col md', 4)}
+                                lg={number('Col lg', 3)}
+                                xsOffset={number('Col xsOffset', 0)}
+                                mdOffset={number('Col mdOffset', 0)}
+                                lgOffset={number('Col lgOffset', 0)}
+                            >
+                               <Position center>
+                                    Column-{row}-{column}
+                               </Position>
+                            </Col>
                         ))}
                     </Row>
                 ))}
-            </div>
+            </Grid>
         );
     });

@@ -1,19 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import style from './Heading.styl';
+import './Heading.styl';
 
 
 const Heading = (props) => {
-    const { children, tagName, className, type } = props;
+    const {
+        children,
+        tagName,
+        className,
+        type,
+    } = props;
 
     const classNames = cn(
-        style.heading,
-        style[`type${type}`],
-        className
+        'Heading',
+        `Heading_type${type}`,
+        className,
     );
 
-    const TagName = tagName ? tagName : `h${type}`;
+    const TagName = tagName
+        ? tagName
+        : `h${type}`;
 
     return (
         <TagName className={classNames}>
@@ -22,9 +30,12 @@ const Heading = (props) => {
     );
 };
 
+Heading.propTypes = {
+    type: PropTypes.number,
+};
 
 Heading.defaultProps = {
-    type: '1'
+    type: 1
 };
 
 

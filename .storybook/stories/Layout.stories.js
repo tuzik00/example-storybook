@@ -7,6 +7,7 @@ import {
     Position,
     Overlay,
     Layout,
+    LayoutContent,
 } from '../../src/';
 
 
@@ -42,7 +43,11 @@ storiesOf('Layout', module)
             renderNav={() => (
                 <div>nav</div>)}
         >
-            <div>content</div>
+            <LayoutContent
+                sidebar={<div>sidebar</div>}
+            >
+                LayoutContent
+            </LayoutContent>
         </Layout>
     ))
     .add('Overlay', () => <Overlay isShow={true}/>);
