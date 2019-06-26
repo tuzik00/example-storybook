@@ -18,6 +18,7 @@ const Button = (props) => {
         bordered,
         bold,
         tagName,
+        dark,
         ...otherProps
     } = props;
 
@@ -30,6 +31,7 @@ const Button = (props) => {
         transparent && [`Button_transparent_${color}`],
         bordered && `Button_bordered_${color}`,
         bold && 'Button_bold',
+        dark && 'Button_dark',
     );
 
     const TagName = tagName || 'button';
@@ -57,6 +59,7 @@ Button.propTypes = {
     bordered: PropTypes.bool,
     onClick: PropTypes.func,
     tagName: PropTypes.string,
+    dark: PropTypes.bool,
 };
 
 Button.defaultProps = {

@@ -62,7 +62,7 @@ class SlideTop extends Component {
         return (
             <Transition
                 in={this.state.isMount}
-                timeout={duration}
+                timeout={duration || 0}
                 onEnter={this.onEnter}
             >
                 {children}

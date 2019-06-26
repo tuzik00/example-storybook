@@ -1,3 +1,5 @@
+import InstallPWA from "./components/InstallPWA";
+
 export FadeAndScale from './components/Animations/FadeAndScale';
 export FadeIn from './components/Animations/FadeIn';
 export WidthScale from './components/Animations/WidthScale';
@@ -20,6 +22,8 @@ export Position from './components/Position';
 export Select from './components/Select';
 export ToggleSwitch from './components/ToggleSwitch';
 export List from './components/List';
-export { Grid, Row, Col } from './components/Grid';
+export InstallPWA from './components/InstallPWA';
+
+export * from './components/Grid';
 export * from './components/Layout';
 export * from './components/Tabs';

@@ -9,7 +9,7 @@ import './Tabs.styl';
 
 class Tabs extends Component {
     static propTypes = {
-        initialTab: PropTypes.string,
+        initialTab: PropTypes.number,
         onChangeTab: PropTypes.func,
         renderTabBar: PropTypes.func,
     };
