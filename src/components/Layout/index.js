@@ -1,1 +1,2 @@
-export default from './Layout';
+export LayoutContent from './LayoutContent';
+export Layout from './Layout';

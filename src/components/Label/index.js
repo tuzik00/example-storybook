@@ -1,27 +1,54 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import style from './Label.styl';
+import './Label.styl';
 
 
 const Label = (props) => {
-    const { text, children, className, required, error } = props;
+    const {
+        text,
+        children,
+        className,
+        required,
+        error,
+        inline,
+    } = props;
 
     const classNames = cn(
-        style.label,
+        'Label',
+        inline && 'Label_inline',
         className
     );
 
     return (
         <label className={classNames}>
-            <div className={cn(style.text, error && style.error)}>
-                {required ? '*' : null}{text}:
+            <div
+                className={cn(
+                    'Label__text',
+                    error && 'Label__error',
+                )}
+            >
+                {required
+                    ? '*'
+                    : null
+                }
+                {text}:
             </div>
-            <div className={style.field}>
+            <div className={'Label__field'}>
                 {children}
             </div>
         </label>
     );
+};
+
+Label.propTypes = {
+    inline: PropTypes.bool,
+    text: PropTypes.string,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    required: PropTypes.bool,
+    error: PropTypes.bool,
 };
 
 

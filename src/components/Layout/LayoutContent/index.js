@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
-import {
-    Grid,
-    Row,
-    Col,
-} from '../../..';
+import './LayoutContent.styl';
 
 
 const LayoutContent = (props) => {
@@ -13,28 +10,38 @@ const LayoutContent = (props) => {
         rightBar,
         leftBar,
         children,
+        header,
+        dark,
     } = props;
 
+    const classNames = cn(
+        'LayoutContent',
+        dark && 'LayoutContent_theme-dark'
+    );
+
     return (
-        <Grid fluid>
-            <Row>
+        <div className={classNames}>
+            <div className={'LayoutContent__header'}>
+               {header}
+            </div>
+            <div className={'LayoutContent__container'}>
                 {leftBar ? (
-                    <Col md={3}>
+                    <div className={'LayoutContent__leftbar'}>
                         {leftBar}
-                    </Col>
+                    </div>
                 ) : null}
 
-                <Col md={leftBar ? 6 : 9}>
+                <div className={'LayoutContent__content'}>
                     {children}
-                </Col>
+                </div>
 
                 {rightBar ? (
-                    <Col md={3}>
+                    <div className={'LayoutContent__rightbar'}>
                         {rightBar}
-                    </Col>
+                    </div>
                 ) : null}
-            </Row>
-        </Grid>
+            </div>
+        </div>
     )
 };
 
@@ -42,6 +49,7 @@ LayoutContent.propTypes = {
     rightBar: PropTypes.node,
     leftBar: PropTypes.node,
     children: PropTypes.node,
+    dark: PropTypes.bool,
 };
 
 

@@ -20,7 +20,6 @@ export Position from './components/Position';
 export Select from './components/Select';
 export ToggleSwitch from './components/ToggleSwitch';
 export List from './components/List';
-export Layout from './components/Layout';
-export LayoutContent from './components/Layout/LayoutContent';
 export { Grid, Row, Col } from './components/Grid';
+export * from './components/Layout';
 export * from './components/Tabs';

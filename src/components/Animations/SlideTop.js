@@ -42,8 +42,8 @@ class SlideTop extends Component {
             .fromTo(
                 node,
                 this.state.duration / 1000,
-                {x: 0, y: -10, itemOrigin: "0% 0%"},
-                {x: 0, y: 0, itemOrigin: "0% 0%"},
+                {opacity: 0, x: 0, y: -10, itemOrigin: "0% 0%"},
+                {opacity: 1, x: 0, y: 0, itemOrigin: "0% 0%"},
                 0
             );
 

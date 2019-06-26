@@ -1,8 +1,17 @@
-:local
-  .text
-    margin-bottom 10px
-    font-weight bold
-    color #656363
+.Label
+  &_inline
+    display flex
+    align-items center
 
-  .error
+    & ^[0]__text
+      margin-bottom 0
+      margin-right 10px
+
+    & ^[0]__field
+      flex-grow: 1;
+
+  &__text
+    margin-bottom 10px
+
+  &__error
     color: $danger-color

@@ -1,15 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import style from './Select.styl';
+import './Select.styl';
 
 
 const Select = (props) => {
-    const {className, dataArray, disabled, onChange, ...otherProps} = props;
+    const {
+        className,
+        dataArray,
+        disabled,
+        onChange,
+        dark,
+        ...rest
+    } = props;
 
     const selectClasses = cn(
-        style.select,
-        disabled && style.disabled,
+        'Select',
+        disabled && 'Select_disabled',
+        dark && 'Select_theme-dark',
         className
     );
 
@@ -17,7 +26,7 @@ const Select = (props) => {
         <select
             className={selectClasses}
             onChange={(e) => onChange(e.target.value)}
-            {...otherProps}
+            {...rest}
         >
             {dataArray.map((option, index) => (
                 <option
@@ -31,11 +40,18 @@ const Select = (props) => {
     );
 };
 
+Select.propTypes = {
+    dataArray: PropTypes.array,
+    onChange: PropTypes.func,
+    disabled: PropTypes.bool,
+    dark: PropTypes.bool,
+};
 
 Select.defaultProps = {
     dataArray: [],
     onChange: () => {},
-    disabled: false
+    disabled: false,
+
 };
 
 

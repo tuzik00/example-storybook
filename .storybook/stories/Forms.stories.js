@@ -23,7 +23,7 @@ storiesOf('Форма', module)
         />
     ))
     .add('Label', () => (
-        <ul class="story-list">
+        <ul className="story-list">
             <li>
                 <Label text="Label">
                     <Input />
@@ -36,6 +36,11 @@ storiesOf('Форма', module)
             </li>
             <li>
                 <Label error text="Error">
+                    <Input />
+                </Label>
+            </li>
+            <li>
+                <Label inline text="Error">
                     <Input />
                 </Label>
             </li>
