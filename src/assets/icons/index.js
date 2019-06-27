@@ -12,3 +12,4 @@ export VKIcon from './vk.svg';
 export OKIcon from './odnoklassniki.svg';
 export TelegramIcon from './telegram.svg';
 export PushPinIcon from './push-pin.svg';
+export PlusIcon from './plus.svg';

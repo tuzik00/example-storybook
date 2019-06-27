@@ -22,7 +22,7 @@ const LayoutContent = (props) => {
     return (
         <div className={classNames}>
             <div className={'LayoutContent__header'}>
-               {header}
+                {header}
             </div>
             <div className={'LayoutContent__container'}>
                 {leftBar ? (
@@ -35,11 +35,9 @@ const LayoutContent = (props) => {
                     {children}
                 </div>
 
-                {rightBar ? (
-                    <div className={'LayoutContent__rightbar'}>
-                        {rightBar}
-                    </div>
-                ) : null}
+                <div className={'LayoutContent__rightbar'}>
+                    {rightBar}
+                </div>
             </div>
         </div>
     )

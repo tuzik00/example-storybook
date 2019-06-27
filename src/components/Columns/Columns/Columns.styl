@@ -1,13 +1,26 @@
 .Columns
   display flex
-  flex-wrap wrap
   flex-grow 1
-  +mobile()
+  +below(700px)
     flex-grow initial
+    flex-direction column
+
+  &_theme-dark
+    > *
+      border-right 1px solid $black-color !important
+      +below(700px)
+        border-right none !important
+        border-bottom 1px solid $black-color !important
+
+  > *
+    border-right 1px solid $gray-color
+    +below(700px)
+      border-right none
+      border-bottom 1px solid $gray-color
 
   :last-child
     margin-right 0
-    border-right none
-    +mobile()
+    border-right none !important
+    +below(700px)
       margin-bottom 0
-      border-bottom none
+      border-bottom none !important

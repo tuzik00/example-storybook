@@ -21,9 +21,15 @@
   &__content
     display flex
     flex-direction column
-    flex-grow 1
     margin-right 15px
+    flex-grow 1
     +tablet()
       margin-right 0
     +mobile()
       margin-right 0
+
+  &__rightbar
+    width 100%
+    max-width 400px
+    +tablet()
+      min-width 100%
