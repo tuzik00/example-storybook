@@ -9,15 +9,20 @@ const Card = (props) => {
     const {
         children,
         className,
+        style,
         dark,
+        onClick,
     } = props;
 
     return (
         <section
+            onClick={onClick}
+            style={style}
             className={cn(
                 className,
                 'Card', {
                     'Card_theme-dark': dark,
+                    'Card_active': typeof onClick === 'function',
                 }
             )}
         >
@@ -30,7 +35,11 @@ Card.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     dark: PropTypes.bool,
+    style: PropTypes.object,
+    onClick: PropTypes.func,
 };
+
+
 
 
 Card.Container = (props) => {

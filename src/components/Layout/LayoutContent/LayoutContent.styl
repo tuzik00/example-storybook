@@ -1,6 +1,7 @@
 .LayoutContent
   display flex
   flex-direction column
+  height 100%
 
   &_theme-dark
     & ^[0]__header
@@ -15,6 +16,14 @@
     display flex
     flex-wrap wrap
     margin rem(20)
+    flex-grow 1
 
   &__content
+    display flex
+    flex-direction column
     flex-grow 1
+    margin-right 15px
+    +tablet()
+      margin-right 0
+    +mobile()
+      margin-right 0

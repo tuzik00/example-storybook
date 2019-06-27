@@ -1,0 +1,13 @@
+.Columns
+  display flex
+  flex-wrap wrap
+  flex-grow 1
+  +mobile()
+    flex-grow initial
+
+  :last-child
+    margin-right 0
+    border-right none
+    +mobile()
+      margin-bottom 0
+      border-bottom none

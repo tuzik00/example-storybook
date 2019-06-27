@@ -1,1 +1,14 @@
-export { default as PushPin } from './push-pin.svg';
+export LogoIcon from './logo.svg';
+export AccountsIcon from './accounts.svg';
+export GrabbingIcon from './grabbing.svg';
+export PostsIcon from './posts.svg';
+export ProjectsIcon from './projects.svg';
+export SettingsIcon from './settings.svg';
+export IdeaIcon from './idea.svg';
+export LogoutIcon from './logout.svg';
+export NotificationIcon from './notification.svg';
+export MagnifyingGlassIcon from './magnifying-glass.svg';
+export VKIcon from './vk.svg';
+export OKIcon from './odnoklassniki.svg';
+export TelegramIcon from './telegram.svg';
+export PushPinIcon from './push-pin.svg';

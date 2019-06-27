@@ -14,6 +14,7 @@ const Container = (props) => {
         bottom,
         left,
         right,
+        flexGrow,
     } = props;
 
     const classNames = cn(
@@ -24,6 +25,7 @@ const Container = (props) => {
         !!bottom && `Container_bottom_${bottom}`,
         !!left && `Container_left_${left}`,
         !!right && `Container_right_${right}`,
+        flexGrow && 'Container_flex-grow',
     );
 
     return (
@@ -41,6 +43,7 @@ Container.propTypes = {
     bottom: PropTypes.number,
     left: PropTypes.number,
     right: PropTypes.number,
+    flexGrow: PropTypes.bool,
 };
 
 export default Container;

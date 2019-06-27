@@ -23,7 +23,10 @@ export Select from './components/Select';
 export ToggleSwitch from './components/ToggleSwitch';
 export List from './components/List';
 export InstallPWA from './components/InstallPWA';
+export DynamicImport from './components/DynamicImport';
 
+export * from './components/Columns';
 export * from './components/Grid';
 export * from './components/Layout';
 export * from './components/Tabs';
+export * from './assets/icons';

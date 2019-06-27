@@ -31,7 +31,7 @@ const Button = (props) => {
         transparent && [`Button_transparent_${color}`],
         bordered && `Button_bordered_${color}`,
         bold && 'Button_bold',
-        dark && 'Button_dark',
+        dark && 'Button_theme-dark',
     );
 
     const TagName = tagName || 'button';
