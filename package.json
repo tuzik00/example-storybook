@@ -15,7 +15,7 @@
     "sync": "react-builder sync",
     "sb:start": "start-storybook -p 9001 -c .storybook",
     "sb:build": "build-storybook -c .storybook -o public",
-    "sb:publish": "npm run storybook:build && gh-pages -d public"
+    "sb:publish": "npm run sb:build && gh-pages -d public"
   },
   "dependencies": {
     "classnames": "^2.2.6",
