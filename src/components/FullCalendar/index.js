@@ -1,3 +1,5 @@
+// https://fullcalendar.io/docs/theming
+
 import React, {Component} from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
