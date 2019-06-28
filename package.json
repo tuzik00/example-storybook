@@ -18,6 +18,9 @@
     "sb:publish": "npm run sb:build && gh-pages -d public"
   },
   "dependencies": {
+    "@fullcalendar/core": "^4.2.0",
+    "@fullcalendar/daygrid": "^4.2.0",
+    "@fullcalendar/react": "^4.2.0",
     "classnames": "^2.2.6",
     "gsap": "^2.0.1",
     "path": "^0.12.7",
@@ -27,11 +30,11 @@
     "react-outside-click-handler": "^1.2.2"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.0.11",
     "@storybook/addon-info": "^5.0.11",
     "@storybook/addon-knobs": "^5.0.11",
     "@storybook/addon-options": "^5.0.11",
     "@storybook/react": "^5.0.11",
-    "@storybook/addon-actions": "^5.0.11",
     "gh-pages": "^2.0.1",
     "storybook-addon-jsx": "^5.4.0",
     "storybook-addon-props": "^3.0.4"

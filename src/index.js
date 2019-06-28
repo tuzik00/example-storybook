@@ -26,6 +26,7 @@ export List from './components/List';
 export InstallPWA from './components/InstallPWA';
 export DynamicImport from './components/DynamicImport';
 export CardIconButton from './components/CardIconButton';
+export FullCalendar from './components/FullCalendar';
 
 export * from './components/Columns';
 export * from './components/Grid';
