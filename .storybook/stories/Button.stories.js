@@ -4,7 +4,7 @@ import {boolean, select} from '@storybook/addon-knobs';
 import {action} from '@storybook/addon-actions';
 
 import { Button, IconButton } from '../../src';
-import { PushPin } from '../../src/assets/icons';
+import { PushPinIcon } from '../../src/assets/icons';
 
 storiesOf('Кнопки', module)
     .add('Базовая', () => (
@@ -30,7 +30,7 @@ storiesOf('Кнопки', module)
             onClick={action('click')}
             disabled={boolean('disabled', false)}
             bordered={boolean('bordered', false)}
-            icon={<PushPin />}
+            icon={<PushPinIcon />}
         >
             IconButton
         </IconButton>

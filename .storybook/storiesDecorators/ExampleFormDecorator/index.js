@@ -6,6 +6,7 @@ import {
     Select,
     Button,
     Column,
+    Grid,
     Row,
     Label,
     Container,
@@ -20,7 +21,7 @@ const country = [
 
 
 const ExampleFormDecorator = () => (
-    <Container>
+    <Grid fluid>
         <Row>
             <Column>
                 <Label
@@ -68,7 +69,7 @@ const ExampleFormDecorator = () => (
                 </Position>
             </Column>
         </Row>
-    </Container>
+    </Grid>
 );
 
 

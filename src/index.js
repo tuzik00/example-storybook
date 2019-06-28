@@ -1,5 +1,6 @@
-import InstallPWA from "./components/InstallPWA";
-
+export colors from './config/colors';
+export breakpoints from './config/breakpoints';
+export headings from './config/headings';
 export FadeAndScale from './components/Animations/FadeAndScale';
 export FadeIn from './components/Animations/FadeIn';
 export WidthScale from './components/Animations/WidthScale';
@@ -24,6 +25,7 @@ export ToggleSwitch from './components/ToggleSwitch';
 export List from './components/List';
 export InstallPWA from './components/InstallPWA';
 export DynamicImport from './components/DynamicImport';
+export CardIconButton from './components/CardIconButton';
 
 export * from './components/Columns';
 export * from './components/Grid';
