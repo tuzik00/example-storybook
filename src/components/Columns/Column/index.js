@@ -24,7 +24,7 @@ Column.propTypes = {
 };
 
 Column.defaultProps = {
-    flex: 0,
+    flex: 1,
 };
 
 

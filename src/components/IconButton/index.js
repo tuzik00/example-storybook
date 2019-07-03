@@ -9,6 +9,7 @@ import Button from '../Button';
 const IconButton = (props) => {
      const {
         size,
+        style,
         color,
         children,
         className,
@@ -30,6 +31,7 @@ const IconButton = (props) => {
 
     return (
         <Button
+            style={style}
             className={classNames}
             size={size}
             bold={bold}

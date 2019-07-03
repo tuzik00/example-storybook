@@ -8,6 +8,7 @@ import './Button.styl';
 const Button = (props) => {
     const {
         size,
+        style,
         color,
         children,
         className,
@@ -38,6 +39,7 @@ const Button = (props) => {
 
     return (
         <TagName
+            style={style}
             className={classNames}
             onClick={onClick}
             disabled={disabled}
