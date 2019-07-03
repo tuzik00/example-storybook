@@ -15,6 +15,7 @@ const Container = (props) => {
         left,
         right,
         flexGrow,
+        flex,
     } = props;
 
     const classNames = cn(
@@ -26,6 +27,7 @@ const Container = (props) => {
         !!left && `Container_left_${left}`,
         !!right && `Container_right_${right}`,
         flexGrow && 'Container_flex-grow',
+        flex && 'Container_flex',
     );
 
     return (
