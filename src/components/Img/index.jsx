@@ -41,6 +41,10 @@ class Img extends Component {
         };
     }
 
+    componentDidMount() {
+        this.tryImage();
+    }
+
     componentDidUpdate(prevProps) {
         if (!_.isEqual(prevProps.src, this.props.src)) {
             const srcArray = this.getImagesSrcArray(this.props);
@@ -69,7 +73,10 @@ class Img extends Component {
     }
 
     setNextImage() {
-        const {srcArray, srcIndex} = this.state;
+        const {
+            srcArray,
+            srcIndex,
+        } = this.state;
 
         if (srcIndex >= _.size(srcArray) - 1) {
             this.setState({
@@ -83,7 +90,7 @@ class Img extends Component {
 
         this.setState({
             srcIndex: newSrcIndex,
-            src: _.nth(srcArray, newSrcIndex)
+            src: _.nth(srcArray, newSrcIndex),
         });
     }
 
@@ -97,8 +104,6 @@ class Img extends Component {
         img.onload = () => this.setState({isValidImage: true});
         img.onerror = () => this.setNextImage();
         img.src = src;
-
-        return null;
     }
 
     getClassName(){
@@ -163,16 +168,11 @@ class Img extends Component {
         } = this.props;
 
         const {
-            isValidImage,
             isError,
         } = this.state;
 
         if (isError) {
             return null;
-        }
-
-        if (!isValidImage) {
-            return this.tryImage();
         }
 
         return asImage

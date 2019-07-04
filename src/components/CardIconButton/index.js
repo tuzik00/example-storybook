@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 import {Card} from '../../';
 
 import './CardIconButton.styl';
@@ -7,23 +8,25 @@ import './CardIconButton.styl';
 
 const CardIconButton = (props) => {
     const {
+        className,
         icon,
         onClick,
         dark,
         children,
         style,
+        isActive,
     } = props;
 
     return (
         <Card
-            className={'CreateAccountButton'}
+            className={cn(className, 'CardIconButton', isActive && 'CardIconButton_active')}
             style={style}
             dark={dark}
             onClick={onClick}
         >
-            <Card.Container className={'CreateAccountButton__card'}>
-                {React.cloneElement(icon, {className: 'CreateAccountButton__icon'})}
-                <span className={'CreateAccountButton__text'}>
+            <Card.Container className={'CardIconButton__card'}>
+                {React.cloneElement(icon, {className: 'CardIconButton__icon'})}
+                <span className={'CardIconButton__text'}>
                     {children}
                 </span>
             </Card.Container>
@@ -32,10 +35,12 @@ const CardIconButton = (props) => {
 };
 
 CardIconButton.propTypes = {
+    className: PropTypes.string,
     icon: PropTypes.node,
     onClick: PropTypes.func,
     dark: PropTypes.bool,
     children: PropTypes.node,
+    isActive: PropTypes.bool,
 };
 
 

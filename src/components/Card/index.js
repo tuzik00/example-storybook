@@ -22,7 +22,7 @@ const Card = (props) => {
                 className,
                 'Card', {
                     'Card_theme-dark': dark,
-                    'Card_active': typeof onClick === 'function',
+                    'Card_activate': typeof onClick === 'function',
                 }
             )}
         >
