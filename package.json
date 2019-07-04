@@ -27,7 +27,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-outside-click-handler": "^1.2.2"
+    "react-outside-click-handler": "^1.2.2",
+    "react-virtualized": "^9.21.1"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.0.11",
