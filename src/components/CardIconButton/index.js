@@ -25,7 +25,10 @@ const CardIconButton = (props) => {
             onClick={onClick}
         >
             <Card.Container className={'CardIconButton__card'}>
-                {React.cloneElement(icon, {className: 'CardIconButton__icon'})}
+                {icon
+                    ? React.cloneElement(icon, {className: 'CardIconButton__icon'})
+                    : null
+                }
                 <span className={'CardIconButton__text'}>
                     {children}
                 </span>
