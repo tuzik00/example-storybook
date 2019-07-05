@@ -27,6 +27,7 @@ export InstallPWA from './components/InstallPWA';
 export DynamicImport from './components/DynamicImport';
 export CardIconButton from './components/CardIconButton';
 export FullCalendar from './components/FullCalendar';
+export Slick from './components/Slick';
 
 export * from './components/Columns';
 export * from './components/Grid';
