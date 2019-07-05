@@ -6,6 +6,10 @@ import Transition from 'react-transition-group/Transition';
 
 class SlideTop extends Component {
     static propTypes = {
+        children: PropTypes.oneOfType([
+            PropTypes.node,
+            PropTypes.func,
+        ]),
         duration: PropTypes.number,
         onExit: PropTypes.func,
         onEnter: PropTypes.func,
@@ -62,10 +66,18 @@ class SlideTop extends Component {
         return (
             <Transition
                 in={this.state.isMount}
-                timeout={duration || 0}
+                timeout={duration || 10}
                 onEnter={this.onEnter}
             >
-                {children}
+                {(step) => {
+                    return typeof children === 'function'
+                        ? children({
+                            isExited: step === 'exited',
+                            isEntering: step === 'entering',
+                            isEntered: step === 'entered',
+                        })
+                        : children
+                }}
             </Transition>
         );
     }

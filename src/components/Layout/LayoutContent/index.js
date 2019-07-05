@@ -35,9 +35,11 @@ const LayoutContent = (props) => {
                     {children}
                 </div>
 
-                <div className={'LayoutContent__rightbar'}>
-                    {rightBar}
-                </div>
+                {rightBar ? (
+                    <div className={'LayoutContent__rightbar'}>
+                        {rightBar}
+                    </div>
+                ) : null}
             </div>
         </div>
     )

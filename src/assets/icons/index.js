@@ -13,3 +13,6 @@ export OKIcon from './odnoklassniki.svg';
 export TelegramIcon from './telegram.svg';
 export PushPinIcon from './push-pin.svg';
 export PlusIcon from './plus.svg';
+export MenuIcon from './menu.svg';
+export CheckedIcon from './checked.svg';
+export DangerIcon from './danger.svg';
