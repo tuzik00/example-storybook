@@ -9,7 +9,7 @@ import {
 } from '../../src';
 
 
-storiesOf('Элементы навигации', module)
+storiesOf('Табы', module)
     .add('Табы с плавающей линией', () => (
         <Tabs
             initialTab={1}

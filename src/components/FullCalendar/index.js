@@ -11,29 +11,36 @@ import './FullCalendar.styl';
 
 class FullCalendarWrapper extends Component {
     static propTypes = {
-        data: PropTypes.array,
+        events: PropTypes.array,
         renderDay: PropTypes.func,
+        onEventClick: PropTypes.func,
     };
 
     static defaultProps = {
-        renderDay: () => {
-        },
+        renderDay: () => {},
+        onEventClick: () => {},
     };
 
     render() {
         const {
-            data,
+            events,
             renderDay,
+            onEventClick,
         } = this.props;
 
         return (
             <FullCalendar
-                events={data}
+                events={events}
                 locale={ruLocale}
                 defaultView="dayGridMonth"
                 plugins={[
                     dayGridPlugin
                 ]}
+                eventClick={(info) => {
+                    info.jsEvent.preventDefault();
+
+                    onEventClick(info.event);
+                }}
                 dayRender={renderDay}
             />
         )

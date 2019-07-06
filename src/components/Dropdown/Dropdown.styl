@@ -1,0 +1,23 @@
+.Dropdown
+  position relative
+
+  &__content
+    position absolute
+    top 100
+    left 0
+    background-color $white-color
+    z-index 1000
+    display none
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    min-width 160px
+    opacity 0
+    transform translateY(15px)
+    transition opacity 150ms ease, transform 150ms ease
+
+    &_open
+      display block
+
+      &_done
+        display block
+        opacity 1
+        transform translateY(0)

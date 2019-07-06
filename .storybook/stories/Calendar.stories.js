@@ -8,5 +8,23 @@ import {
 
 storiesOf('Календарь', module)
     .add('FullCalendar', () => (
-        <FullCalendar/>
+        <FullCalendar
+            events={[
+                {
+                    id: '1',
+                    resourceId: 'a',
+                    title: 'Meeting',
+                    start: '2019-07-05 22:40',
+                    data: {
+                        test: 'test'
+                    }
+                }
+            ]}
+            renderDay={(day) => {
+                return day;
+            }}
+            onEventClick={(e) => {
+                console.log(e)
+            }}
+        />
     ));
