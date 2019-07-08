@@ -10,11 +10,11 @@ import './Dropdown.styl';
 class Dropdown extends Component {
     static propTypes = {
         renderToggle: PropTypes.func,
+        content: PropTypes.node,
     };
 
     static defaultProps = {
-        renderToggle: () => {
-        },
+        renderToggle: () => {},
     };
 
     constructor(props) {
@@ -43,7 +43,7 @@ class Dropdown extends Component {
         return (
             <CSSTransition
                 in={isOpen}
-                timeout={200}
+                timeout={100}
                 classNames={{
                     enter: 'Dropdown__content_open',
                     enterDone: 'Dropdown__content_open_done',
