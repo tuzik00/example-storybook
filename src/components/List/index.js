@@ -1,14 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import style from './List.styl';
+import './List.styl';
 
 
 const List = (props) => {
-    const { classNames, children, dotted } = props;
+    const {
+        className,
+        children,
+        dotted,
+    } = props;
 
     return (
-        <section className={cn(style.list, dotted && style.dotted, classNames)}>
+        <section className={cn(className, 'List', dotted && 'List_dotted')}>
             {children}
         </section>
     );
@@ -22,17 +27,30 @@ List.defaultProps = {
 
 
 List.Item = (props) => {
-    const { classNames, children } = props;
+    const {
+        className,
+        children,
+        onClick,
+    } = props;
 
     return (
-        <div className={cn(style.item, classNames)}>
+        <div
+            className={cn(
+                className,
+                'List__item',
+                'List__item_activate'
+            )}
+            onClick={onClick}
+        >
             {children}
         </div>
     );
 };
 
 List.Item.propTypes = {
-
+    className: PropTypes.string,
+    children: PropTypes.node,
+    onClick: PropTypes.func,
 };
 
 

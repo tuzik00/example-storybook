@@ -21,9 +21,15 @@ class Dropdown extends Component {
         this.contentRef = React.createRef();
     }
 
-    handleToggle = () => {
+    handleOpen = () => {
         this.setState({
-            isOpen: !this.state.isOpen,
+            isOpen: true,
+        })
+    };
+
+     handleClose = () => {
+        this.setState({
+            isOpen: false,
         })
     };
 
@@ -90,14 +96,23 @@ class Dropdown extends Component {
         return React.cloneElement(children, {
             className,
             children: container(children),
-            onClick: (e) => {
-                const onClick = children.props.onClick;
+            onMouseEnter: (e) => {
+                const onMouseEnter = children.props.onMouseEnter;
 
-                if (onClick) {
-                    onClick(e);
+                if (onMouseEnter) {
+                    onMouseEnter(e);
                 }
 
-                this.handleToggle(e);
+                this.handleOpen(e);
+            },
+            onMouseLeave: (e) => {
+                const onMouseLeave = children.props.onMouseLeave;
+
+                if (onMouseLeave) {
+                    onMouseLeave(e);
+                }
+
+                this.handleClose(e);
             },
         })
     }

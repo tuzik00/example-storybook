@@ -3,16 +3,27 @@
 
   &__content
     position absolute
-    top 100
-    left 0
+    top 100%
+    left 100%
+    border-radius 3px
     background-color $white-color
     z-index 1000
     display none
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     min-width 160px
     opacity 0
-    transform translateY(15px)
+    transform translate(-90%, 15px)
     transition opacity 150ms ease, transform 150ms ease
+
+    &:after
+      content ''
+      border: 5px solid transparent
+      border-bottom: 5px solid $white-color
+      position absolute
+      top -10px
+      left 100%
+      transform translateX(calc(-90% - 25px))
+      box-sizing border-box
 
     &_open
       display block
@@ -20,4 +31,4 @@
       &_done
         display block
         opacity 1
-        transform translateY(0)
+        transform translate(-90%, 5px)
