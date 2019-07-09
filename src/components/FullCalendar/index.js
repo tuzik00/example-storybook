@@ -4,6 +4,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from '@fullcalendar/interaction';
 import ruLocale from '@fullcalendar/core/locales/ru';
 import '@fullcalendar/core/main.css'
 import './FullCalendar.styl';
@@ -12,16 +13,18 @@ import './FullCalendar.styl';
 class FullCalendarWrapper extends Component {
     static propTypes = {
         events: PropTypes.array,
-        renderDay: PropTypes.func,
         onEventClick: PropTypes.func,
         onDateClick: PropTypes.func,
-        defaultActive: PropTypes.string,
+        onDateSelect: PropTypes.func,
+        onDateUnselect: PropTypes.func,
+        ref: PropTypes.func,
     };
 
     static defaultProps = {
-        renderDay: (e) => e,
-        onEventClick: () => {
-        },
+        events: [],
+        getApi: () => {},
+        onEventClick: () => {},
+        onDateUnselect: () => {},
     };
 
     constructor(props) {
@@ -33,54 +36,15 @@ class FullCalendarWrapper extends Component {
     componentDidMount() {
         const calendarApi = this.calendarRef.current;
 
-        if (!calendarApi) {
-            return;
-        }
-        calendarApi.elRef.current.addEventListener('click', this.handleClickDate);
+        this.props.getApi(calendarApi.calendar)
     }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.defaultActive){
-            this.setActiveDate(this.props.defaultActive);
-        }
-    }
-
-
-    handleClickDate = (e) => {
-        const {
-            onDateClick,
-        } = this.props;
-
-        if (!onDateClick) {
-            return;
-        }
-
-        const element = e.target.closest('.fc-day-top') || e.target;
-
-        if (element && element.hasAttribute('data-date')) {
-            const date = element.getAttribute('data-date');
-
-            onDateClick(date);
-            this.setActiveDate(date);
-        }
-    };
-
-    setActiveDate(defaultActive = this.props.defaultActive) {
-        const activeClass = 'FullCalendar__active-date';
-        const el = this.calendarRef.current.elRef.current;
-        const activeElements = el.querySelectorAll(`.${activeClass}`);
-        const td = el.querySelectorAll(`[data-date="${defaultActive}"]`);
-
-        activeElements.forEach((el) => el.classList.remove(activeClass));
-        td.forEach((el) => el.classList.add(activeClass));
-    }
-
 
     render() {
         const {
             events,
-            renderDay,
             onEventClick,
+            onDateSelect,
+            onDateUnselect,
         } = this.props;
 
         return (
@@ -88,15 +52,19 @@ class FullCalendarWrapper extends Component {
                 ref={this.calendarRef}
                 events={events}
                 locale={ruLocale}
+                unselectAuto={false}
                 defaultView="dayGridMonth"
                 plugins={[
-                    dayGridPlugin
+                    dayGridPlugin,
+                    interactionPlugin
                 ]}
-                eventClick={(info) => {
-                    info.jsEvent.preventDefault();
-                    onEventClick(info.event);
+                eventClick={(e) => {
+                    e.jsEvent.preventDefault();
+                    onEventClick(e);
                 }}
-                dayRender={renderDay}
+                selectable={!!onDateSelect}
+                select={onDateSelect}
+                unselect={onDateUnselect}
             />
         )
     }
