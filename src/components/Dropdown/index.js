@@ -2,19 +2,13 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import {CSSTransition} from 'react-transition-group';
-import OutsideClickHandler from 'react-outside-click-handler';
 
 import './Dropdown.styl';
 
 
 class Dropdown extends Component {
     static propTypes = {
-        renderToggle: PropTypes.func,
         content: PropTypes.node,
-    };
-
-    static defaultProps = {
-        renderToggle: () => {},
     };
 
     constructor(props) {
@@ -23,11 +17,13 @@ class Dropdown extends Component {
         this.state = {
             isOpen: false,
         };
+
+        this.contentRef = React.createRef();
     }
 
     handleToggle = () => {
         this.setState({
-            isOpen: !this.state.isOpen
+            isOpen: !this.state.isOpen,
         })
     };
 
@@ -52,7 +48,10 @@ class Dropdown extends Component {
                 unmountOnExit
                 mountOnEnter
             >
-                <div className={cn('Dropdown__content')}>
+                <div
+                    className={cn('Dropdown__content')}
+                    ref={this.contentRef}
+                >
                     {content}
                 </div>
             </CSSTransition>
@@ -91,14 +90,14 @@ class Dropdown extends Component {
         return React.cloneElement(children, {
             className,
             children: container(children),
-            onClick: () => {
+            onClick: (e) => {
                 const onClick = children.props.onClick;
 
                 if (onClick) {
-                    onClick();
+                    onClick(e);
                 }
 
-                this.handleToggle();
+                this.handleToggle(e);
             },
         })
     }
