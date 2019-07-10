@@ -29,6 +29,7 @@ export CardIconButton from './components/CardIconButton';
 export FullCalendar from './components/FullCalendar';
 export Slick from './components/Slick';
 export Dropdown from './components/Dropdown';
+export Loader from './components/Loader';
 
 export * from './components/Columns';
 export * from './components/Grid';

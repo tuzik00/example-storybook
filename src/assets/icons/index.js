@@ -16,3 +16,4 @@ export PlusIcon from './plus.svg';
 export MenuIcon from './menu.svg';
 export CheckedIcon from './checked.svg';
 export DangerIcon from './danger.svg';
+export ThreeDotsLoaderIcon from './three-dots-loader.svg'
